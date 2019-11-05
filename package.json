@@ -1,0 +1,31 @@
+{
+  "nativescript": {
+    "id": "org.nativescript.youin",
+    "tns-android": {
+      "version": "6.2.0"
+    },
+    "tns-ios": {
+      "version": "6.2.0"
+    }
+  },
+  "description": "NativeScript Application",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "repository": "https://github.com/ArielleBishop/you-in",
+  "scripts": {
+    "lint": "eslint \"app/**/*.js\""
+  },
+  "dependencies": {
+    "@nativescript/theme": "~2.2.0",
+    "nativescript-ui-sidedrawer": "~8.0.0",
+    "rxjs": "^6.4.0",
+    "tns-core-modules": "~6.2.0"
+  },
+  "devDependencies": {
+    "eslint": "~5.8.0",
+    "nativescript-dev-webpack": "~1.3.0",
+    "node-sass": "^4.7.1",
+    "typescript": "^3.7.2"
+  },
+  "gitHead": "f0bdb5bcc6c991497ddf34d446ed0cb4ae4da091",
+  "readme": "NativeScript Application"
+}
