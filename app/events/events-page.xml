@@ -18,11 +18,11 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label text="Browse"></Label>
+        <Label text="My Events"></Label>
     </ActionBar>
 
     <GridLayout class="page__content">
-        <Label class="page__content-icon far" text="&#xf1ea;"></Label>
-        <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
+        <Label class="page__content-icon far" text="&#xf073;"></Label>
+        <Label class="page__content-placeholder" text="Your Events!"></Label>
     </GridLayout>
 </Page>

@@ -18,11 +18,11 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label text="Settings"></Label>
+        <Label text="My Friends"></Label>
     </ActionBar>
 
     <GridLayout class="page__content">
-        <Label class="page__content-icon fas" text="&#xf013;"></Label>
-        <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
+        <Label class="page__content-icon fas" text="&#xf500;"></Label>
+        <Label class="page__content-placeholder" text="Your Friends!"></Label>
     </GridLayout>
 </Page>

@@ -18,11 +18,11 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label text="Search"></Label>
+        <Label text="My Circles"></Label>
     </ActionBar>
 
     <GridLayout class="page__content">
-        <Label class="page__content-icon fas" text="&#xf002;"></Label>
-        <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
+        <Label class="page__content-icon fas" text="&#xf0c0;"></Label>
+        <Label class="page__content-placeholder" text="Your Friend Circles!"></Label>
     </GridLayout>
 </Page>

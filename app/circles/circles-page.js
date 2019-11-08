@@ -1,10 +1,10 @@
 const app = require("tns-core-modules/application");
 
-const BrowseViewModel = require("./browse-view-model");
+const CirclesViewModel = require("./circles-view-model");
 
 function onNavigatingTo(args) {
     const page = args.object;
-    page.bindingContext = new BrowseViewModel();
+    page.bindingContext = new CirclesViewModel();
 }
 
 function onDrawerButtonTap(args) {
