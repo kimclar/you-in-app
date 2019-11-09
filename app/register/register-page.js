@@ -1,12 +1,12 @@
 
 const app = require("tns-core-modules/application");
 
-const LoginViewModel = require("./login-view-model");
+const RegisterViewModel = require("./register-view-model");
 const { Frame } = require("tns-core-modules/ui/frame");
 
 function onNavigatingTo(args) {
     const page = args.object;
-    page.bindingContext = new LoginViewModel();
+    page.bindingContext = new RegisterViewModel();
 }
 
 function onDrawerButtonTap(args) {

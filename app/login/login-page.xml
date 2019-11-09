@@ -20,9 +20,8 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label text="You In?"></Label>
+        <Label class="navTitle" text="You In?"></Label>
     </ActionBar>
-
 
 
 
@@ -31,17 +30,19 @@
     <StackLayout class="form">
         <Label class ="title" text="Log In"/>
         <StackLayout class="input-field">
-            <Label text="Username or Email"></Label>
+            <Label class="inputLabel" text="Username or Email"></Label>
             <TextField class="input"></TextField>
         </StackLayout>
 
         <StackLayout class="input-field">
-            <Label text="Password"></Label>
+            <Label class="inputLabel" text="Password"></Label>
             <TextField class="input"></TextField>
         </StackLayout>
 
         <Button text="Log In" class="button"></Button>
-        <Label text="Don’t have an account?"></Label>
+
+        <Label text="Don’t have an account?" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Register' ? ' -selected': '') }} endLabel"
+               route="register/register-page" tap="onNavigationItemTap"></Label>
 
     </StackLayout>
     </FlexboxLayout>

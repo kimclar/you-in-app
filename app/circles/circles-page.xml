@@ -1,3 +1,4 @@
+<?xml-stylesheet type="text/css" href="circles-page.css"?>
 <Page
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd">
@@ -18,7 +19,7 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label text="My Circles"></Label>
+        <Label class="navTitle" text="My Circles"></Label>
     </ActionBar>
 
     <GridLayout class="page__content">
