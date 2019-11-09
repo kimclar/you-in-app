@@ -19,10 +19,21 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
+
+        <ActionItem tap="onAddTap"
+                    ios.systemIcon="4" android.systemIcon="btn_plus"
+                    ios.position="right" android.position="actionBar"
+                    android:visibility="visible">
+        </ActionItem>
+
         <Label class="navTitle" text="My Events"></Label>
+
     </ActionBar>
 
     <GridLayout class="page__content">
+        <Button text="New Event +" class="{{ 'nt-drawer__list-item' + (selectedPage === 'NewEvent' ? ' -selected': '') }} button"
+               route="newEvent/newEvent-page" tap="onNavigationItemTap"></Button>
+
         <Label class="page__content-icon far" text="&#xf073;"></Label>
         <Label class="page__content-placeholder" text="Your Events!"></Label>
     </GridLayout>
