@@ -1,6 +1,8 @@
+<?xml-stylesheet type="text/css" href="login-page.css"?>
 <Page
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd">
+
 
     <ActionBar>
         <!-- 
@@ -18,33 +20,32 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label text="Log In"></Label>
+        <Label class="navTitle" text="You In?"></Label>
     </ActionBar>
 
-    <!--<GridLayout class="page__content">
-        <Label class="page__content-icon fas" text="&#xf274;"></Label>-->
 
-        <Page loaded="loaded">
-            <FlexboxLayout>
-                <StackLayout id="form"
-                             class="{{ isLoggingIn ? 'form' : 'form dark' }}"
-                             orientation="vertical">
 
-                    <TextField class="input input-border" id="email"
-                               text="{{ email }}" hint="Email Address" keyboardType="email"
-                               autocorrect="false" autocapitalizationType="none" />
-                    <TextField class="input input-border" secure="true"
-                               text="{{ password }}" hint="Password" />
 
-                    <Button class="btn btn-primary"
-                            text="{{ isLoggingIn ? 'Sign in' : 'Sign up' }}"
-                            tap="submit" />
-                    <Button text="{{ isLoggingIn ? 'Sign up' : 'Back to login' }}"
-                            class="link" tap="toggleDisplay" />
-                </StackLayout>
-            </FlexboxLayout>
-        </Page>
+    <FlexboxLayout class="page">
+    <StackLayout class="form">
+        <Label class ="title" text="Log In"/>
+        <StackLayout class="input-field">
+            <Label class="inputLabel" text="Username or Email"></Label>
+            <TextField class="input"></TextField>
+        </StackLayout>
 
+        <StackLayout class="input-field">
+            <Label class="inputLabel" text="Password"></Label>
+            <TextField class="input"></TextField>
+        </StackLayout>
+
+        <Button text="Log In" class="button"></Button>
+
+        <Label text="Don’t have an account?" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Register' ? ' -selected': '') }} endLabel"
+               route="register/register-page" tap="onNavigationItemTap"></Label>
+
+    </StackLayout>
+    </FlexboxLayout>
 
 
 </Page>

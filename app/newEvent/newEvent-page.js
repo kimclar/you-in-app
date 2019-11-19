@@ -1,12 +1,11 @@
 const app = require("tns-core-modules/application");
 
-const BrowseViewModel = require("./events-view-model");
-
+const NewEventViewModel = require("./newEvent-view-model");
 const { Frame } = require("tns-core-modules/ui/frame");
 
 function onNavigatingTo(args) {
     const page = args.object;
-    page.bindingContext = new BrowseViewModel();
+    page.bindingContext = new NewEventViewModel();
 }
 
 function onDrawerButtonTap(args) {
@@ -33,12 +32,7 @@ function onNavigationItemTap(args) {
     drawerComponent.closeDrawer();
 }
 
-/*function onAddTap(args) {
-    const sideDrawer = app.getRootView();
-    sideDrawer.showDrawer();
-}*/
+exports.onNavigationItemTap = onNavigationItemTap;
 
 exports.onNavigatingTo = onNavigatingTo;
 exports.onDrawerButtonTap = onDrawerButtonTap;
-exports.onNavigationItemTap = onNavigationItemTap;
-//exports.onAddTap = onAddTap;

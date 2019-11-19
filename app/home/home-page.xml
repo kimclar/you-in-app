@@ -1,3 +1,4 @@
+<?xml-stylesheet type="text/css" href="home-page.css"?>
 <Page
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd">
@@ -18,7 +19,7 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label text="Home"></Label>
+        <Label class="navTitle" text="Home"></Label>
     </ActionBar>
 
     <GridLayout class="page__content">

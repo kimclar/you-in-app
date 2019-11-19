@@ -1,3 +1,4 @@
+<?xml-stylesheet type="text/css" href="circles-page.css"?>
 <Page
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd">
@@ -18,10 +19,12 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label text="My Circles"></Label>
+        <Label class="navTitle" text="My Circles"></Label>
     </ActionBar>
 
     <GridLayout class="page__content">
+        <Button text="Create a New Circle +" class="{{ 'nt-drawer__list-item' + (selectedPage === 'NewCircle' ? ' -selected': '') }} button"
+        route="newEvent/newEvent-page" tap="onNavigationItemTap"></Button>
         <Label class="page__content-icon fas" text="&#xf0c0;"></Label>
         <Label class="page__content-placeholder" text="Your Friend Circles!"></Label>
     </GridLayout>
