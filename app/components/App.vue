@@ -13,6 +13,10 @@
                 <Label text="Search"></Label>
                 <Image src.decode="font://&#xf002;" class="fas t-36"></Image>
             </TabStripItem>
+            <TabStripItem class="navigation__item">
+                <Label text="Search"></Label>
+                <Image src.decode="font://&#xf002;" class="fas t-36"></Image>
+            </TabStripItem>
         </TabStrip>
 
         <TabContentItem>
@@ -23,13 +27,18 @@
 
         <TabContentItem>
             <Frame>
-                <Browse />
+                <MyCircles />
             </Frame>
         </TabContentItem>
 
         <TabContentItem>
             <Frame>
-                <Search />
+                <MyFriends />
+            </Frame>
+        </TabContentItem>
+        <TabContentItem>
+            <Frame>
+                <HostedEvents />
             </Frame>
         </TabContentItem>
 
@@ -38,11 +47,13 @@
 
 <script>
 import Items from "./Items.vue";
-import Browse from "./Browse.vue";
-import Search from "./Search.vue";
+import Browse from "./MyFriends.vue";
+import Search from "./MyCircles.vue";
+import HostedEvents from "./HostedEvents";
 
 export default {
   components: {
+      HostedEvents,
     Items,
     Browse,
     Search
