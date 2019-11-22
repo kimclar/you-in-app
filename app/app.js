@@ -1,9 +1,7 @@
-const application = require("tns-core-modules/application");
+import Vue from "nativescript-vue";
 
-application.run({ moduleName: "app-root/app-root" });
+import App from "./components/App";
 
-/*
-Do not place any code after the application has been started as it will not
-be executed on iOS.
-*/
- 
+new Vue({
+    render: h => h(App)
+}).$start();

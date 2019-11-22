@@ -1,5 +1,5 @@
 @import "~@nativescript/theme/core";
-@import "~@nativescript/theme/aqua";
+@import "~@nativescript/theme/blue";
 
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
@@ -17,15 +17,15 @@
 
 .far {
     font-family: "Font Awesome 5 Free", "fa-regular-400";
-    font-weight:400;
+    font-weight: 400;
 }
 
-.pr {
-    font-size: 17;
-}
-
-.tit {
-    font-size:20;
+// Custom tabstrip item class
+.navigation__item {
+    &:active,
+    &:active Label {
+        @include colorize($color: complementary);
+    }
 }
 
 // Common page class
@@ -33,21 +33,14 @@
     &-icon,
     &-placeholder {
         color: const(grey);
-        font-size: 25;
+        font-size: 20;
         vertical-align: center;
         horizontal-align: center;
     }
 
     &-icon {
-        font-size: 92;
+        font-size: 72;
         vertical-align: top;
         margin-top: 20%;
     }
-
-
-}
-
-// Drawer navigation custom styles
-.nt-drawer__header-image {
-    color: const(grey);
 }
