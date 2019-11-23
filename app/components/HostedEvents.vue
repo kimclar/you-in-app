@@ -1,11 +1,11 @@
 <template lang="html">
     <Page>
         <ActionBar>
-            <Label text="Search"></Label>
+            <Label text="My Hosted Events"></Label>
         </ActionBar>
 
         <GridLayout class="page__content">
-            <Label class="page__content-icon fas" text.decode="&#xf002;"></Label>
+            <Label class="page__content-icon fas" text.decode="&#xf073;"></Label>
             <Label class="page__content-placeholder" :text="message"></Label>
         </GridLayout>
     </Page>
@@ -15,7 +15,7 @@
 export default {
     data: () => {
         return {
-            message: "<!-- Search page content goes here -->"
+            message: "Hello Host!"
         };
     }
 }

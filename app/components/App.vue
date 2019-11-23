@@ -6,16 +6,16 @@
                 <Image src.decode="font://&#xf015;" class="fas t-36"></Image>
             </TabStripItem>
             <TabStripItem class="navigation__item">
-                <Label text="Browse"></Label>
-                <Image src.decode="font://&#xf1ea;" class="far t-36"></Image>
+                <Label text="Hosted Events"></Label>
+                <Image src.decode="font://&#xf073;" class="far t-36"></Image>
             </TabStripItem>
             <TabStripItem class="navigation__item">
-                <Label text="Search"></Label>
-                <Image src.decode="font://&#xf002;" class="fas t-36"></Image>
+                <Label text="Friends"></Label>
+                <Image src.decode="font://&#xf500;" class="fas t-36"></Image>
             </TabStripItem>
             <TabStripItem class="navigation__item">
-                <Label text="Search"></Label>
-                <Image src.decode="font://&#xf002;" class="fas t-36"></Image>
+                <Label text="Circles"></Label>
+                <Image src.decode="font://&#xf0c0;" class="fas t-36"></Image>
             </TabStripItem>
         </TabStrip>
 
@@ -27,7 +27,7 @@
 
         <TabContentItem>
             <Frame>
-                <MyCircles />
+                <HostedEvents />
             </Frame>
         </TabContentItem>
 
@@ -36,9 +36,10 @@
                 <MyFriends />
             </Frame>
         </TabContentItem>
+
         <TabContentItem>
             <Frame>
-                <HostedEvents />
+                <MyCircles />
             </Frame>
         </TabContentItem>
 
@@ -50,13 +51,18 @@ import Items from "./Items.vue";
 import Browse from "./MyFriends.vue";
 import Search from "./MyCircles.vue";
 import HostedEvents from "./HostedEvents";
+import MyCircles from "./MyCircles";
+import MyFriends from "./MyFriends"
 
 export default {
   components: {
       HostedEvents,
     Items,
     Browse,
-    Search
+    Search,
+      MyCircles,
+      MyFriends
+
   }
 };
 </script>
