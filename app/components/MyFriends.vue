@@ -1,12 +1,10 @@
 <template lang="html">
     <Page>
         <ActionBar>
-            <StackLayout orientation="horizontal"
-                         ios:horizontalAlignment="center"
-                         android:horizontalAlignment="center">
-            <Label text="My Friends" class="action-label"></Label>
-            <Image src='~/components/icons/addFriend.png' class="action-image"></Image>
-            </StackLayout>
+            <GridLayout columns="*,2*,*" horizontalAlignment="right">
+                <Label text="My Friends" col="1" class="action-label"></Label>
+                <Image src="~/components/icons/addFriend.png" col="2" class="action-image"></Image>
+            </GridLayout>
         </ActionBar>
 
         <ListView for="friend in friends">
