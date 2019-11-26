@@ -7,26 +7,43 @@
             </GridLayout>
         </ActionBar>
 
-        <ListView for="friend in friends">
-            <v-template>
-                <StackLayout orientation="horizontal">
-                    <Label :text="friend.nickname" textWrap="true"></Label>
-                </StackLayout>
-            </v-template>
-        </ListView>
+        <StackLayout>
+            <Label text="Pending Requests"></Label>
+            <ListView for="request in friendRequest">
+                <v-template>
+                    <StackLayout orientation="horizontal">
+                        <Label :text="request.fromUser" textWrap="true"></Label>
+                    </StackLayout>
+                </v-template>
+            </ListView>
+            <Label text="Friends"></Label>
+            <TextField v-model="textFieldValue" hint="Search friend by nickname..."/>
+            <ListView for="friend in friends">
+                <v-template>
+                    <StackLayout orientation="horizontal">
+                        <Label :text="friend.nickname" textWrap="true"></Label>
+                    </StackLayout>
+                </v-template>
+            </ListView>
+        </StackLayout>
     </Page>
 </template>
 
 <script>
-import friendsData from './mockData/friendsData.json';
+    import friendsData from './mockData/friendsData.json';
+    import friendRequestData from './mockData/friendRequestData.json';
 
-export default {
-    data: () => {
-        return {
-            friends: friendsData
-        };
-    },
-/*    methods: {
+    export default {
+        data() {
+            return {textFieldValue: "", textFieldValue: "",}
+        },
+        data: () => {
+            return {
+                friends: friendsData,
+                friendRequest: friendRequestData
+            };
+        },
+        /*    methods: {
         onItemTap (args) {
             const view = args.view;
             const page = view.page;
@@ -43,27 +60,27 @@ export default {
                     }}});
         }
     }*/
-}
+    }
 </script>
 
 <style lang="scss" scoped>
-// Start custom common variables
-@import "~@nativescript/theme/scss/variables/blue";
-// End custom common variables
+    // Start custom common variables
+    @import "~@nativescript/theme/scss/variables/blue";
+    // End custom common variables
 
-// Custom styles
-.action-image {
-    width: 40;
-    height: 40;
-    vertical-align: center;
-    horizontal-align: right;
-}
+    // Custom styles
+    .action-image {
+        width: 40;
+        height: 40;
+        vertical-align: center;
+        horizontal-align: right;
+    }
 
-.action-label {
-    color: #ffffff;
-    font-size: 24;
-    font-weight: bold;
-    vertical-align: center;
-}
+    .action-label {
+        color: #ffffff;
+        font-size: 24;
+        font-weight: bold;
+        vertical-align: center;
+    }
 
 </style>
