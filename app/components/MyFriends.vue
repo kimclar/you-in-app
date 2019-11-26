@@ -8,7 +8,7 @@
         </ActionBar>
 
         <StackLayout>
-            <Label text="Pending Requests"></Label>
+            <Label text="Pending Requests" class="section-title"></Label>
             <ListView for="request in friendRequest">
                 <v-template>
                     <StackLayout orientation="horizontal">
@@ -16,7 +16,7 @@
                     </StackLayout>
                 </v-template>
             </ListView>
-            <Label text="Friends"></Label>
+            <Label text="Friends" class="section-title"></Label>
             <TextField v-model="textFieldValue" hint="Search friend by nickname..."/>
             <ListView for="friend in friends">
                 <v-template>
@@ -81,6 +81,14 @@
         font-size: 24;
         font-weight: bold;
         vertical-align: center;
+    }
+
+    .section-title {
+        background-color: #CCCCCC;
+        color: black;
+        font-size: 20;
+        font-weight: bold;
+
     }
 
 </style>
