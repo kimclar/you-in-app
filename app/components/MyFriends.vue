@@ -1,7 +1,12 @@
 <template lang="html">
     <Page>
         <ActionBar>
-            <Label text="My Friends"></Label>
+            <StackLayout orientation="horizontal"
+                         ios:horizontalAlignment="center"
+                         android:horizontalAlignment="center">
+            <Label text="My Friends" class="action-label"></Label>
+            <Image src='~/components/icons/addFriend.png' class="action-image"></Image>
+            </StackLayout>
         </ActionBar>
 
         <ListView for="friend in friends">
@@ -49,5 +54,18 @@ export default {
 // End custom common variables
 
 // Custom styles
+.action-image {
+    width: 40;
+    height: 40;
+    vertical-align: center;
+    horizontal-align: right;
+}
+
+.action-label {
+    color: #ffffff;
+    font-size: 24;
+    font-weight: bold;
+    vertical-align: center;
+}
 
 </style>
