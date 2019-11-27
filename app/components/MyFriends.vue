@@ -11,9 +11,11 @@
             <Label text="Pending Requests" class="section-title"></Label>
             <ListView for="request in friendRequest">
                 <v-template>
-                    <StackLayout orientation="horizontal">
-                        <Label :text="request.fromUser" textWrap="true"></Label>
-                    </StackLayout>
+                    <GridLayout columns="3*,*,*" orientation="horizontal">
+                        <Label text="request.fromUser" col="0" textWrap="true"></Label>
+                        <Image src="~/components/icons/acceptRequest.png" col="1" class="request-action-image"></Image>
+                        <Image src="~/components/icons/rejectRequest.png" col="2" class="request-action-image"></Image>
+                    </GridLayout>
                 </v-template>
             </ListView>
             <Label text="Friends" class="section-title"></Label>
@@ -89,6 +91,13 @@
         font-size: 20;
         font-weight: bold;
 
+    }
+
+    .request-action-image {
+        width: 30;
+        height: 30;
+        vertical-align: center;
+        horizontal-align: right;
     }
 
 </style>
