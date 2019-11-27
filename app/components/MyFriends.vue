@@ -7,12 +7,12 @@
             </GridLayout>
         </ActionBar>
 
-        <StackLayout>
+        <StackLayout height="1000">
             <Label text="Pending Requests" class="section-title"></Label>
-            <ListView for="request in friendRequest">
+            <ListView for="request in friendRequest" height="100">
                 <v-template>
                     <GridLayout columns="3*,*,*" orientation="horizontal">
-                        <Label text="request.fromUser" col="0" textWrap="true"></Label>
+                        <Label :text="request.fromUser" col="0" textWrap="true"></Label>
                         <Image src="~/components/icons/acceptRequest.png" col="1" class="request-action-image"></Image>
                         <Image src="~/components/icons/rejectRequest.png" col="2" class="request-action-image"></Image>
                     </GridLayout>
@@ -20,11 +20,9 @@
             </ListView>
             <Label text="Friends" class="section-title"></Label>
             <TextField v-model="textFieldValue" hint="Search friend by nickname..."/>
-            <ListView for="friend in friends">
+            <ListView for="friend in friends" height="1000">
                 <v-template>
-                    <StackLayout orientation="horizontal">
-                        <Label :text="friend.nickname" textWrap="true"></Label>
-                    </StackLayout>
+                    <Label :text="friend.nickname" textWrap="true"></Label>
                 </v-template>
             </ListView>
         </StackLayout>
