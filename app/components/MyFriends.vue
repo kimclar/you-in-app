@@ -34,9 +34,6 @@
     import friendRequestData from './mockData/friendRequestData.json';
 
     export default {
-        data() {
-            return {textFieldValue: "", textFieldValue: "",}
-        },
         data: () => {
             return {
                 friends: friendsData,
