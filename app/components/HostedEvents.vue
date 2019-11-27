@@ -4,26 +4,31 @@
             <Label text="My Hosted Events"></Label>
         </ActionBar>
 
-        <GridLayout class="page__content">
-            <Label class="page__content-icon fas" text.decode="&#xf073;"></Label>
-            <Label class="page__content-placeholder" :text="message"></Label>
-        </GridLayout>
+                    <StackLayout class="home-panel m-20">
+                        <Button text="Open Modal" @tap="showModal" class="btn btn-primary m-t-20" />
+                    </StackLayout>
+
     </Page>
 </template>
 
+
+
 <script>
-export default {
-    data: () => {
-        return {
-            message: "Hello Host!"
-        };
-    }
-}
+    import ModalComponent from "./Modal";
+
+    export default {
+        methods: {
+            showModal() {
+                this.$showModal(ModalComponent);
+            }
+        }
+    };
 </script>
 
 <style lang="scss" scoped>
 // Start custom common variables
 @import "~@nativescript/theme/scss/variables/blue";
+
 // End custom common variables
 
 // Custom styles
