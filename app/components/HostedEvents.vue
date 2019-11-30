@@ -5,7 +5,7 @@
         </ActionBar>
 
                     <StackLayout class="home-panel m-20">
-                        <Button text="Open Modal" @tap="showModal" class="btn btn-primary m-t-20" />
+                        <Button text="Host an event?" @tap="showModal" class="btn btn-primary m-t-20" />
                     </StackLayout>
 
     </Page>
@@ -14,7 +14,7 @@
 
 
 <script>
-    import ModalComponent from "./Modal";
+    import ModalComponent from "./ConfirmDelete";
 
     export default {
         methods: {
