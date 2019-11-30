@@ -3,18 +3,24 @@
         <ActionBar>
             <GridLayout columns="*,2*,*" horizontalAlignment="right">
                 <Label text="My Friends" col="1" class="action-label"></Label>
-                <Image src="~/components/icons/addFriend.png" col="2" class="action-image"></Image>
+                <StackLayout col="2" @tap="addFriendTap">
+                    <Image src="~/components/icons/addFriend.png" class="action-image"></Image>
+                </StackLayout>
             </GridLayout>
         </ActionBar>
 
         <StackLayout height="1000">
             <Label text="Pending Requests" class="section-title"></Label>
-            <ListView for="request in friendRequest" height="100">
+            <ListView for="request in friendRequest" height="100" >
                 <v-template>
                     <GridLayout columns="3*,*,*" orientation="horizontal">
                         <Label :text="request.fromUser" col="0" textWrap="true"></Label>
-                        <Image src="~/components/icons/acceptRequest.png" col="1" class="request-action-image"></Image>
-                        <Image src="~/components/icons/rejectRequest.png" col="2" class="request-action-image"></Image>
+                        <StackLayout col="1" @tap="acceptRequestTap">
+                            <Image src="~/components/icons/acceptRequest.png" class="request-action-image"></Image>
+                        </StackLayout>
+                        <StackLayout col="2" @tap="rejectRequestTap">
+                            <Image src="~/components/icons/rejectRequest.png" class="request-action-image"></Image>
+                        </StackLayout>
                     </GridLayout>
                 </v-template>
             </ListView>
@@ -40,23 +46,25 @@
                 friendRequest: friendRequestData
             };
         },
-        /*    methods: {
-        onItemTap (args) {
-            const view = args.view;
-            const page = view.page;
-            const tappedItem = view.bindingContext;
-
-            this.$navigateTo(ItemDetails, {
-                props: {
-                    context: tappedItem,
-                    animated: true,
-                    transition: {
-                        name: "slide",
-                        duration: 200,
-                        curve: "ease"
-                    }}});
+        methods: {
+            acceptRequestTap () {
+                var dialogs = require("tns-core-modules/ui/dialogs");
+                console.log("accept!");
+                dialogs.alert({
+                                  title: "Requested Accepted",
+                                  message: "You are now friends!",
+                                  okButtonText: "OK"
+                              }).then(function () {
+                    console.log("Dialog closed!");
+                });
+            },
+            rejectRequestTap(){
+                console.log("reject!")
+            },
+            addFriendTap(){
+                console.log("add friend!")
+            }
         }
-    }*/
     }
 </script>
 
