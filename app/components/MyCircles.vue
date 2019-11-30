@@ -2,7 +2,12 @@
 <template lang="html">
     <Page>
         <ActionBar>
-            <Label text="My Circles"></Label>
+            <GridLayout columns="*,2*,*" horizontalAlignment="right">
+                <Label text="My Circles" col="1" class="action-label"></Label>
+                <StackLayout col="2" @tap="createCircle">
+                    <Label text.decode="&#xf509;" col="2" class="action-label icon fas"></Label>
+                </StackLayout>
+            </GridLayout>
         </ActionBar>
 
         <GridLayout class="page__content">
@@ -13,11 +18,17 @@
 </template>
 
 <script>
+    import ModalComponent from "./CreateCircle";
     export default {
         data: () => {
             return {
                 message: "All your Circles!"
             };
+        },
+        methods: {
+            createCircle() {
+                this.$showModal(ModalComponent);
+            }
         }
     }
 </script>
