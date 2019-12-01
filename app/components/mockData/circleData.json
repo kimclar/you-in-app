@@ -1,6 +1,30 @@
 [
   {
+    "name": "Friends",
+    "includedFriends":  ["Abby", "Benny Boyyy", "Carol", "Danny", "Evelyn", "George", "Hannah", "Leoooooooo"]
+  },
+  {
+    "name": "BFFs",
+    "includedFriends":  ["Abby"]
+  },
+  {
     "name": "Roomies",
-    "includedFriends":  ["Vodka", "Whiskey", "Tequila", "Margarita"]
+    "includedFriends":  ["Abby"]
+  },
+  {
+    "name": "Lacrosse",
+    "includedFriends":  ["Carol"]
+  },
+  {
+    "name": "PingPong",
+    "includedFriends":  ["Danny", "George"]
+  },
+  {
+    "name": "OmegaChiChi",
+    "includedFriends":  ["George"]
+  },
+  {
+    "name": "21+",
+    "includedFriends":  ["Evelyn"]
   }
 ]
