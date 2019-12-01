@@ -54,6 +54,17 @@ import HostedEvents from "./HostedEvents";
 import MyCircles from "./MyCircles";
 import MyFriends from "./MyFriends"
 
+Vue.registerElement(
+    'CheckBox',
+    () => require('@nstudio/nativescript-checkbox').CheckBox,
+    {
+        model: {
+            prop: 'checked',
+            event: 'checkedChange'
+        }
+    }
+);
+
 export default {
   components: {
       HostedEvents,

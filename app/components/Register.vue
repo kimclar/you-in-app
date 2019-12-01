@@ -4,7 +4,7 @@
                 <Label text="You In?"></Label>
         </ActionBar>
 
-            <StackLayout class="form">
+            <StackLayout class="form p-20">
                 <Label class =" h2 title" text="Register"/>
                 <StackLayout class="input-field">
                     <Label class="inputLabel" text="Username or Email"></Label>
@@ -21,8 +21,8 @@
                     <TextField class="input"></TextField>
                 </StackLayout>
 
-                <Button text="Register" class="action-label" @tap="login"></Button>
-                <Label color="red" text="Have an account already?" class="action-label" @tap="login"></Label>
+                <Button text="Register" color="white" backgroundColor="blue" class="h3 action-label" @tap="login"></Button>
+                <Label color="red" text="Have an account already?" class="h3 action-label" @tap="login"></Label>
             </StackLayout>
     </Page>
 </template>

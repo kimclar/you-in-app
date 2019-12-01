@@ -38,6 +38,7 @@
 <script>
     import friendsData from './mockData/friendsData.json';
     import friendRequestData from './mockData/friendRequestData.json';
+    import AddFriend from './AddFriend';
 
     export default {
         data: () => {
@@ -63,6 +64,7 @@
             },
             addFriendTap(){
                 console.log("add friend!")
+                this.$showModal(AddFriend)
             }
         }
     }

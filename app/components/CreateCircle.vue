@@ -14,7 +14,10 @@
 
                 <StackLayout class="input-field">
                     <Label class="inputLabel" text="Who's In?"></Label>
-                    <TextField class="input"></TextField>
+
+                        <StackLayout>
+                            <TextField class="input"></TextField>
+                        </StackLayout>
                 </StackLayout>
 
                 <Button text="Save" color="white" backgroundColor="green" class="action-label" @tap="myCircles"></Button>
@@ -27,6 +30,7 @@
 </template>
 
 <script>
+
     export default {
         data() {
             return {};
