@@ -1,7 +1,12 @@
-<template lang="html">
+<template>
     <Page>
         <ActionBar>
-            <Label text="My Hosted Events"></Label>
+            <GridLayout columns="*,2*,*" horizontalAlignment="right">
+                <Label text="My Hosted Events" col="1" class="action-label"></Label>
+                <StackLayout col="2" @tap="createEvent">
+                    <Label text.decode="&#xf271;" col="2" class="action-label icon fas"></Label>
+                </StackLayout>
+            </GridLayout>
         </ActionBar>
 
         <GridLayout class="page__content">
@@ -9,21 +14,28 @@
             <Label class="page__content-placeholder" :text="message"></Label>
         </GridLayout>
     </Page>
+
 </template>
 
+
+
+
 <script>
-export default {
-    data: () => {
-        return {
-            message: "Hello Host!"
-        };
-    }
-}
+    import ModalComponent from "./CreateEvent";
+
+    export default {
+        methods: {
+            createEvent() {
+                this.$showModal(ModalComponent);
+            }
+        }
+    };
 </script>
 
 <style lang="scss" scoped>
 // Start custom common variables
 @import "~@nativescript/theme/scss/variables/blue";
+
 // End custom common variables
 
 // Custom styles

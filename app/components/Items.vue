@@ -1,7 +1,12 @@
 <template>
   <Page>
     <ActionBar>
-      <Label text="Home"></Label>
+      <GridLayout columns="*,2*,*" horizontalAlignment="right">
+        <Label text="Home" col="1" class="action-label"></Label>
+        <StackLayout col="2" @tap="signout">
+          <Label text.decode="&#xf011;" col="2" class="action-label icon fas"></Label>
+        </StackLayout>
+      </GridLayout>
     </ActionBar>
 
     <ListView for="item in items" @itemTap="onItemTap">
@@ -16,6 +21,7 @@
 
 <script>
 import ItemDetails from "./ItemDetails";
+import Login from "./Login";
 
 export default {
     data: () => {
@@ -102,8 +108,13 @@ export default {
                         duration: 200,
                         curve: "ease"
                     }}});
-        }
+        },
+    signout(){
+          console.log("sign Out")
+          this.$navigateTo(Login)
     }
+  }
+
 };
 </script>
 
