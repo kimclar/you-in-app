@@ -6,7 +6,7 @@
         </ActionBar>
 
         <StackLayout class="form p-20">
-            <Label class =" h2 title" text="Register"/>
+            <Label class ="h2 title" text="Register"/>
             <StackLayout class="input-field">
                 <Label class="inputLabel" text="Username or Email"></Label>
                 <TextField class="input"></TextField>
@@ -38,7 +38,7 @@
         },
         methods: {
             login() {
-                console.log("Login In")
+                console.log("Login In");
                 this.$navigateTo(Login)
             }
         }

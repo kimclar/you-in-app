@@ -6,7 +6,7 @@
     "host": [{"name": "Phoebe", "circles": "friends"}],
     "attendees":  ["Joey", "Rachel", "Ross", "Monica"],
     "details": "Please be on time",
-    "isSharable": "NO"
+    "isSharable": false
   },
   {
     "title": "LiverPool vs Arsenal",
@@ -15,6 +15,6 @@
     "host": [{"name": "Ricky", "circles": "OmegaOmega"}],
     "attendees":  ["Jaden", "Chad", "Moses", "Jacob"],
     "details": "Go Liverpool!!",
-    "isSharable": "YES"
+    "isSharable": true
   }
 ]

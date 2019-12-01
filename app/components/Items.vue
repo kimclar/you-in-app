@@ -9,7 +9,7 @@
       </GridLayout>
     </ActionBar>
 
-    <ListView for="event in events" @itemTap="onItemTap">
+    <ListView for="event in events" :itemTap="onItemTap">
       <v-template>
         <StackLayout orientation="horizontal">
           <Label class="h2" :text="event.title" textWrap="true"></Label>
@@ -20,43 +20,45 @@
 </template>
 
 <script>
-import EventDetails from "./EventDetails";
-import Login from "./Login";
-import EventData from './mockData/eventData.json'
+  import EventDetails from "./EventDetails";
+  import Login from "./Login";
 
-export default {
-    data: () => {
-            return {
-              events: EventData
-            }},
+  export default {
+    computed: {
+      events() {
+        return this.$store.getters.events;
+      }
+    },
     methods: {
-        onItemTap (args) {
-            const view = args.view;
-            const page = view.page;
-            const tappedItem = view.bindingContext;
+      onItemTap(args) {
+        const view = args.view;
+        const page = view.page;
+        const tappedItem = view.bindingContext;
 
-            this.$showModal(EventDetails, {
-                props: { 
-                    context: tappedItem,
-                    animated: true,
-                    transition: {
-                        name: "slide",
-                        duration: 200,
-                        curve: "ease"
-                    }}});
-        },
-    signout(){
-          this.$navigateTo(Login)
+        this.$showModal(EventDetails, {
+          props: {
+            context: tappedItem,
+            animated: true,
+            transition: {
+              name: "slide",
+              duration: 200,
+              curve: "ease"
+            }
+          }
+        });
+      },
+      signout() {
+        this.$navigateTo(Login)
+      }
     }
-  }
-};
+  };
 </script>
 
 <style scoped lang="scss">
-// Start custom common variables
-@import "~@nativescript/theme/scss/variables/blue";
-// End custom common variables
+  // Start custom common variables
+  @import "~@nativescript/theme/scss/variables/blue";
+  // End custom common variables
 
-// Custom styles
+  // Custom styles
 
 </style>

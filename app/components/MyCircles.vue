@@ -18,7 +18,7 @@
 
 <script>
     import CreateCircle from "./CreateCircle";
-    import ModalComponent from "./CreateEvent";
+
     export default {
         data: () => {
             return {
@@ -27,7 +27,6 @@
         },
         methods: {
             createCircle() {
-                console.log("Create circle")
                 this.$showModal(CreateCircle);
             }
         }
