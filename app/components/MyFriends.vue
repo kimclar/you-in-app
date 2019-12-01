@@ -3,7 +3,7 @@
         <ActionBar>
             <GridLayout columns="*,2*,*" horizontalAlignment="right">
                 <Label text="My Friends" col="1" class="action-label"></Label>
-                <StackLayout col="2" @tap="addFriendTap">
+                <StackLayout col="2" @tap="addFriendTap" verticalAlignment="center">
                     <Image src="~/components/icons/addFriend.png" class="action-image"></Image>
                 </StackLayout>
             </GridLayout>
@@ -28,7 +28,7 @@
             <TextField v-model="textFieldValue" hint="Search friend by nickname..."/>
             <ListView for="friend in friends" height="1000">
                 <v-template>
-                    <Label :text="friend.nickname" textWrap="true"></Label>
+                    <Label :text="friend.nickname" textWrap="true" @tap="friendDetails"></Label>
                 </v-template>
             </ListView>
         </StackLayout>
@@ -38,7 +38,9 @@
 <script>
     import friendsData from './mockData/friendsData.json';
     import friendRequestData from './mockData/friendRequestData.json';
-
+    import AddFriend from './AddFriend';
+    import ConfirmDelete from "./ConfirmDelete";
+    import FriendsDetails from "./FriendsDetails";
     export default {
         data: () => {
             return {
@@ -59,10 +61,14 @@
                 });
             },
             rejectRequestTap(){
-                console.log("reject!")
+                this.$showModal(ConfirmDelete)
+            },
+            friendDetails(){
+                this.$showModal(FriendsDetails)
             },
             addFriendTap(){
                 console.log("add friend!")
+                this.$showModal(AddFriend)
             }
         }
     }
@@ -72,7 +78,6 @@
     // Start custom common variables
     @import "~@nativescript/theme/scss/variables/blue";
     // End custom common variables
-
     // Custom styles
     .action-image {
         width: 40;
@@ -80,27 +85,22 @@
         vertical-align: center;
         horizontal-align: right;
     }
-
     .action-label {
         color: #ffffff;
         font-size: 24;
         font-weight: bold;
         vertical-align: center;
     }
-
     .section-title {
         background-color: #CCCCCC;
         color: black;
         font-size: 20;
         font-weight: bold;
-
     }
-
     .request-action-image {
         width: 30;
         height: 30;
         vertical-align: center;
         horizontal-align: right;
     }
-
 </style>
