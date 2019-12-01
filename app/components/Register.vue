@@ -38,7 +38,7 @@
         },
         methods: {
             login() {
-                console.log("Login In")
+                console.log("Login In");
                 this.$navigateTo(Login)
             }
         }

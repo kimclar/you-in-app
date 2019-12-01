@@ -1,11 +1,14 @@
+import Vue from "nativescript-vue";
 import Vuex from "vuex";
-import circleData from './components/mockData/friendsData.json';
-import eventData from './components/mockData/eventData.json';
-import friendRequestData from './components/mockData/friendRequestData.json';
-import friendsData from './components/mockData/friendsData.json';
-import userData from './components/mockData/userData.json';
+import circleData from '../components/mockData/friendsData.json';
+import eventData from '../components/mockData/eventData.json';
+import friendRequestData from '../components/mockData/friendRequestData.json';
+import friendsData from '../components/mockData/friendsData.json';
+import userData from '../components/mockData/userData.json';
 
 let nextEventId = 0;
+
+Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
@@ -14,7 +17,8 @@ export default new Vuex.Store({
         events: eventData,
         friends: friendsData,
         friendRequests: friendRequestData,
-        circles: circleData
+        circles: circleData,
+        allUsers: userData
     },
     mutations: {
         setCurrentUser(state, username) {
@@ -106,9 +110,10 @@ export default new Vuex.Store({
         currentUser: state => state.currentUser,
         events: state => state.events,
         hostedEvents: state => state.events.filter(event => event.host.name === state.currentUser),
-        friends: state => state.events,
-        friendRequests: state => state.events,
+        friends: state => state.friends,
+        friendRequests: state => state.friendRequests,
         circles: state => state.circles,
+        allUsers: state => state.allUsers
     }
 });
 

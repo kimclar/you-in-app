@@ -4,53 +4,59 @@
             <GridLayout columns="*,2*,*" horizontalAlignment="right">
                 <Label text="My Friends" col="1" class="action-label"></Label>
                 <StackLayout col="2" @tap="addFriendTap" verticalAlignment="center">
-                    <Image src="~/components/icons/addFriend.png" class="action-image"></Image>
+                    <Image src="./icons/addFriend.png" class="action-image"></Image>
                 </StackLayout>
             </GridLayout>
         </ActionBar>
 
         <StackLayout height="1000">
             <Label text="Pending Requests" class="section-title"></Label>
-            <ListView for="request in friendRequest" height="100" >
-                <v-template>
+            <ListView v-for="request in friendRequests" height="100" >
+                <template>
                     <GridLayout columns="3*,*,*" orientation="horizontal">
                         <Label :text="request.fromUser" col="0" textWrap="true"></Label>
                         <StackLayout col="1" @tap="acceptRequestTap">
-                            <Image src="~/components/icons/acceptRequest.png" class="request-action-image"></Image>
+                            <Image src="./icons/acceptRequest.png" class="request-action-image"></Image>
                         </StackLayout>
                         <StackLayout col="2" @tap="rejectRequestTap">
-                            <Image src="~/components/icons/rejectRequest.png" class="request-action-image"></Image>
+                            <Image src="./icons/rejectRequest.png" class="request-action-image"></Image>
                         </StackLayout>
                     </GridLayout>
-                </v-template>
+                </template>
             </ListView>
             <Label text="Friends" class="section-title"></Label>
-            <TextField v-model="textFieldValue" hint="Search friend by nickname..."/>
-            <ListView for="friend in friends" height="1000">
-                <v-template>
+            <TextField v-model="textFieldValue" hint="Search friend by nickname..." />
+            <ListView v-for="friend in friends" height="1000">
+                <template>
                     <Label :text="friend.nickname" textWrap="true" @tap="friendDetails"></Label>
-                </v-template>
+                </template>
             </ListView>
         </StackLayout>
     </Page>
 </template>
 
 <script>
-    import friendsData from './mockData/friendsData.json';
-    import friendRequestData from './mockData/friendRequestData.json';
     import AddFriend from './AddFriend';
     import ConfirmDelete from "./ConfirmDelete";
     import FriendsDetails from "./FriendsDetails";
+
     export default {
-        data: () => {
+        data() {
             return {
-                friends: friendsData,
-                friendRequest: friendRequestData
-            };
+                textFieldValue: ""
+            }
+        },
+        computed: {
+          friends() {
+            return this.$store.getters.friends;
+          },
+          friendRequests() {
+            return this.$store.getters.friendRequests;
+          }
         },
         methods: {
             acceptRequestTap () {
-                var dialogs = require("tns-core-modules/ui/dialogs");
+                const dialogs = require("tns-core-modules/ui/dialogs");
                 console.log("accept!");
                 dialogs.alert({
                                   title: "Requested Accepted",
@@ -67,7 +73,7 @@
                 this.$showModal(FriendsDetails)
             },
             addFriendTap(){
-                console.log("add friend!")
+                console.log("add friend!");
                 this.$showModal(AddFriend)
             }
         }

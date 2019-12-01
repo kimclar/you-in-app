@@ -1,56 +1,53 @@
 <template>
-    <ScrollView>
+  <ScrollView>
+    <StackLayout width="700" height="600" class="p-10">
+      <Label class="pull-right h2 action label icon fas" text.decode="&#xf057;" @tap="$modal.close()"/>
 
-        <StackLayout width="700" height="600" class="p-10">
-
-            <Label class="pull-right h2 action label icon fas" text.decode="&#xf057;" @tap="$modal.close()" />
-
-
-            <StackLayout class="form">
-
-                <SearchBar hint="Enter username" @textChange="onTextChanged"/>
-                <ListView for="eachUser in friends" height="900">
-                <v-template>
-                    <StackLayout>
-                    <Label :text="eachUser.username" class="h3 font-weight-bold"></Label>
-                    <Button class="h5 bg-primary pull-right" text="Send Request" @tap="sendRequest"></Button>
-                    </StackLayout>
-                </v-template>
-            </ListView>
-
+      <StackLayout class="form">
+        <SearchBar hint="Enter username" @textChange="onTextChanged"/>
+        <ListView v-for="user in friends" height="900">
+          <template>
+            <StackLayout>
+              <Label :text="user.username" class="h3 font-weight-bold"></Label>
+              <Button class="h5 bg-primary pull-right" text="Send Request" @tap="sendRequest"></Button>
             </StackLayout>
+          </template>
+        </ListView>
+      </StackLayout>
 
-
-
-        </StackLayout>
-    </ScrollView>
-
-
+    </StackLayout>
+  </ScrollView>
 </template>
 
 <script>
-    import userData from './mockData/userData.json';
-    import friendData from'./mockData/friendsData.json';
-
-    export default {
-        data: () => {
-            return {
-                allUsers: userData,
-                friends: friendData
-            };
-        },
-        methods:{
-            onTextChanged(){
-            },
-            sendRequest () {
-                var dialogs = require("tns-core-modules/ui/dialogs");
-                dialogs.alert({
-                                  title: "",
-                                  message: "Request Sent!",
-                                  okButtonText: "OK"
-                              })
-            },
-        }
+  export default {
+    computed: {
+      allUsers() {
+        return this.$store.getters.allUsers;
+      },
+      friends() {
+        return this.$store.getters.friends;
+      }
+    },
+    methods: {
+      onTextChanged() {
+      },
+      sendRequest() {
+        let dialogs = require("tns-core-modules/ui/dialogs");
+        dialogs.alert({
+          title: "",
+          message: "Request Sent!",
+          okButtonText: "OK"
+        })
+      },
     }
+  }
 </script>
 
+<style lang="scss" scoped>
+  // Start custom common variables
+  @import "~@nativescript/theme/scss/variables/blue";
+  // End custom common variables
+
+  // Custom styles
+</style>

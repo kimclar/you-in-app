@@ -9,12 +9,12 @@
       </GridLayout>
     </ActionBar>
 
-    <ListView for="event in events" @itemTap="onItemTap">
-      <v-template>
+    <ListView v-for="event in events" :itemTap="onItemTap">
+      <template>
         <StackLayout orientation="horizontal">
           <Label class="h2" :text="event.title" textWrap="true"></Label>
         </StackLayout>
-      </v-template>
+      </template>
     </ListView>
   </Page>
 </template>
@@ -36,7 +36,7 @@ export default {
             const tappedItem = view.bindingContext;
 
             this.$showModal(EventDetails, {
-                props: { 
+                props: {
                     context: tappedItem,
                     animated: true,
                     transition: {
