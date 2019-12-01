@@ -3,7 +3,7 @@
         <ActionBar>
             <GridLayout columns="*,2*,*" horizontalAlignment="right">
                 <Label text="My Friends" col="1" class="action-label"></Label>
-                <StackLayout col="2" @tap="addFriendTap">
+                <StackLayout col="2" @tap="addFriendTap" verticalAlignment="center">
                     <Image src="~/components/icons/addFriend.png" class="action-image"></Image>
                 </StackLayout>
             </GridLayout>
