@@ -28,7 +28,7 @@
             <TextField v-model="textFieldValue" hint="Search friend by nickname..."/>
             <ListView for="friend in friends" height="1000">
                 <v-template>
-                    <Label :text="friend.nickname" textWrap="true"></Label>
+                    <Label :text="friend.nickname" textWrap="true" @tap="friendDetails"></Label>
                 </v-template>
             </ListView>
         </StackLayout>
@@ -39,6 +39,8 @@
     import friendsData from './mockData/friendsData.json';
     import friendRequestData from './mockData/friendRequestData.json';
     import AddFriend from './AddFriend';
+    import ConfirmDelete from "./ConfirmDelete";
+    import FriendsDetails from "./FriendsDetails";
     export default {
         data: () => {
             return {
@@ -59,7 +61,10 @@
                 });
             },
             rejectRequestTap(){
-                console.log("reject!")
+                this.$showModal(ConfirmDelete)
+            },
+            friendDetails(){
+                this.$showModal(FriendsDetails)
             },
             addFriendTap(){
                 console.log("add friend!")

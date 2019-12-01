@@ -9,10 +9,10 @@
             <StackLayout class="form">
 
                 <SearchBar hint="Enter username" @textChange="onTextChanged"/>
-                <ListView for="friend in friends" height="900">
+                <ListView for="eachUser in friends" height="900">
                 <v-template>
                     <StackLayout>
-                    <Label :text="friend.username" class="h3 font-weight-bold"></Label>
+                    <Label :text="eachUser.username" class="h3 font-weight-bold"></Label>
                     <Button class="h5 bg-primary pull-right" text="Send Request" @tap="sendRequest"></Button>
                     </StackLayout>
                 </v-template>
@@ -29,12 +29,14 @@
 </template>
 
 <script>
-    import friendsData from './mockData/friendsData.json';
+    import userData from './mockData/userData.json';
+    import friendData from'./mockData/friendsData.json';
 
     export default {
         data: () => {
             return {
-                friends: friendsData
+                allUsers: userData,
+                friends: friendData
             };
         },
         methods:{

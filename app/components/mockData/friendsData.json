@@ -1,62 +1,42 @@
 [
   {
     "username": "abs4days",
-    "nickname": "Abby"
+    "nickname": "Abby",
+    "circles": ["Friends","BFFs", "Roomies"]
   },
   {
     "username": "boruto_snoruto",
-    "nickname": "Benny Boyyy"
+    "nickname": "Benny Boyyy",
+    "circles": ["Friends"]
   },
   {
     "username": "candycrunch",
-    "nickname": "Carol"
+    "nickname": "Carol",
+    "circles": ["Friends", "Lacrosse"]
   },
   {
     "username": "dandapanda",
-    "nickname": "Danny"
+    "nickname": "Danny",
+    "circles": ["Friends","PingPong"]
   },
   {
     "username": "eagerbeaver",
-    "nickname": "Evelyn"
+    "nickname": "Evelyn",
+    "circles": ["Friends","21+"]
   },
   {
     "username": "curious_george",
-    "nickname": "George"
+    "nickname": "George",
+    "circles": ["Friends","PingPong","OmegaChiChi"]
   },
   {
     "username": "ha_ha_happy",
-    "nickname": "Hannah"
+    "nickname": "Hannah",
+    "circles": ["Friends"]
   },
   {
     "username": "lionKing365",
-    "nickname": "Leoooooooo"
-  },
-  {
-    "username": "miketastic98",
-    "nickname": "Mickey B"
-  },
-  {
-    "username": "onion_ogres",
-    "nickname": "Ollie"
-  },
-  {
-    "username": "queenie_quinnie",
-    "nickname": "Quinn"
-  },
-  {
-    "username": "sass.monster666",
-    "nickname": "Saraaaa"
-  },
-  {
-    "username": "Tiff_Tiff_Hooray",
-    "nickname": "Tiffie"
-  },
-  {
-    "username": "your_girl_yvonne",
-    "nickname": "Yvonne"
-  },
-  {
-    "username": "zach_the_man",
-    "nickname": "Zachie zach"
+    "nickname": "Leoooooooo",
+    "circles": ["Friends"]
   }
 ]

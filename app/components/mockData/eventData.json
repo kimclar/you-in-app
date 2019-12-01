@@ -1,0 +1,20 @@
+[
+  {
+    "title": "My Birthday",
+    "location": "Central Perk",
+    "dateTime": "December 17 2019, 7:00pm",
+    "host": [{"name": "Phoebe", "circles": "friends"}],
+    "attendees":  ["Joey", "Rachel", "Ross", "Monica"],
+    "details": "Please be on time",
+    "isSharable": "NO"
+  },
+  {
+    "title": "LiverPool vs Arsenal",
+    "location": "Ryder Hall, Room 409",
+    "dateTime": "December 10 2019, 10:00am",
+    "host": [{"name": "Ricky", "circles": "OmegaOmega"}],
+    "attendees":  ["Jaden", "Chad", "Moses", "Jacob"],
+    "details": "Go Liverpool!!",
+    "isSharable": "YES"
+  }
+]
