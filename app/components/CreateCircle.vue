@@ -12,10 +12,10 @@
         <StackLayout class="input-field">
           <Label class="inputLabel" text="Who's In?"></Label>
           <StackLayout>
-            <ListView v-for="friend in friends" height="1000">
-              <template>
+            <ListView for="friend in friends" height="1000">
+              <v-template>
                 <check-box :checked="isChecked" :text="friend.nickname" textWrap="true"/>
-              </template>
+              </v-template>
             </ListView>
           </StackLayout>
         </StackLayout>

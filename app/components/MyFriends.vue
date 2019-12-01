@@ -4,32 +4,32 @@
             <GridLayout columns="*,2*,*" horizontalAlignment="right">
                 <Label text="My Friends" col="1" class="action-label"></Label>
                 <StackLayout col="2" @tap="addFriendTap" verticalAlignment="center">
-                    <Image src="./icons/addFriend.png" class="action-image"></Image>
+                    <Image src="~/components/icons/addFriend.png" class="action-image"></Image>
                 </StackLayout>
             </GridLayout>
         </ActionBar>
 
         <StackLayout height="1000">
             <Label text="Pending Requests" class="section-title"></Label>
-            <ListView v-for="request in friendRequests" height="100" >
-                <template>
+            <ListView for="request in friendRequests" height="100" >
+                <v-template>
                     <GridLayout columns="3*,*,*" orientation="horizontal">
                         <Label :text="request.fromUser" col="0" textWrap="true"></Label>
                         <StackLayout col="1" @tap="acceptRequestTap">
-                            <Image src="./icons/acceptRequest.png" class="request-action-image"></Image>
+                            <Image src="~/components/icons/acceptRequest.png" class="request-action-image"></Image>
                         </StackLayout>
                         <StackLayout col="2" @tap="rejectRequestTap">
-                            <Image src="./icons/rejectRequest.png" class="request-action-image"></Image>
+                            <Image src="~/components/icons/rejectRequest.png" class="request-action-image"></Image>
                         </StackLayout>
                     </GridLayout>
-                </template>
+                </v-template>
             </ListView>
             <Label text="Friends" class="section-title"></Label>
             <TextField v-model="textFieldValue" hint="Search friend by nickname..." />
-            <ListView v-for="friend in friends" height="1000">
-                <template>
+            <ListView for="friend in friends" height="1000">
+                <v-template>
                     <Label :text="friend.nickname" textWrap="true" @tap="friendDetails"></Label>
-                </template>
+                </v-template>
             </ListView>
         </StackLayout>
     </Page>

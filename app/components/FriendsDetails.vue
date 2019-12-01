@@ -13,10 +13,10 @@
           <Label class="inputLabel" text="Circles?"></Label>
 
           <StackLayout>
-            <ListView v-for="friend in friends" height="1000">
-              <template>
+            <ListView for="friend in friends" height="1000">
+              <v-template>
                 <check-box :checked="isChecked" :text="friend.circles[0]" textWrap="true"/>
-              </template>
+              </v-template>
             </ListView>
           </StackLayout>
         </StackLayout>

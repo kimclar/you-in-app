@@ -5,13 +5,13 @@
 
       <StackLayout class="form">
         <SearchBar hint="Enter username" @textChange="onTextChanged"/>
-        <ListView v-for="user in friends" height="900">
-          <template>
+        <ListView for="user in friends" height="900">
+          <v-template>
             <StackLayout>
               <Label :text="user.username" class="h3 font-weight-bold"></Label>
               <Button class="h5 bg-primary pull-right" text="Send Request" @tap="sendRequest"></Button>
             </StackLayout>
-          </template>
+          </v-template>
         </ListView>
       </StackLayout>
 

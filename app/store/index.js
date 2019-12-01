@@ -6,9 +6,9 @@ import friendRequestData from '../components/mockData/friendRequestData.json';
 import friendsData from '../components/mockData/friendsData.json';
 import userData from '../components/mockData/userData.json';
 
-let nextEventId = 0;
-
 Vue.use(Vuex);
+
+let nextEventId = 0;
 
 export default new Vuex.Store({
     state: {
@@ -22,7 +22,7 @@ export default new Vuex.Store({
     },
     mutations: {
         setCurrentUser(state, username) {
-          state.currentUser = username;
+            state.currentUser = username;
         },
         addEvent(state, title, location, time, host, details, isSharable) {
             let newEvent = {
@@ -31,12 +31,12 @@ export default new Vuex.Store({
                 location: location,
                 time: time,
                 host: host,
-                attendees: [ host.username ],
+                attendees: [host.username],
                 details: details,
                 isSharable: isSharable
             };
             nextEventId++;
-           state.events.push(newEvent);
+            state.events.push(newEvent);
         },
         removeEvent(state, eventId) {
             let i;
@@ -44,66 +44,117 @@ export default new Vuex.Store({
                 if (state.events[i].id === eventId) {
                     state.events.splice(i, i + 1);
                     i--;
-                }
-            }
-        },
-        // looks for an event with the given id, if found replaces that event, otherwise generates a new one
-        editEvent(state, event) {
-            let i;
-            for (i = 0; i < state.events.length; i++) {
-                if (state.events[i].id === event.id) {
-                    state.events[i] = event;
                     return;
                 }
             }
-            state.events.push(event);
         },
-        addFriend(state) {},
-        removeFriend(state) {},
-        editFriend(state) {},
-        addFriendRequest(state) {},
-        removeFriendRequest(state) {},
-        editFriendRequest(state) {},
-        addCircle(state) {},
-        removeCircle(state) {},
-        editCircle(state) {},
+        editEvent(state, updatedEvent) {
+            let i;
+            for (i = 0; i < state.events.length; i++) {
+                if (state.events[i].id === updatedEvent.id) {
+                    state.events[i] = updatedEvent;
+                    return;
+                }
+            }
+            state.events.push(updatedEvent);
+        },
+        addFriend(state, friend) {
+            state.friends.push(friend);
+        },
+        removeFriend(state, username) {
+            let i;
+            for (i = 0; i < state.friends.length; i++) {
+                if (state.friends[i].username === username) {
+                    state.friends.splice(i, i + 1);
+                    i--;
+                    return;
+                }
+            }
+        },
+        editFriend(state, updatedFriend) {
+            let i;
+            for (i = 0; i < state.friends.length; i++) {
+                if (state.friends[i].username === updatedFriend.username) {
+                    state.friends[i] = updatedFriend;
+                    return;
+                }
+            }
+            state.friends.push(updatedFriend);
+        },
+        addFriendRequest(state, friendRequest) {
+            state.friendRequests.push(friendRequest);
+        },
+        removeFriendRequest(state, friendRequest) {
+            let i;
+            for (i = 0; i < state.friendRequests.length; i++) {
+                let request = state.friendRequests[i];
+                if (request.fromUser === friendRequest.fromUser &&
+                    request.toUser === friendRequest.toUser) {
+                    state.friends.splice(i, i + 1);
+                    i--;
+                    return;
+                }
+            }
+        },
+        addCircle(state, circle) {
+            state.circles.push(circle);
+        },
+        removeCircle(state, circleName) {
+            let i;
+            for (i = 0; i < state.circles.length; i++) {
+                if (state.circles[i].name === circleName) {
+                    state.circles.splice(i, i + 1);
+                    i--;
+                    return;
+                }
+            }
+        },
+        editCircle(state, updatedCircle) {
+            let i;
+            for (i = 0; i < state.circles.length; i++) {
+                if (state.circles[i].name === updatedCircle.name) {
+                    state.circles[i] = updatedCircle;
+                    return;
+                }
+            }
+        },
     },
     actions: {
+        setCurrentUser(context, username) {
+            context.commit('setCurrentUser', username);
+        },
         addEvent(context, title, location, time, host, details, isSharable) {
             context.commit('addEvent', title, location, time, host, details, isSharable);
         },
         removeEvent(context, eventId) {
             context.commit('removeEvent', eventId);
         },
-        editEvent(context, event) {
-            context.commit('editEvent', event);
+        editEvent(context, updatedEvent) {
+            context.commit('editEvent', updatedEvent);
         },
-        addFriend(context) {
-            context.commit('addFriend');
+        addFriend(context, friend) {
+            context.commit('addFriend', friend);
         },
-        removeFriend(context) {
-            context.commit('removeFriend');
-            },
-        editFriend(context) {
-            context.commit('editFriend');
+        removeFriend(context, username) {
+            context.commit('removeFriend', username);
         },
-        addFriendRequest(context) {
-            context.commit('addFriendRequest');
+        editFriend(context, updatedFriend) {
+            context.commit('editFriend', updatedFriend);
         },
-        removeFriendRequest(context) {
-            context.commit('removeFriendRequest');
+        addFriendRequest(context, friendRequest) {
+            context.commit('addFriendRequest', friendRequest);
         },
-        editFriendRequest(context) {
-            context.commit('editFriendRequest');
+        removeFriendRequest(context, friendRequest) {
+            context.commit('removeFriendRequest', friendRequest);
         },
-        addCircle(context) {
-            context.commit('addCircle');
+        addCircle(context, circle) {
+            context.commit('addCircle', circle);
         },
-        removeCircle(context) {
-            context.commit('removeCircle');
+        removeCircle(context, circleName) {
+            context.commit('removeCircle', circleName);
         },
-        editCircle(context) {
-            context.commit('editCircle');
+        editCircle(context, updatedCircle) {
+            context.commit('editCircle', updatedCircle);
         },
     },
     getters: {

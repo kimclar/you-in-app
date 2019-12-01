@@ -2,8 +2,8 @@
   <ScrollView>
     <StackLayout width="700" height="400" class="p-10">
       <Label class="pull-right h2 action label icon fas" text.decode="&#xf057;" @tap="$modal.close()"/>
-      <ListView v-for="event in events" height="900">
-        <template>
+      <ListView for="event in events" height="900">
+        <v-template>
           <StackLayout>
             <Label :text="event.title" class="h2 bold"></Label>
             <Label :text="event.dateTime" class="h3 font-weight-bold"></Label>
@@ -16,7 +16,7 @@
             <Button width="200" class="h3" color="white"
                     backgroundColor="blue" text="Count me In!" @tap="sendRequest"></Button>
           </StackLayout>
-        </template>
+        </v-template>
       </ListView>
     </StackLayout>
   </ScrollView>

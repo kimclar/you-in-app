@@ -23,10 +23,10 @@
 
         <StackLayout class="input-field">
           <Label class="inputLabel" text="Who?"></Label>
-          <ListView v-for="circleName in circles" height="1000">
-            <template>
+          <ListView for="circleName in circles" height="1000">
+            <v-template>
               <check-box :checked="isChecked" :text="circleName.name" textWrap="true"/>
-            </template>
+            </v-template>
           </ListView>
         </StackLayout>
 
