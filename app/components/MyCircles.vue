@@ -1,11 +1,10 @@
-
-<template lang="html">
+<template>
     <Page>
         <ActionBar>
             <GridLayout columns="*,2*,*" horizontalAlignment="right">
                 <Label text="My Circles" col="1" class="action-label"></Label>
                 <StackLayout col="2" @tap="createCircle">
-                    <Label text.decode="&#xf509;" col="2" class="action-label icon fas"></Label>
+                    <Label text.decode="&#xf500;" col="2" class="action-label icon fas"></Label>
                 </StackLayout>
             </GridLayout>
         </ActionBar>
@@ -18,7 +17,8 @@
 </template>
 
 <script>
-    import ModalComponent from "./CreateCircle";
+    import CreateCircle from "./CreateCircle";
+    import ModalComponent from "./CreateEvent";
     export default {
         data: () => {
             return {
@@ -27,7 +27,8 @@
         },
         methods: {
             createCircle() {
-                this.$showModal(ModalComponent);
+                console.log("Create circle")
+                this.$showModal(CreateCircle);
             }
         }
     }
@@ -37,7 +38,5 @@
     // Start custom common variables
     @import "~@nativescript/theme/scss/variables/blue";
     // End custom common variables
-
     // Custom styles
-
 </style>

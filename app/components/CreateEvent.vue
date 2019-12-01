@@ -27,7 +27,11 @@
 
                 <StackLayout class="input-field">
                     <Label class="inputLabel" text="Who?"></Label>
-                    <TextField backgroundColor="white" class="input"></TextField>
+                        <ListView for="circleName in circles" height="1000">
+                            <v-template>
+                                <check-box :checked="isChecked" :text="circleName.name" textWrap="true" />
+                            </v-template>
+                        </ListView>
                 </StackLayout>
 
                 <StackLayout class="input-field">
@@ -51,10 +55,12 @@
 
 <script>
     import HostedEvents from "./HostedEvents";
-
+    import circleData from './mockData/circleData.json';
     export default {
-        data() {
-            return {};
+        data: () => {
+            return {
+                circles: circleData
+            };
         },
         methods:{
             myCircles(){
