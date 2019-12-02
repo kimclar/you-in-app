@@ -15,7 +15,7 @@
           <StackLayout>
             <ListView for="friend in friends" height="1000">
               <v-template>
-                <check-box :checked="isChecked" :text="friend.circles[0]" textWrap="true"/>
+                <check-box :text="friend.circles[0]" textWrap="true"/>
               </v-template>
             </ListView>
           </StackLayout>

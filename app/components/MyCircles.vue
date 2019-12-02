@@ -9,29 +9,16 @@
             </GridLayout>
         </ActionBar>
 
-        <GridLayout class="page__content">
-            <Label class="page__content-icon fas" text.decode="&#xf0c0;"></Label>
-            <Label class="page__content-placeholder" :text="message"></Label>
-        </GridLayout>
+        <ListView for="eachCircle in circles" @itemTap="onItemTap">
+            <v-template>
+                <StackLayout orientation="horizontal">
+                    <Label class="h2" :text="eachCircle.name"></Label>
+                </StackLayout>
+            </v-template>
+        </ListView>
     </Page>
 </template>
 
-<script>
-    import CreateCircle from "./CreateCircle";
-
-    export default {
-        data: () => {
-            return {
-                message: "All your Circles!"
-            };
-        },
-        methods: {
-            createCircle() {
-                this.$showModal(CreateCircle);
-            }
-        }
-    }
-</script>
 
 <style lang="scss" scoped>
     // Start custom common variables
@@ -39,3 +26,40 @@
     // End custom common variables
     // Custom styles
 </style>
+
+
+<script>
+    import CreateCircle from "./CreateCircle";
+    import CircleDetails from "./CircleDetails";
+
+    export default {
+        computed: {
+            circles() {
+                return this.$store.getters.circles;
+            }
+        },
+        methods: {
+            onItemTap(args) {
+                console.log("Open Event")
+                const view = args.view;
+                const page = view.page;
+                const tappedItem = view.bindingContext;
+
+                this.$showModal(CircleDetails, {
+                    props: {
+                        context: tappedItem,
+                        animated: true,
+                        transition: {
+                            name: "slide",
+                            duration: 200,
+                            curve: "ease"
+                        }
+                    }
+                });
+            },
+            createCircle() {
+                this.$showModal(CreateCircle);
+            }
+        }
+    };
+</script>

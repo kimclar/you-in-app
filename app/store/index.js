@@ -1,6 +1,6 @@
 import Vue from "nativescript-vue";
 import Vuex from "vuex";
-import circleData from '../components/mockData/friendsData.json';
+import circleData from '../components/mockData/circleData.json';
 import eventData from '../components/mockData/eventData.json';
 import friendRequestData from '../components/mockData/friendRequestData.json';
 import friendsData from '../components/mockData/friendsData.json';

@@ -11,7 +11,10 @@
             <Label :text="event.details" class="h3 font-weight-bold"></Label>
             <Label class="guests" text="Who's in?"></Label>
             <Label :text="event.host[0].name" class="h3 font-weight-bold"></Label>
-            <Label :text="event.attendees[0]" class="h3 font-weight-bold"></Label>
+            <template v-for="i in event.attendees">
+              <Label :text="i" class="h3 font-weight-bold"></Label>
+            </template>
+
 
             <Button width="200" class="h3" color="white"
                     backgroundColor="blue" text="Count me In!" @tap="sendRequest"></Button>
