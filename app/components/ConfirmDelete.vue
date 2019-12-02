@@ -6,7 +6,7 @@
     </StackLayout>
     <GridLayout columns="*, *">
       <Button col="0" width="100" backgroundColor="#cd5c5c" color="white"
-            class="btn btn-outline" text="YES" @tap="$modal.close()"/>
+            class="btn btn-outline" text="YES" @tap="confirmReject(request)"/>
       <Button col="1" width="100" backgroundColor="#3cb371" color="white"
             class="btn btn-outline" text="NO" @tap="$modal.close()"/>
     </GridLayout>
@@ -15,8 +15,22 @@
 
 <script>
   export default {
-    data() {
-      return {};
+    props: {
+      request: {
+        type: Object,
+        default: function () {
+          return {
+            fromUser: "fromUser",
+            toUser: "toUser"
+          }
+        }
+      }
+    },
+    methods: {
+      confirmReject(request){
+        this.$store.commit('removeFriendRequest', request);
+        this.$modal.close();
+      }
     }
   };
 </script>
