@@ -1,13 +1,15 @@
 <template>
-  <StackLayout width="300" height="250" backgroundColor="white" class="p-10">
-
-    <Label class="pull-right h2 action label icon fas" text.decode="&#xf057;" @tap="$modal.close()"/>
-
-    <Label class="h3 text-center" text="Are you sure you want to delete this?"/>
-    <Button width="100" backgroundColor="green" color="white"
+  <StackLayout width="300" height="200" backgroundColor="white" class="p-10">
+    <StackLayout height="100">
+      <StackLayout height="30"></StackLayout>
+      <Label fontSize="20" text="Are you sure you want to reject this request?" textWrap="true" textAlignment="center"/>
+    </StackLayout>
+    <GridLayout columns="*, *">
+      <Button col="0" width="100" backgroundColor="#cd5c5c" color="white"
             class="btn btn-outline" text="YES" @tap="$modal.close()"/>
-    <Button width="100" backgroundColor="red" color="white"
+      <Button col="1" width="100" backgroundColor="#3cb371" color="white"
             class="btn btn-outline" text="NO" @tap="$modal.close()"/>
+    </GridLayout>
   </StackLayout>
 </template>
 
