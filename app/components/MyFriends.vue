@@ -11,7 +11,7 @@
 
         <StackLayout height="1000">
             <Label text="Pending Requests" class="section-title"></Label>
-            <ListView for="request in friendRequests" height="100" >
+            <ListView for="request in friendRequests" height="100">
                 <v-template>
                     <GridLayout columns="3*,*,*" orientation="horizontal">
                         <Label class="listItems" :text="request.fromUser" col="0" textWrap="true"></Label>
@@ -56,11 +56,44 @@
           }
         },
         methods: {
-            acceptRequestTap () {
-                this.$showModal(ConfirmAccept)
+            acceptRequestTap (args) {
+                const view = args.view;
+                const tappedItem = view.bindingContext;
+
+                this.$showModal(ConfirmAccept, {
+                    props: {
+                        request: tappedItem,
+                        animated: true,
+                        transition: {
+                            name: "slide",
+                            duration: 200,
+                            curve: "ease"
+                        }
+                    }
+                })
+
+                this.$store.commit('addFriend',   {
+                    "username": tappedItem.fromUser,
+                    "nickname": tappedItem.fromUser,
+                    "circles": []
+                })
+                this.$store.commit('removeFriendRequest', tappedItem);
             },
-            rejectRequestTap(){
-                this.$showModal(ConfirmDelete)
+            rejectRequestTap(args){
+                const view = args.view;
+                const tappedItem = view.bindingContext;
+
+                this.$showModal(ConfirmDelete, {
+                    props: {
+                        request: tappedItem,
+                        animated: true,
+                        transition: {
+                            name: "slide",
+                            duration: 200,
+                            curve: "ease"
+                        }
+                    }
+                })
             },
             friendDetails(){
                 this.$showModal(FriendsDetails)
