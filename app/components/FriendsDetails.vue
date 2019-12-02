@@ -74,4 +74,8 @@
     font-weight: bold;
     vertical-align: center;
   }
+  .section-title {
+    text-decoration: underline;
+    font-size: 15;
+  }
 </style>
