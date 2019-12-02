@@ -39,6 +39,7 @@
     import AddFriend from './AddFriend';
     import ConfirmDelete from "./ConfirmDelete";
     import FriendsDetails from "./FriendsDetails";
+    import ConfirmAccept from "./ConfirmAccept";
 
     export default {
         data() {
@@ -56,15 +57,7 @@
         },
         methods: {
             acceptRequestTap () {
-                const dialogs = require("tns-core-modules/ui/dialogs");
-                console.log("accept!");
-                dialogs.alert({
-                                  title: "Requested Accepted",
-                                  message: "You are now friends!",
-                                  okButtonText: "OK"
-                              }).then(function () {
-                    console.log("Dialog closed!");
-                });
+                this.$showModal(ConfirmAccept)
             },
             rejectRequestTap(){
                 this.$showModal(ConfirmDelete)
