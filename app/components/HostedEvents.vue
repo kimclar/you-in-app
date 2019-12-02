@@ -13,9 +13,11 @@
 
     <ListView for="event in hostedEvents" @itemTap="onItemTap">
       <v-template>
-        <StackLayout orientation="horizontal">
-          <Label class="listItems" :text="event.title" textWrap="true"></Label>
-        </StackLayout>
+        <card-view class="cardStyle" margin="10" elevation="40" radius="5">
+          <StackLayout orientation="horizontal">
+            <Label class="listItems" :text="event.title" textWrap="true"></Label>
+          </StackLayout>
+        </card-view>
       </v-template>
     </ListView>
   </Page>

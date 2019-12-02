@@ -11,11 +11,15 @@
 
         <ListView for="eachCircle in circles" @itemTap="onItemTap">
             <v-template>
-                <StackLayout orientation="horizontal">
-                    <Label class="listItems" :text="eachCircle.name"></Label>
-                </StackLayout>
+                <card-view class="cardStyle" margin="10" elevation="40" radius="5">
+                    <StackLayout orientation="horizontal">
+                        <Label class="listItems" :text="eachCircle.name"></Label>
+                    </StackLayout>
+                </card-view>
             </v-template>
         </ListView>
+
+
     </Page>
 </template>
 
