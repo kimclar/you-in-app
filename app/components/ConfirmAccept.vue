@@ -3,7 +3,7 @@
     <StackLayout height="40"></StackLayout>
     <Label fontSize="20" text="You are now friends!" textWrap="true" textAlignment="center"/>
     <StackLayout height="20"></StackLayout>
-    <Button width="100" height="70" backgroundColor="#3cb371" color="white"
+    <Button width="100" height="100" backgroundColor="#3cb371" color="white"
             class="btn btn-outline" text="OK" @tap="$modal.close()"/>
   </StackLayout>
 </template>

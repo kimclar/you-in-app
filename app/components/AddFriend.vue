@@ -59,5 +59,6 @@
     font-size: 24;
     font-weight: bold;
     vertical-align: center;
+    text-align: left;
   }
 </style>

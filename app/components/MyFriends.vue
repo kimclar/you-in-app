@@ -79,8 +79,8 @@
     // End custom common variables
     // Custom styles
     .action-image {
-        width: 40;
-        height: 40;
+        width: 37;
+        height: 37;
         vertical-align: center;
         horizontal-align: right;
     }

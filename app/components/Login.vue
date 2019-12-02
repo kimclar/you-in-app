@@ -1,11 +1,11 @@
 <template lang="html">
   <Page>
     <ActionBar>
-      <Label text="You In?"></Label>
+      <Label text="You In?" class="action-label"></Label>
     </ActionBar>
 
     <StackLayout class="form p-20">
-      <Label class="h2 c-blue title" text="Log In"/>
+      <Label class="title" text="Log In"/>
       <StackLayout class="input-field">
         <Label class="inputLabel" text="Username or Email"></Label>
         <TextField class="input"></TextField>
@@ -51,4 +51,16 @@
   @import "~@nativescript/theme/scss/variables/blue";
   // End custom common variables
   // Custom styles
+  .action-label {
+    color: #ffffff;
+    font-size: 20;
+    font-weight: bold;
+    vertical-align: center;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 20;
+    font-weight: bold;
+  }
 </style>

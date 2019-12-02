@@ -3,8 +3,8 @@
         <ActionBar>
             <GridLayout columns="*,2*,*" horizontalAlignment="right">
                 <Label text="My Circles" col="1" class="action-label"></Label>
-                <StackLayout col="2" @tap="createCircle">
-                    <Label text.decode="&#xf500;" col="2" class="action-label icon fas"></Label>
+                <StackLayout col="2" @tap="createCircle" verticalAlignment="center">
+                    <Image src="~/components/icons/addCircle.png" class="action-image"></Image>
                 </StackLayout>
             </GridLayout>
         </ActionBar>
@@ -67,6 +67,13 @@
 <style lang="scss" scoped>
     // Start custom common variables
     @import "~@nativescript/theme/scss/variables/blue";
+
+    .action-image {
+        width: 35;
+        height: 35;
+        vertical-align: center;
+        horizontal-align: right;
+    }
 
     .action-label {
         color: #ffffff;
