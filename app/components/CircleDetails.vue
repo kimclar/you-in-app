@@ -22,13 +22,15 @@
             <Button width="200" class="h3" color="white"
                     backgroundColor="blue" text="Edit" @tap="sendRequest"></Button>
             <Button width="200" class="h3" color="white"
-                    backgroundColor="red" text="Delete" @tap="sendRequest"></Button>
+                    backgroundColor="red" text="Delete" @tap="deleteCircle"></Button>
 
 
     </FlexboxLayout>
 </template>
 
 <script>
+    import ConfirmDeleteCircle from "./ConfirmDeleteCircle";
+
     export default {
         props: {
             circles: {
@@ -39,6 +41,11 @@
                         includedFriends: ["Friend1", "Friend2"]
                     }
                 }
+            }
+        },
+        methods: {
+            deleteCircle(){
+                this.$showModal(ConfirmDeleteCircle)
             }
         }
     };

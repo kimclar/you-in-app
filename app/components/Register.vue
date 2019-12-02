@@ -5,26 +5,29 @@
             <Label text="You In?" class="action-label"></Label>
         </ActionBar>
 
-        <StackLayout class="form p-20">
+        <card-view margin="50" elevation="40" height="400" radius="5" class="signIn">
+            <StackLayout class="form p-20">
             <Label class ="title" text="Register"/>
+                <Label></Label>
             <StackLayout class="input-field">
-                <Label class="inputLabel" text="Username or Email"></Label>
+                <Label class="inputLabel" text="Username or Email*"></Label>
                 <TextField class="input"></TextField>
             </StackLayout>
 
             <StackLayout class="input-field">
-                <Label class="inputLabel" text="Password"></Label>
+                <Label class="inputLabel" text="Password*"></Label>
                 <TextField class="input"></TextField>
             </StackLayout>
 
             <StackLayout class="input-field">
-                <Label class="inputLabel" text="Confirm Password"></Label>
+                <Label class="inputLabel" text="Confirm Password*"></Label>
                 <TextField class="input"></TextField>
             </StackLayout>
 
             <Button text="Register" color="white" backgroundColor="blue" class="button-label" @tap="login"></Button>
             <Label color="red" text="Have an account already?" class="button-label" @tap="login"></Label>
         </StackLayout>
+        </card-view>
     </Page>
 </template>
 
@@ -69,4 +72,9 @@
         font-size: 14;
         font-weight: bold;
     }
+
+    .inputLabel {
+        font-size: 14;
+    }
+
 </style>

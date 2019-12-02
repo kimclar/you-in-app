@@ -19,11 +19,13 @@
     </ScrollView>
 
     <Button width="200" class="h3" color="white" backgroundColor="#3C5AFD" text="Edit" @tap="sendRequest" />
-    <Button width="200" class="h3" color="white" backgroundColor="#cd5c5c" text="Delete" @tap="sendRequest" />
+    <Button width="200" class="h3" color="white" backgroundColor="#e60000" text="Delete" @tap="deleteEvent" />
   </FlexboxLayout>
 </template>
 
 <script>
+  import ConfirmDeleteEvent from "./ConfirmDeleteEvent";
+
   export default {
     props: {
       event: {
@@ -39,6 +41,11 @@
             isSharable: false
           }
         }
+      }
+    },
+    methods: {
+      deleteEvent(){
+        this.$showModal(ConfirmDeleteEvent)
       }
     }
   };

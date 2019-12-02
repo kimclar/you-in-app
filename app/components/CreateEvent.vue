@@ -17,8 +17,6 @@
         <StackLayout class="input-field">
           <Label class="event-section" text="When?*"></Label>
           <TextField backgroundColor="white" class="input" hint="[For Ex. January 01 2000, 10:00am]"></TextField>
-          <!--<DatePicker class="date-picker"></DatePicker>
-          <TimePicker class="date-picker"></TimePicker>-->
         </StackLayout>
 
         <StackLayout class="input-field">
@@ -62,6 +60,7 @@
     methods: {
       createEvent() {
         // TODO
+
       }
     }
   }

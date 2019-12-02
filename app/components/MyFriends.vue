@@ -37,9 +37,9 @@
 
 <script>
     import AddFriend from './AddFriend';
-    import ConfirmDelete from "./ConfirmDelete";
+    import ConfirmDelete from "./ConfirmDeleteRequest";
     import FriendsDetails from "./FriendsDetails";
-    import ConfirmAccept from "./ConfirmAccept";
+    import ConfirmAccept from "./ConfirmAcceptRequest";
 
     export default {
         data() {

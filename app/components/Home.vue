@@ -19,9 +19,9 @@
        <card-view class="cardStyle" margin="10" elevation="40" radius="5">
          <StackLayout>
            <label class="listItems" :text="event.title"></label>
-           <GridLayout columns="*,*,*" horizontalAlignment="right">
+           <GridLayout columns="*,*" horizontalAlignment="right">
              <Label col="0" class="secondaryListItems" :text="event.dateTime"></Label>
-           <Label col="2" class="secondaryListItems" :text="event.attendees[0]+' + '+ event.attendees.length+' others'"></Label>
+           <Label col="1" class="secondaryListItems pull-right" :text="event.attendees[0]+' + '+ event.attendees.length+' others'"></Label>
            </GridLayout>
          </StackLayout>
        </card-view>

@@ -10,7 +10,7 @@
 
       <GridLayout columns="2*,4*" height="20">
         <Label col="0" text="Username:" fontSize="15" verticalAlignment="center"></Label>
-        <Label col="1" text="USERNAME" verticalAlignment="center" horizontalAlignment="left"></Label>
+        <Label col="1" :text="friends.username" verticalAlignment="center" horizontalAlignment="left"></Label>
       </GridLayout>
 
       <StackLayout height="10"></StackLayout>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-  import ConfirmDelete from "./ConfirmDelete";
+  import ConfirmDeleteFriend from "./ConfirmDeleteFriend";
 
   export default {
     computed: {
@@ -55,7 +55,7 @@
     },
     methods: {
       deleteFriend() {
-        this.$showModal(ConfirmDelete)
+        this.$showModal(ConfirmDeleteFriend)
       }
     }
   };

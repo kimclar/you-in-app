@@ -5,9 +5,9 @@
       <Label fontSize="20" text="Are you sure you want to reject this request?" textWrap="true" textAlignment="center"/>
     </StackLayout>
     <GridLayout columns="*, *">
-      <Button col="0" width="100" backgroundColor="#cd5c5c" color="white"
+      <Button col="0" width="100" backgroundColor="#e60000" color="white"
             class="btn btn-outline" text="YES" @tap="confirmReject(request)"/>
-      <Button col="1" width="100" backgroundColor="#3cb371" color="white"
+      <Button col="1" width="100" backgroundColor="#009933" color="white"
             class="btn btn-outline" text="NO" @tap="$modal.close()"/>
     </GridLayout>
   </StackLayout>
