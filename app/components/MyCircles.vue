@@ -9,7 +9,8 @@
             </GridLayout>
         </ActionBar>
 
-        <ListView for="eachCircle in circles" @itemTap="onItemTap">
+        <card-view margin="10" elevation="50" radius="2">
+            <ListView for="eachCircle in circles" @itemTap="onItemTap">
             <v-template>
 
                     <StackLayout orientation="horizontal">
@@ -18,6 +19,7 @@
 
             </v-template>
         </ListView>
+        </card-view>
 
 
     </Page>

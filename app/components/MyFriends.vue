@@ -9,9 +9,10 @@
             </GridLayout>
         </ActionBar>
 
-        <StackLayout height="1000">
-            <Label text="Pending Requests" class="section-title"></Label>
-            <ListView for="request in friendRequests" height="100">
+        <card-view margin="7" elevation="50" radius="2">
+            <StackLayout>
+                <Label text="Pending Requests" class="section-title"></Label>
+                <ListView for="request in friendRequests" height="100">
                 <v-template>
                     <GridLayout columns="3*,*,*" orientation="horizontal">
                         <Label class="listItems" :text="request.fromUser" col="0" textWrap="true"></Label>
@@ -23,15 +24,19 @@
                         </StackLayout>
                     </GridLayout>
                 </v-template>
-            </ListView>
-            <Label text="Friends" class="section-title"></Label>
-            <TextField class="listItems" v-model="textFieldValue" hint="Search friend by nickname..." />
-            <ListView for="friend in friends" height="1000">
+            </ListView><Label></Label>
+
+                <Label text="Friends" class="section-title"></Label>
+                <TextField class="listItems" v-model="textFieldValue" hint="Search friend by nickname..." />
+                <ListView for="friend in friends" height="1000">
                 <v-template>
                     <Label class="listItems" :text="friend.nickname" textWrap="true" @tap="friendDetails"></Label>
                 </v-template>
-            </ListView>
+                </ListView>
+
         </StackLayout>
+        </card-view>
+
     </Page>
 </template>
 
@@ -126,7 +131,7 @@
     .section-title {
         border-style: solid;
         border-width: 5px;
-        border-color: lightblue;
+        border-color: white;
         background-color: #3C5AFD;
         color: white;
         font-size: 18;
