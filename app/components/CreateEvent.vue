@@ -28,7 +28,7 @@
 
         <StackLayout class="input-field">
           <Label class="event-section" text="Who?"></Label>
-          <ListView for="circleName in myCircles" height="1000">
+          <ListView for="circleName in myCircles" height="225">
             <v-template>
               <check-box :checked="isChecked" :text="circleName.name" textWrap="true"/>
             </v-template>

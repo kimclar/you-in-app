@@ -11,9 +11,16 @@
 
     <ListView for="event in othersEvents" @itemTap="onItemTap">
       <v-template>
+      <!--
         <StackLayout orientation="horizontal">
           <Label class="listItems" :text="event.title" textWrap="true"></Label>
         </StackLayout>
+        -->
+       <card-view class="cardStyle" margin="10" elevation="40" radius="5">
+         <stack-layout>
+           <label class="listItems" :text="event.title"></label>
+         </stack-layout>
+       </card-view>
       </v-template>
     </ListView>
   </Page>
