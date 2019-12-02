@@ -19,7 +19,7 @@
         <StackLayout class="input-field">
           <Label class="inputLabel" text="Who's In?" fontSize="15"></Label>
           <StackLayout>
-            <ListView for="friend in friends" height="1000">
+            <ListView for="friend in friends" height="290">
               <v-template>
                 <check-box :checked="isChecked" :text="friend.nickname" textWrap="true"/>
               </v-template>
