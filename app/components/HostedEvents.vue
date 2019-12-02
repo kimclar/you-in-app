@@ -2,9 +2,9 @@
   <Page>
     <ActionBar>
       <GridLayout columns="*,2*,*" horizontalAlignment="right">
-        <Label text="Home" col="1" class="action-label"></Label>
-        <StackLayout col="2" @tap="signout">
-          <Label text.decode="&#xf011;" col="2" class="action-label icon fas"></Label>
+        <Label text="My Hosted Events" col="1" class="action-label"></Label>
+        <StackLayout col="2" @tap="addEventTap" verticalAlignment="center">
+          <Image src="~/components/icons/addEvent.png" class="action-image"></Image>
         </StackLayout>
       </GridLayout>
     </ActionBar>
@@ -21,7 +21,7 @@
 
 <script>
   import HostedEventDetails from "./HostedEventDetails";
-  import Login from "./Login";
+  import CreateEvent from './CreateEvent';
 
   export default {
     computed: {
@@ -32,6 +32,9 @@
       }
     },
     methods: {
+      addEventTap () {
+        this.$showModal(CreateEvent)
+      },
       onItemTap(args) {
         const view = args.view;
         const tappedItem = view.bindingContext;
@@ -61,5 +64,11 @@
   // End custom common variables
 
   // Custom styles
+  .action-image {
+    width: 40;
+    height: 40;
+    vertical-align: center;
+    horizontal-align: right;
+  }
 
 </style>
