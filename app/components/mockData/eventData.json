@@ -12,9 +12,117 @@
     "title": "LiverPool vs Arsenal",
     "location": "Ryder Hall, Room 409",
     "dateTime": "December 10 2019, 10:00am",
-    "host": {"name": "Ricky", "circles": "OmegaOmega"},
+    "host": {"name": "Ricky", "circles": "OmegaChiChi"},
     "attendees":  ["Jaden", "Chad", "Moses", "Jacob"],
     "details": "Go Liverpool!!",
     "isSharable": true
+  },
+  {
+    "title": "Lord of the Rings Marathon",
+    "location": "My apartment",
+    "dateTime": "December 11 2019, 11:00am",
+    "host": {"name": "Ricky", "circles": "BFFs"},
+    "attendees":  ["Michelle", "Josie"],
+    "details": "Bring sustainance plz",
+    "isSharable": false
+  },
+  {
+    "title": "Groceries/errands?",
+    "location": "Stop and Shop",
+    "dateTime": "December 12 2019, 9:00am",
+    "host": {"name": "Ricky", "circles": "Roomies"},
+    "attendees":  ["John"],
+    "details": "I can drive us.",
+    "isSharable": false
+  },
+  {
+    "title": "PING POOONG!!",
+    "location": "YMCA",
+    "dateTime": "December 15 2019, 6:00pm",
+    "host": {"name": "Ricky", "circles": "PingPong"},
+    "attendees":  ["Larry"],
+    "details": "",
+    "isSharable": true
+  },
+  {
+    "title": "Beer beer beer",
+    "location": "My apartment",
+    "dateTime": "December 21 2019, 9:00pm",
+    "host": {"name": "Ricky", "circles": "21+"},
+    "attendees":  ["Manny", "Hillary"],
+    "details": "beer beer beer beer beer beer beer and chips",
+    "isSharable": true
+  },
+  {
+    "title": "DANCE DANCE REVOLUTION",
+    "location": "My apartment",
+    "dateTime": "December 23 2019, 10:00pm",
+    "host": {"name": "Ricky", "circles": "OmegaChiChi"},
+    "attendees":  ["Cory", "Tyler"],
+    "details": "",
+    "isSharable": false
+  },
+  {
+    "title": "GET LIT 2020!",
+    "location": "All the bars",
+    "dateTime": "January 1 2020, 1:00am",
+    "host": {"name": "Ricky", "circles": "Lacrosse"},
+    "attendees":  ["Martin", "Henry", "Ben", "Parker"],
+    "details": "Starting the year off right.",
+    "isSharable": true
+  },
+  {
+    "title": "Crying over Algorithms",
+    "location": "Snell Library",
+    "dateTime": "December 12 2019, 6:00pm",
+    "host": {"name": "Veronica", "circles": "Classmates"},
+    "attendees":  ["Larry", "Benny"],
+    "details": "Let's study algorithms together and cry.",
+    "isSharable": true
+  },
+  {
+    "title": "Stargazing~",
+    "location": "Starry Hill",
+    "dateTime": "December 13 2019, 11:00pm",
+    "host": {"name": "Hannah", "circles": "Besties"},
+    "attendees":  ["Sarah"],
+    "details": "I'll bring a heater, sleeping bags, and wine.",
+    "isSharable": false
+  },
+  {
+    "title": "EAT LUNCH WIT ME",
+    "location": "THE NEW PAD THAI PLACE",
+    "dateTime": "December 13 2019, 12:00pm",
+    "host": {"name": "Tom", "circles": "BFFs"},
+    "attendees":  ["Dan", "Thomas"],
+    "details": "",
+    "isSharable": false
+  },
+  {
+    "title": "Just chill and talk?",
+    "location": "Dorm common room",
+    "dateTime": "December 15 2019, 10:00pm",
+    "host": {"name": "Kara", "circles": "Dorm Floor Peeps"},
+    "attendees":  ["Melissa", "Malin", "Henry"],
+    "details": "School's stressful. Anyone just wanna chill and talk for awhile?",
+    "isSharable": true
+  },
+  {
+    "title": "NEW TRUMPET SHOPPING",
+    "location": "Music Store on 5th",
+    "dateTime": "December 20 2019, 3:00pm",
+    "host": {"name": "Ryan", "circles": "Band Geeks"},
+    "attendees":  ["Melanie"],
+    "details": "Anyone wanna go with me to buy a new trumpet?",
+    "isSharable": false
+  },
+  {
+    "title": "Christmas Potluck!",
+    "location": "My house",
+    "dateTime": "December 25 2019, 6:00pm",
+    "host": {"name": "Vannessa", "circles": "Classmates"},
+    "attendees":  ["Lisa", "Ryan", "John", "Ray", "Mike", "Ari"],
+    "details": "",
+    "isSharable": false
   }
 ]
