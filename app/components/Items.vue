@@ -9,7 +9,7 @@
       </GridLayout>
     </ActionBar>
 
-    <ListView for="event in events" @itemTap="onItemTap">
+    <ListView for="event in othersEvents" @itemTap="onItemTap">
       <v-template>
         <StackLayout orientation="horizontal">
           <Label class="h2" :text="event.title" textWrap="true"></Label>
@@ -25,15 +25,14 @@
 
   export default {
     computed: {
-      events() {
-        return this.$store.getters.events;
+      othersEvents() {
+        return this.$store.getters.othersEvents
       }
     },
     methods: {
       onItemTap(args) {
         const view = args.view;
         const tappedItem = view.bindingContext;
-
 
         this.$showModal(EventDetails, {
           props: {
