@@ -1,6 +1,7 @@
 import Vue from "nativescript-vue";
 import App from "./components/App";
 import store from "./store/index.js";
+import RadListView from 'nativescript-ui-listview/vue';
 
 Vue.config.silent = false;
 
@@ -19,3 +20,5 @@ Vue.registerElement(
         }
     }
 );
+
+Vue.use(RadListView);
