@@ -1,31 +1,34 @@
 <template>
-  <FlexboxLayout flexDirection="column" justifyContent="space-between">
-    <ScrollView>
-    <StackLayout width="400" height="500" class="p-10">
+  <Page>
+    <StackLayout width="400" height="800" class="p-10">
+      <GridLayout columns="*,2*,*", width="700" height="40" backgroundColor=#3C5AFD>
+        <Label text="New Event" col="1" verticalAlignment="center" class="modal-title"></Label>
+        <Label col="2" class="center h2 action label icon fas" text.decode="&#xf057;" color="white" @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
+      </GridLayout>
 
-      <Label class="pull-right h2 action label icon fas" text.decode="&#xf057;" @tap="$modal.close()"/>
+      <StackLayout height="10"></StackLayout>
 
       <StackLayout class="form">
         <StackLayout class="input-field">
-          <Label class="inputLabel" text="What?"></Label>
+          <Label class="event-section" text="What?"></Label>
           <TextField backgroundColor="white" class="input"></TextField>
         </StackLayout>
 
         <StackLayout class="input-field">
-          <Label class="inputLabel" text="When?"></Label>
+          <Label class="event-section" text="When?"></Label>
           <TextField backgroundColor="white" class="input"></TextField>
           <!--<DatePicker class="date-picker"></DatePicker>
           <TimePicker class="date-picker"></TimePicker>-->
         </StackLayout>
 
         <StackLayout class="input-field">
-          <Label class="inputLabel" text="Where?"></Label>
+          <Label class="event-section" text="Where?"></Label>
           <TextField backgroundColor="white" class="input"></TextField>
         </StackLayout>
 
         <StackLayout class="input-field">
-          <Label class="inputLabel" text="Who?"></Label>
-          <ListView for="circleName in circles" height="1000">
+          <Label class="event-section" text="Who?"></Label>
+          <ListView for="circleName in myCircles" height="1000">
             <v-template>
               <check-box :checked="isChecked" :text="circleName.name" textWrap="true"/>
             </v-template>
@@ -33,22 +36,22 @@
         </StackLayout>
 
         <StackLayout class="input-field">
-          <Label class="inputLabel" text="Details [Optional]"></Label>
+          <Label class="event-section" text="Details [Optional]"></Label>
           <TextField backgroundColor="white" class="input"></TextField>
         </StackLayout>
-      </StackLayout>
-    </StackLayout>
-    </ScrollView>
 
         <Button width="150" text="POST" backgroundColor="green" color="white"
                 class="action-label" @tap="createEvent()"></Button>
-  </FlexboxLayout>
+
+      </StackLayout>
+    </StackLayout>
+  </Page>
 </template>
 
 <script>
   export default {
     computed: {
-      hostedEvents() {
+      myCircles() {
         return this.$store.getters.circles;
       }
     },
@@ -66,4 +69,18 @@
   // End custom common variables
 
   // Custom styles
+  .modal-title {
+    color: white;
+    background-color: #3C5AFD;
+    font-size: 24;
+    font-weight: bold;
+    vertical-align: center;
+  }
+  .event-section {
+    color: black;
+    background-color: transparent;
+    font-size: 18;
+    font-weight: bold;
+    vertical-align: left;
+  }
 </style>

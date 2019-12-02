@@ -2,9 +2,11 @@
   <Page>
     <ActionBar>
       <GridLayout columns="*,2*,*" horizontalAlignment="right">
-        <Label text="Hosted Events" col="1" class="action-label"></Label>
-        <StackLayout col="2" @tap="createEvent">
-          <Label text.decode="&#xf271;" col="2" class="action-label icon fas"></Label>
+
+        <Label text="My Hosted Events" col="1" class="action-label"></Label>
+        <StackLayout col="2" @tap="addEventTap" verticalAlignment="center">
+          <Image src="~/components/icons/addEvent.png" class="action-image"></Image>
+
         </StackLayout>
       </GridLayout>
     </ActionBar>
@@ -12,7 +14,7 @@
     <ListView for="event in hostedEvents" @itemTap="onItemTap">
       <v-template>
         <StackLayout orientation="horizontal">
-          <Label class="h2" :text="event.title" textWrap="true"></Label>
+          <Label class="listItems" :text="event.title" textWrap="true"></Label>
         </StackLayout>
       </v-template>
     </ListView>
@@ -23,6 +25,7 @@
   import HostedEventDetails from "./HostedEventDetails";
   import CreateEvent from "./CreateEvent";
 
+
   export default {
     computed: {
       hostedEvents() {
@@ -32,6 +35,9 @@
       }
     },
     methods: {
+      addEventTap () {
+        this.$showModal(CreateEvent)
+      },
       onItemTap(args) {
         const view = args.view;
         const tappedItem = view.bindingContext;
@@ -59,10 +65,26 @@
   // Start custom common variables
   @import "~@nativescript/theme/scss/variables/blue";
 
+  // End custom common variables
+
+  // Custom styles
+  .action-image {
+    width: 40;
+    height: 40;
+    vertical-align: center;
+    horizontal-align: right;
+  }
+
+
   .action-label {
     color: #ffffff;
     font-size: 20;
     font-weight: bold;
     vertical-align: center;
   }
+
+  .listItems {
+    font-size: 18;
+  }
+
 </style>

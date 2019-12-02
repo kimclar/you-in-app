@@ -12,7 +12,7 @@
         <ListView for="eachCircle in circles" @itemTap="onItemTap">
             <v-template>
                 <StackLayout orientation="horizontal">
-                    <Label class="h2" :text="eachCircle.name"></Label>
+                    <Label class="listItems" :text="eachCircle.name"></Label>
                 </StackLayout>
             </v-template>
         </ListView>
@@ -73,5 +73,9 @@
         font-size: 20;
         font-weight: bold;
         vertical-align: center;
+    }
+
+    .listItems {
+        font-size: 18;
     }
 </style>

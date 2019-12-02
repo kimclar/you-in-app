@@ -12,7 +12,7 @@
     <ListView for="event in othersEvents" @itemTap="onItemTap">
       <v-template>
         <StackLayout orientation="horizontal">
-          <Label class="h2" :text="event.title" textWrap="true"></Label>
+          <Label class="listItems" :text="event.title" textWrap="true"></Label>
         </StackLayout>
       </v-template>
     </ListView>
@@ -64,4 +64,9 @@
     font-weight: bold;
     vertical-align: center;
   }
+
+  .listItems {
+    font-size: 18;
+  }
+
 </style>

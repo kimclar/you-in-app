@@ -1,10 +1,13 @@
 <template>
 
     <FlexboxLayout flexDirection="column" justifyContent="space-between">
+
     <ScrollView>
         <StackLayout width="700" height="400" class="p-10">
-            <Label class="pull-right h2 action label icon fas" text.decode="&#xf057;" @tap="$modal.close()"/>
-            <Label text="Edit Circle" class="h2"></Label>
+            <GridLayout columns="*,3*,*", width="700" height="40" backgroundColor=#3C5AFD>
+                <Label text="Circle Details" col="1" verticalAlignment="center" class="modal-title"></Label>
+                <Label col="2" class="center h2 action label icon fas" text.decode="&#xf057;" color="white" @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
+            </GridLayout>
 
                     <StackLayout>
                         <Label :text="circles.name" class="h2 bold"></Label>
@@ -50,5 +53,13 @@
     .guests {
         text-decoration: underline;
         font-size: 20;
+    }
+
+    .modal-title {
+        color: white;
+        background-color: #3C5AFD;
+        font-size: 24;
+        font-weight: bold;
+        vertical-align: center;
     }
 </style>
