@@ -17,9 +17,13 @@
         </StackLayout>
         -->
        <card-view class="cardStyle" margin="10" elevation="40" radius="5">
-         <stack-layout>
+         <StackLayout>
            <label class="listItems" :text="event.title"></label>
-         </stack-layout>
+           <GridLayout columns="*,*,*" horizontalAlignment="right">
+             <Label col="0" class="secondaryListItems" :text="event.dateTime"></Label>
+           <Label col="2" class="secondaryListItems" :text="event.attendees[0]+' + '+ event.attendees.length+' others'"></Label>
+           </GridLayout>
+         </StackLayout>
        </card-view>
       </v-template>
     </ListView>
@@ -82,6 +86,12 @@
 
   .listItems {
     font-size: 18;
+    font-weight: bold;
+  }
+
+  .secondaryListItems {
+      font-size: 14;
+    color: indigo;
   }
 
 </style>

@@ -14,8 +14,12 @@
     <ListView for="event in hostedEvents" @itemTap="onItemTap">
       <v-template>
         <card-view class="cardStyle" margin="10" elevation="40" radius="5">
-          <StackLayout orientation="horizontal">
-            <Label class="listItems" :text="event.title" textWrap="true"></Label>
+          <StackLayout>
+            <label class="listItems" :text="event.title"></label>
+            <GridLayout columns="*,*,*" horizontalAlignment="right">
+              <Label col="0" class="secondaryListItems" :text="event.dateTime"></Label>
+              <Label col="2" class="secondaryListItems" :text="event.attendees.length+' people'"></Label>
+            </GridLayout>
           </StackLayout>
         </card-view>
       </v-template>
@@ -87,6 +91,12 @@
 
   .listItems {
     font-size: 18;
+    font-weight: bold;
+  }
+
+  .secondaryListItems {
+    font-size: 14;
+    color: indigo;
   }
 
 </style>
