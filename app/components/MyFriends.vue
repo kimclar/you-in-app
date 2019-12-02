@@ -14,7 +14,7 @@
             <ListView for="request in friendRequests" height="100" >
                 <v-template>
                     <GridLayout columns="3*,*,*" orientation="horizontal">
-                        <Label :text="request.fromUser" col="0" textWrap="true"></Label>
+                        <Label class="listItems" :text="request.fromUser" col="0" textWrap="true"></Label>
                         <StackLayout col="1" @tap="acceptRequestTap">
                             <Image src="~/components/icons/acceptRequest.png" class="request-action-image"></Image>
                         </StackLayout>
@@ -25,10 +25,10 @@
                 </v-template>
             </ListView>
             <Label text="Friends" class="section-title"></Label>
-            <TextField v-model="textFieldValue" hint="Search friend by nickname..." />
+            <TextField class="listItems" v-model="textFieldValue" hint="Search friend by nickname..." />
             <ListView for="friend in friends" height="1000">
                 <v-template>
-                    <Label :text="friend.nickname" textWrap="true" @tap="friendDetails"></Label>
+                    <Label class="listItems" :text="friend.nickname" textWrap="true" @tap="friendDetails"></Label>
                 </v-template>
             </ListView>
         </StackLayout>
@@ -91,15 +91,22 @@
         vertical-align: center;
     }
     .section-title {
-        background-color: #CCCCCC;
-        color: black;
+        border-style: solid;
+        border-width: 5px;
+        border-color: lightblue;
+        background-color: #3C5AFD;
+        color: white;
         font-size: 18;
         font-weight: bold;
+        padding-left: 4;
     }
     .request-action-image {
         width: 30;
         height: 30;
         vertical-align: center;
         horizontal-align: right;
+    }
+    .listItems {
+        font-size: 16;
     }
 </style>

@@ -60,5 +60,6 @@
     font-size: 24;
     font-weight: bold;
     vertical-align: center;
+    padding-left: 4;
   }
 </style>

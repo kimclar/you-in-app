@@ -3,7 +3,7 @@
   <FlexboxLayout flexDirection="column" justifyContent="space-between">
     <ScrollView>
       <StackLayout width="700" height="400" class="p-10">
-        <GridLayout columns="5*,*", width="700" height="40" class="p-2" backgroundColor=#3C5AFD>
+        <GridLayout columns="5*,*", width="700" height="40" backgroundColor=#3C5AFD>
           <Label :text="event.title" col="0" verticalAlignment="center" horizontalAlignment="center" class="modal-title"></Label>
           <Label col="1" class="center h2 action label icon fas" text.decode="&#xf057;" color="white" @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
         </GridLayout>
@@ -61,5 +61,6 @@
     font-size: 24;
     font-weight: bold;
     vertical-align: center;
+    padding-left: 4;
   }
 </style>

@@ -22,8 +22,8 @@
                 <TextField class="input"></TextField>
             </StackLayout>
 
-            <Button text="Register" color="white" backgroundColor="blue" class="h3 action-label" @tap="login"></Button>
-            <Label color="red" text="Have an account already?" class="h3 action-label" @tap="login"></Label>
+            <Button text="Register" color="white" backgroundColor="blue" class="button-label" @tap="login"></Button>
+            <Label color="red" text="Have an account already?" class="button-label" @tap="login"></Label>
         </StackLayout>
     </Page>
 </template>
@@ -62,6 +62,11 @@
         text-shadow: 2px 2px;
         text-align: center;
         font-size: 20;
+        font-weight: bold;
+    }
+
+    .button-label {
+        font-size: 14;
         font-weight: bold;
     }
 </style>

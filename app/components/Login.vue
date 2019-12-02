@@ -17,9 +17,9 @@
       </StackLayout>
 
       <Button text="Log In" color="white" backgroundColor="blue"
-              class="h3 action-label" @tap="home"></Button>
+              class="button-label" @tap="home"></Button>
 
-      <Label color="red" text="Don't have an account?" class=" h3 action-label" @tap="register"></Label>
+      <Label color="red" text="Don't have an account?" class="button-label" @tap="register"></Label>
 
     </StackLayout>
   </Page>
@@ -27,7 +27,7 @@
 
 <script>
   import Register from "./Register";
-  import Items from "./Items";
+  import Items from "./Home";
 
   export default {
     data() {
@@ -63,4 +63,10 @@
     font-size: 20;
     font-weight: bold;
   }
+
+  .button-label {
+    font-size: 14;
+    font-weight: bold;
+  }
+
 </style>

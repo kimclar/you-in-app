@@ -47,7 +47,7 @@
 </template>
 
 <script>
-  import Items from "./Items.vue";
+  import Items from "./Home.vue";
   import Browse from "./MyFriends.vue";
   import Search from "./MyCircles.vue";
   import HostedEvents from "./HostedEvents";

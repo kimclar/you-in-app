@@ -4,7 +4,7 @@
       <GridLayout columns="*,2*,*" horizontalAlignment="right">
         <Label text="Home" col="1" class="action-label"></Label>
         <StackLayout col="2" @tap="signout">
-          <Label text.decode="&#xf011;" col="2" class="action-label icon fas"></Label>
+          <Label text.decode="&#xf011;" col="2" class="icon-label icon fas"></Label>
         </StackLayout>
       </GridLayout>
     </ActionBar>
@@ -63,6 +63,14 @@
     font-size: 20;
     font-weight: bold;
     vertical-align: center;
+  }
+
+  .icon-label {
+    color: #ffffff;
+    font-size: 20;
+    font-weight: bold;
+    vertical-align: center;
+    padding-right: 15;
   }
 
   .listItems {
