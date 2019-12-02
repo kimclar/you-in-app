@@ -9,14 +9,14 @@
           <Label :text="event.location" class="h3 font-weight-bold"></Label>
           <Label :text="event.details" class="h3 font-weight-bold"></Label>
           <Label class="guests" text="Who's in?"></Label>
-          <Label :text="event.host.name + ' (host)'" class="h3 font-weight-bold"></Label>
+          <Label text="You" class="h3 font-weight-bold"></Label>
           <Label v-for="attendee in event.attendees" :text="attendee" :key="attendee" class="h3 font-weight-bold"></Label>
         </StackLayout>
       </StackLayout>
     </ScrollView>
 
-    <Button width="200" class="h3" color="white"
-            backgroundColor="blue" text="Count me In!" @tap="sendRequest"></Button>
+    <Button width="200" class="h3" color="white" backgroundColor="blue" text="Edit" @tap="sendRequest" />
+    <Button width="200" class="h3" color="white" backgroundColor="#8b0000" text="Delete" @tap="sendRequest" />
   </FlexboxLayout>
 </template>
 

@@ -13,7 +13,7 @@ let nextEventId = 0;
 export default new Vuex.Store({
     state: {
         // TODO: set currentUser from login/sign up screen
-        currentUser: "",
+        currentUser: "Ricky",
         events: eventData,
         friends: friendsData,
         friendRequests: friendRequestData,
@@ -160,6 +160,7 @@ export default new Vuex.Store({
     getters: {
         currentUser: state => state.currentUser,
         events: state => state.events,
+        othersEvents: state => state.events.filter(event => event.host.name !== state.currentUser),
         hostedEvents: state => state.events.filter(event => event.host.name === state.currentUser),
         friends: state => state.friends,
         friendRequests: state => state.friendRequests,
