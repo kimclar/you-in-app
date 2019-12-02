@@ -10,24 +10,24 @@
 
       <StackLayout class="form">
         <StackLayout class="input-field">
-          <Label class="event-section" text="What?"></Label>
+          <Label class="event-section" text="What?*"></Label>
           <TextField backgroundColor="white" class="input"></TextField>
         </StackLayout>
 
         <StackLayout class="input-field">
-          <Label class="event-section" text="When?"></Label>
-          <TextField backgroundColor="white" class="input"></TextField>
+          <Label class="event-section" text="When?*"></Label>
+          <TextField backgroundColor="white" class="input" hint="[For Ex. January 01 2000, 10:00am]"></TextField>
           <!--<DatePicker class="date-picker"></DatePicker>
           <TimePicker class="date-picker"></TimePicker>-->
         </StackLayout>
 
         <StackLayout class="input-field">
-          <Label class="event-section" text="Where?"></Label>
+          <Label class="event-section" text="Where?*"></Label>
           <TextField backgroundColor="white" class="input"></TextField>
         </StackLayout>
 
         <StackLayout class="input-field">
-          <Label class="event-section" text="Who?"></Label>
+          <Label class="event-section" text="Who?*"></Label>
           <ListView for="circleName in myCircles" height="225">
             <v-template>
               <check-box :checked="isChecked" :text="circleName.name" textWrap="true"/>
@@ -38,6 +38,10 @@
         <StackLayout class="input-field">
           <Label class="event-section" text="Details [Optional]"></Label>
           <TextField backgroundColor="white" class="input"></TextField>
+        </StackLayout>
+
+        <StackLayout class="input-field">
+          <check-box :checked="isChecked" text="Allow your circles to share this event?" textWrap="true"/>
         </StackLayout>
 
         <Button width="150" text="POST" backgroundColor="green" color="white"
