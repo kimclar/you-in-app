@@ -40,7 +40,7 @@
         },
         methods: {
             onItemTap(args) {
-                console.log("Open Event")
+                console.log("Open Circle")
                 const view = args.view;
                 const page = view.page;
                 const tappedItem = view.bindingContext;
@@ -63,3 +63,15 @@
         }
     };
 </script>
+
+<style lang="scss" scoped>
+    // Start custom common variables
+    @import "~@nativescript/theme/scss/variables/blue";
+
+    .action-label {
+        color: #ffffff;
+        font-size: 20;
+        font-weight: bold;
+        vertical-align: center;
+    }
+</style>

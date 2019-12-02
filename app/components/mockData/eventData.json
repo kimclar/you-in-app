@@ -3,7 +3,7 @@
     "title": "My Birthday",
     "location": "Central Perk",
     "dateTime": "December 17 2019, 7:00pm",
-    "host": {"name": "Phoebe", "circles": "friends"},
+    "host": {"name": "Phoebe", "circles": "Friends"},
     "attendees":  ["Joey", "Rachel", "Ross", "Monica"],
     "details": "Please be on time",
     "isSharable": false

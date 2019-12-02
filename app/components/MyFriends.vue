@@ -93,14 +93,14 @@
     }
     .action-label {
         color: #ffffff;
-        font-size: 24;
+        font-size: 20;
         font-weight: bold;
         vertical-align: center;
     }
     .section-title {
         background-color: #CCCCCC;
         color: black;
-        font-size: 20;
+        font-size: 18;
         font-weight: bold;
     }
     .request-action-image {

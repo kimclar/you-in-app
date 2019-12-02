@@ -2,9 +2,9 @@
   <Page>
     <ActionBar>
       <GridLayout columns="*,2*,*" horizontalAlignment="right">
-        <Label text="Home" col="1" class="action-label"></Label>
-        <StackLayout col="2" @tap="signout">
-          <Label text.decode="&#xf011;" col="2" class="action-label icon fas"></Label>
+        <Label text="Hosted Events" col="1" class="action-label"></Label>
+        <StackLayout col="2" @tap="createEvent">
+          <Label text.decode="&#xf271;" col="2" class="action-label icon fas"></Label>
         </StackLayout>
       </GridLayout>
     </ActionBar>
@@ -21,7 +21,7 @@
 
 <script>
   import HostedEventDetails from "./HostedEventDetails";
-  import Login from "./Login";
+  import CreateEvent from "./CreateEvent";
 
   export default {
     computed: {
@@ -48,18 +48,21 @@
           }
         });
       },
-      signout() {
-        this.$navigateTo(Login)
+      createEvent() {
+        this.$showModal(CreateEvent);
       }
     }
   };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   // Start custom common variables
   @import "~@nativescript/theme/scss/variables/blue";
-  // End custom common variables
 
-  // Custom styles
-
+  .action-label {
+    color: #ffffff;
+    font-size: 20;
+    font-weight: bold;
+    vertical-align: center;
+  }
 </style>

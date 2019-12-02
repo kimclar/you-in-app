@@ -54,11 +54,14 @@
   };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   // Start custom common variables
   @import "~@nativescript/theme/scss/variables/blue";
-  // End custom common variables
 
-  // Custom styles
-
+  .action-label {
+    color: #ffffff;
+    font-size: 20;
+    font-weight: bold;
+    vertical-align: center;
+  }
 </style>

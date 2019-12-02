@@ -1,6 +1,8 @@
 <template>
-  <ScrollView>
-    <StackLayout width="400" height="500" backgroundColor="white" class="p-10">
+  <FlexboxLayout flexDirection="column" justifyContent="space-between">
+    <ScrollView>
+    <StackLayout width="400" height="500" class="p-10">
+
       <Label class="pull-right h2 action label icon fas" text.decode="&#xf057;" @tap="$modal.close()"/>
 
       <StackLayout class="form">
@@ -34,12 +36,13 @@
           <Label class="inputLabel" text="Details [Optional]"></Label>
           <TextField backgroundColor="white" class="input"></TextField>
         </StackLayout>
+      </StackLayout>
+    </StackLayout>
+    </ScrollView>
 
         <Button width="150" text="POST" backgroundColor="green" color="white"
                 class="action-label" @tap="createEvent()"></Button>
-      </StackLayout>
-    </StackLayout>
-  </ScrollView>
+  </FlexboxLayout>
 </template>
 
 <script>
