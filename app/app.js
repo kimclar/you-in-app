@@ -4,11 +4,6 @@ import store from "./store/index.js";
 
 Vue.config.silent = false;
 
-new Vue({
-    render: h => h(App),
-    store
-}).$start();
-
 Vue.registerElement(
     'CheckBox',
     () => require('@nstudio/nativescript-checkbox').CheckBox,
@@ -19,3 +14,13 @@ Vue.registerElement(
         }
     }
 );
+
+Vue.registerElement(
+    'CardView',
+    () => require('@nstudio/nativescript-cardview').CardView
+  );
+
+new Vue({
+    render: h => h(App),
+    store
+}).$start();
