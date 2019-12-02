@@ -1,32 +1,41 @@
 <template>
-  <ScrollView>
-    <StackLayout width="700" height="400" class="p-10">
-      <Label class="pull-right h2 action label icon fas" text.decode="&#xf057;" @tap="$modal.close()"/>
-      <ListView for="event in events" height="900">
-        <v-template>
-          <StackLayout>
-            <Label :text="event.title" class="h2 bold"></Label>
-            <Label :text="event.dateTime" class="h3 font-weight-bold"></Label>
-            <Label :text="event.location" class="h3 font-weight-bold"></Label>
-            <Label :text="event.details" class="h3 font-weight-bold"></Label>
-            <Label class="guests" text="Who's in?"></Label>
-            <Label :text="event.host[0].name" class="h3 font-weight-bold"></Label>
-            <Label :text="event.attendees[0]" class="h3 font-weight-bold"></Label>
+  <FlexboxLayout flexDirection="column" justifyContent="space-between">
+    <ScrollView>
+      <StackLayout width="700" height="400" class="p-10">
+        <Label class="pull-right h2 action label icon fas" text.decode="&#xf057;" @tap="$modal.close()"/>
+        <StackLayout>
+          <Label :text="event.title" class="h2 bold"></Label>
+          <Label :text="event.dateTime" class="h3 font-weight-bold"></Label>
+          <Label :text="event.location" class="h3 font-weight-bold"></Label>
+          <Label :text="event.details" class="h3 font-weight-bold"></Label>
+          <Label class="guests" text="Who's in?"></Label>
+          <Label :text="event.host[0].name + ' (host)'" class="h3 font-weight-bold"></Label>
+          <Label v-for="attendee in event.attendees" :text="attendee" :key="attendee" class="h3 font-weight-bold"></Label>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
 
-            <Button width="200" class="h3" color="white"
-                    backgroundColor="blue" text="Count me In!" @tap="sendRequest"></Button>
-          </StackLayout>
-        </v-template>
-      </ListView>
-    </StackLayout>
-  </ScrollView>
+    <Button width="200" class="h3" color="white"
+            backgroundColor="blue" text="Count me In!" @tap="sendRequest"></Button>
+  </FlexboxLayout>
 </template>
 
 <script>
   export default {
-    computed: {
-      events() {
-        return this.$store.getters.events;
+    props: {
+      event: {
+        type: Object,
+        default: function () {
+          return {
+            title: "Title",
+            location: "Location",
+            dateTime: "January 01 2000, 12:00am",
+            host: [{name: "HostName", circles: "everyone"}],
+            attendees: ["Attendee1", "Attendee2", "Attendee3", "Attendee4"],
+            details: "Optional Details",
+            isSharable: false
+          }
+        }
       }
     }
   };
