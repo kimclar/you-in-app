@@ -15,35 +15,31 @@
         <Textfield :hint="friend.nickname" class="infoText"></Textfield>
 
         <Label class="friendLabel" text="Circles they are in:"></Label>
-        <template v-for="i in circleD">
-          <template v-for="j in friend.circles">
-            <template v-if="i.name == j">
-              <checkbox checked="true" :text="j" class="infoText"/>
-            </template>
-            <template v-else>
-              <checkbox :text="i.name" class="infoText"/>
-            </template>
-          </template>
-        </template>
+
+        <ListView for="circle in circleData" width="300" height="250">
+          <v-template>
+            <checkbox :checked="circle.includedFriends.includes(friend.nickname)" :text="circle.name" class="infoText"/>
+          </v-template>
+        </ListView>
 
       </StackLayout>
     </StackLayout>
 
     <Button width="200" class="h3" color="white" backgroundColor="green" text="Save" @tap="sendRequest"></Button>
-    <Button width="200" class="h3" color="white" backgroundColor="red" text="Delete" @tap="deleteFriend(friend)"></Button>
+    <Button width="200" class="h3" color="white" backgroundColor="red" text="Delete"
+            @tap="deleteFriend(friend)"></Button>
   </FlexboxLayout>
 </template>
 
 <script>
   import ConfirmDeleteFriend from "./ConfirmDeleteFriend";
-  import CircleData from "./mockData/circleData.json"
 
   export default {
     computed: {
       friends() {
         return this.$store.getters.friends;
       },
-      circleD() {
+      circleData() {
         return this.$store.getters.circles;
       }
     },
@@ -71,7 +67,7 @@
               curve: "ease"
             }
           }
-        })
+        });
         this.$modal.close();
       }
     }
