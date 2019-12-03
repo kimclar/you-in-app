@@ -26,14 +26,14 @@ export default new Vuex.Store({
         setCurrentUser(state, username) {
             state.currentUser = username;
         },
-        addEvent(state, title, location, time, host, details, isSharable) {
+        addEvent(state, title, location, time, host, hostName, details, isSharable) {
             let newEvent = {
                 id: nextEventId,
                 title: title,
                 location: location,
                 time: time,
                 host: host,
-                attendees: [host.username],
+                attendees: [hostName],
                 details: details,
                 isSharable: isSharable
             };
@@ -134,8 +134,8 @@ export default new Vuex.Store({
         setCurrentUser(context, username) {
             context.commit('setCurrentUser', username);
         },
-        addEvent(context, title, location, time, host, details, isSharable) {
-            context.commit('addEvent', title, location, time, host, details, isSharable);
+        addEvent(context, title, location, time, host, hostName, details, isSharable) {
+            context.commit('addEvent', title, location, time, host, hostName, details, isSharable);
         },
         removeEvent(context, eventId) {
             context.commit('removeEvent', eventId);

@@ -11,17 +11,17 @@
       <StackLayout class="form">
         <StackLayout class="input-field">
           <Label class="event-section" text="What?*"></Label>
-          <TextField backgroundColor="white" class="input"></TextField>
+          <TextField v-model="etitle" backgroundColor="white" class="input"></TextField>
         </StackLayout>
 
         <StackLayout class="input-field">
           <Label class="event-section" text="When?*"></Label>
-          <TextField backgroundColor="white" class="input" hint="[For Ex. January 01 2000, 10:00am]"></TextField>
+          <TextField v-model="edateTime" backgroundColor="white" class="input" hint="[For Ex. January 01 2000, 10:00am]"></TextField>
         </StackLayout>
 
         <StackLayout class="input-field">
           <Label class="event-section" text="Where?*"></Label>
-          <TextField backgroundColor="white" class="input"></TextField>
+          <TextField v-model="elocation" backgroundColor="white" class="input"></TextField>
         </StackLayout>
 
         <StackLayout class="input-field">
@@ -35,11 +35,11 @@
 
         <StackLayout class="input-field">
           <Label class="event-section" text="Details [Optional]"></Label>
-          <TextField backgroundColor="white" class="input"></TextField>
+          <TextField v-model="edetails" backgroundColor="white" class="input"></TextField>
         </StackLayout>
 
         <StackLayout class="input-field">
-          <check-box :checked="isChecked" text="Allow your circles to share this event?" textWrap="true"/>
+          <check-box :checked="isChecked" text="Allow your circles to share this event?" textWrap="true" @checkedChange="onCheckChange($event)"/>
         </StackLayout>
 
         <Button width="150" text="POST" backgroundColor="green" color="white"
@@ -52,15 +52,38 @@
 
 <script>
   export default {
+    data() {
+      return {
+        etitle: "",
+        elocation: "",
+        edateTime: "",
+        ehost: [{name: "Ricky", circles: "OmegaChiChi"}],
+        eattendees:  [],
+        edetails: "",
+        eisSharable: false
+      }
+    },
     computed: {
       myCircles() {
         return this.$store.getters.circles;
       }
     },
     methods: {
-      createEvent() {
-        // TODO
-
+      createEvent() {if (this.etitle.trim() === "" || this.elocation.trim()=== "" || this.edateTime.trim() === "") {
+        alert({
+                title: "Event Creation Error",
+                message: "Please fill all required fields.",
+                okButtonText: "OK"
+              }).then(() => {
+          console.log("Alert dialog closed");
+        });
+      } else {
+        this.$store.commit('addEvent', this.etitle, this.elocation, this.edateTime, this.ehost, "Ricky", this.eattendees, this.edetails, this.eisSharable);
+        this.$modal.close();
+      }
+      },
+      onCheckChange(event) {
+        this.eisSharable = event.value;
       }
     }
   }
