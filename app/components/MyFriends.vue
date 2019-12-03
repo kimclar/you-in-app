@@ -12,7 +12,7 @@
         <card-view margin="7" elevation="50" radius="2">
             <StackLayout>
                 <Label text="Pending Requests" class="section-title"></Label>
-                <ListView for="request in friendRequests" height="300">
+                <ListView for="request in friendRequests" height="100">
                 <v-template>
                     <GridLayout columns="3*,*,*" orientation="horizontal">
                         <Label class="listItems" :text="request.fromUser" col="0" textWrap="true"></Label>
@@ -159,7 +159,6 @@
         horizontal-align: right;
     }
     .listItems {
-        font-size: 30;
-        height: 30;
+        font-size: 16;
     }
 </style>
