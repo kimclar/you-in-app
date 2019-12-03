@@ -11,17 +11,17 @@
     <StackLayout class="form">
       <StackLayout class="input-field">
         <Label class="event-section" text="What?*"></Label>
-        <TextField :hint= "event.title" backgroundColor="white" class="input"></TextField>
+        <TextField :text= "event.title" v-model="etitle" backgroundColor="white" class="input"></TextField>
       </StackLayout>
 
       <StackLayout class="input-field">
         <Label class="event-section" text="When?*"></Label>
-        <TextField backgroundColor="white" class="input" :hint= "event.dateTime"></TextField>
+        <TextField backgroundColor="white" class="input" v-model="edateTime" :text= "event.dateTime"></TextField>
       </StackLayout>
 
       <StackLayout class="input-field">
         <Label class="event-section" text="Where?*"></Label>
-        <TextField backgroundColor="white" :hint= "event.location" class="input"></TextField>
+        <TextField backgroundColor="white" v-model="elocation" :text= "event.location" class="input"></TextField>
       </StackLayout>
 
       <!--<StackLayout class="input-field">
@@ -35,15 +35,15 @@
 
       <StackLayout class="input-field">
         <Label class="event-section" text="Details [Optional]"></Label>
-        <TextField backgroundColor="white" :hint= "event.details" class="input"></TextField>
+        <TextField backgroundColor="white" v-model="edetails" :text= "event.details" class="input"></TextField>
       </StackLayout>
 
       <StackLayout class="input-field">
-        <check-box :checked="event.isSharable" text="Allow your circles to share this event?" textWrap="true"/>
+        <check-box :checked="event.isSharable" text="Allow your circles to share this event?" textWrap="true" @checkedChange="onCheckChange($event)"/>
       </StackLayout>
 
       <GridLayout columns="5*,5*" height="40">
-        <Button width="150" col="0" color="white" backgroundColor="green" text="Save" @tap="sendRequest" />
+        <Button width="150" col="0" color="white" backgroundColor="green" text="Save" @tap="saveRequest" />
         <Button width="150" col="1" color="white" backgroundColor="#e60000" text="Delete" @tap="deleteEvent(event)" />
       </GridLayout>
 
@@ -72,6 +72,18 @@
         }
       }
     },
+    data() {
+      return {
+        etitle: this.event.title,
+        elocation: this.event.location,
+        edateTime: this.event.dateTime,
+        eattendees:  this.event.attendees,
+        hostName: this.event.host.name,
+        hostCircles: this.event.host.circles,
+        edetails: this.event.details,
+        eisSharable: this.event.isSharable
+      }
+    },
     methods: {
       deleteEvent(passEvent){
         this.$showModal(ConfirmDeleteEvent, {
@@ -86,6 +98,22 @@
           }
         })
         this.$modal.close();
+      },
+      onCheckChange(event) {
+        this.eisSharable = event.value;
+      },
+      saveRequest(){
+        alert({
+                title: "",
+                message: "Your event has been saved!",
+                okButtonText: "OK"
+              }).then(() => {
+          console.log("Alert dialog closed");
+        });
+        this.$store.commit('editEvent', {title: this.etitle, location: this.elocation, dateTime: this.edateTime, host: {name: this.hostName, circles: this.hostCircles}, attendees: this.eattendees, details: this.edetails, isSharable: this.eisSharable});
+        this.$modal.close();
+        this.$store.commit('addEvent', {title: "r3fr3sh3r", location: "", dateTime: "", host: {name: "", circles: ""}, attendees: [], details: "", isSharable: false});
+        this.$store.commit('removeEvent', "r3fr3sh3r");
       }
     }
   };
