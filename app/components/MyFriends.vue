@@ -107,7 +107,7 @@
 
                     this.$showModal(FriendsDetails, {
                         props: {
-                            friends: tappedItem,
+                            friend: tappedItem,
                             animated: true,
                             transition: {
                                 name: "slide",
