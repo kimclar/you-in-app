@@ -1,12 +1,10 @@
 <template>
-
   <FlexboxLayout flexDirection="column" justifyContent="space-between">
-
     <StackLayout width="300" height="400" class="p-10">
-
-      <GridLayout columns="*,3*,*", width="700" height="40" backgroundColor=#3C5AFD>
+      <GridLayout columns="*,3*,*" , width="700" height="40" backgroundColor=#3C5AFD>
         <Label text="Friend Details" col="1" verticalAlignment="center" class="modal-title"></Label>
-        <Label col="2" class="center h2 action label icon fas" text.decode="&#xf057;" color="white" @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
+        <Label col="2" class="center h2 action label icon fas" text.decode="&#xf057;" color="white"
+               @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
       </GridLayout>
 
       <StackLayout>
@@ -17,40 +15,38 @@
         <Textfield :hint="friend.nickname" class="infoText"></Textfield>
 
         <Label class="friendLabel" text="Circles they are in:"></Label>
-        <template v-for="i in circleD">
-         <template v-for="j in friend.circles">
-            <template v-if="i.name == j">
-              <checkbox checked="true" :text="j" class="infoText"/>
-            </template>
-             <template v-else>
-              <checkbox :text="i.name" class="infoText"/>
-            </template>
-         </template>
-        </template>
 
+        <ListView for="circle in circles" width="300" height="250">
+          <v-template>
+            <checkbox :checked="circle.isFriendIncluded" @tap="circle.isFriendIncluded = !circle.isFriendIncluded"
+                      :text="circle.name" class="infoText"/>
+          </v-template>
+        </ListView>
 
       </StackLayout>
     </StackLayout>
 
-
-      <Button width="200" class="h3" color="white"
-              backgroundColor="green" text="Save" @tap="sendRequest"></Button>
-      <Button width="200" class="h3" color="white" backgroundColor="red" text="Delete" @tap="deleteFriend(friend)"></Button>
+    <Button width="200" class="h3" color="white" backgroundColor="green" text="Save" @tap="updateFriend()"></Button>
+    <Button width="200" class="h3" color="white" backgroundColor="red" text="Delete" @tap="deleteFriend()"></Button>
   </FlexboxLayout>
-
 </template>
 
 <script>
   import ConfirmDeleteFriend from "./ConfirmDeleteFriend";
-  import CircleData from "./mockData/circleData.json"
 
   export default {
     computed: {
       friends() {
         return this.$store.getters.friends;
       },
-      circleD() {
-        return this.$store.getters.circles;
+      circles() {
+        let circleData = this.$store.getters.circles;
+        let i;
+        for (i = 0; i < circleData.length; i++) {
+          let circle = circleData[i];
+          circle.isFriendIncluded = circle.includedFriends.includes(this.friend.nickname);
+        }
+        return circleData;
       }
     },
     props: {
@@ -60,16 +56,16 @@
           return {
             username: "Username",
             nickname: "Nickname",
-            circles: ["Circle1", "Circle2","Circle3","Circle4"]
+            circles: ["Circle1", "Circle2", "Circle3", "Circle4"]
           }
         }
       }
     },
     methods: {
-      deleteFriend(passFriend) {
+      deleteFriend() {
         this.$showModal(ConfirmDeleteFriend, {
           props: {
-            friend: passFriend,
+            friend: this.friend,
             animated: true,
             transition: {
               name: "slide",
@@ -77,8 +73,11 @@
               curve: "ease"
             }
           }
-        })
+        });
         this.$modal.close();
+      },
+      updateFriend() {
+        // TODO
       }
     }
   };
@@ -97,6 +96,7 @@
     font-weight: bold;
     vertical-align: center;
   }
+
   .section-title {
     text-decoration: underline;
     font-size: 15;
