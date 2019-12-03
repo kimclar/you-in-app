@@ -1,12 +1,10 @@
 <template>
-
   <FlexboxLayout flexDirection="column" justifyContent="space-between">
-
     <StackLayout width="300" height="400" class="p-10">
-
-      <GridLayout columns="*,3*,*", width="700" height="40" backgroundColor=#3C5AFD>
+      <GridLayout columns="*,3*,*" , width="700" height="40" backgroundColor=#3C5AFD>
         <Label text="Friend Details" col="1" verticalAlignment="center" class="modal-title"></Label>
-        <Label col="2" class="center h2 action label icon fas" text.decode="&#xf057;" color="white" @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
+        <Label col="2" class="center h2 action label icon fas" text.decode="&#xf057;" color="white"
+               @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
       </GridLayout>
 
       <StackLayout>
@@ -18,26 +16,22 @@
 
         <Label class="friendLabel" text="Circles they are in:"></Label>
         <template v-for="i in circleD">
-         <template v-for="j in friend.circles">
+          <template v-for="j in friend.circles">
             <template v-if="i.name == j">
               <checkbox checked="true" :text="j" class="infoText"/>
             </template>
-             <template v-else>
+            <template v-else>
               <checkbox :text="i.name" class="infoText"/>
             </template>
-         </template>
+          </template>
         </template>
-
 
       </StackLayout>
     </StackLayout>
 
-
-      <Button width="200" class="h3" color="white"
-              backgroundColor="green" text="Save" @tap="sendRequest"></Button>
-      <Button width="200" class="h3" color="white" backgroundColor="red" text="Delete" @tap="deleteFriend(friend)"></Button>
+    <Button width="200" class="h3" color="white" backgroundColor="green" text="Save" @tap="sendRequest"></Button>
+    <Button width="200" class="h3" color="white" backgroundColor="red" text="Delete" @tap="deleteFriend(friend)"></Button>
   </FlexboxLayout>
-
 </template>
 
 <script>
@@ -60,7 +54,7 @@
           return {
             username: "Username",
             nickname: "Nickname",
-            circles: ["Circle1", "Circle2","Circle3","Circle4"]
+            circles: ["Circle1", "Circle2", "Circle3", "Circle4"]
           }
         }
       }
@@ -97,6 +91,7 @@
     font-weight: bold;
     vertical-align: center;
   }
+
   .section-title {
     text-decoration: underline;
     font-size: 15;
