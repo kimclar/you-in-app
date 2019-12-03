@@ -17,19 +17,21 @@
 
       <StackLayout class="form">
         <StackLayout class="input-field">
-          <Label class="inputLabel" text="Nickname:" fontSize="15"></Label>
-          <TextField class="input"></TextField>
+          <Label col="0" text="Nickname:" fontSize="15" class="friendLabel"
+                 verticalAlignment="center"></Label>
+          <Label col="1" :text="friends.nickname" class="friendLabel"
+                 verticalAlignment="center" horizontalAlignment="left"></Label>
         </StackLayout>
 
         <StackLayout height="10"></StackLayout>
 
         <StackLayout class="input-field" >
-          <Label class="inputLabel" text="Circles:" fontSize="15"></Label>
+          <Label class="friendLabel" text="Circles they are in:" fontSize="15"></Label>
 
           <StackLayout>
-            <ListView for="friend in friends" height="1000">
+            <ListView for="i in friends.circles" height="1000">
               <v-template>
-                <check-box :text="friend.circles[0]" textWrap="true"/>
+                <Label :text="i" textWrap="true"/>
               </v-template>
             </ListView>
           </StackLayout>
@@ -51,6 +53,18 @@
     computed: {
       friends() {
         return this.$store.getters.friends;
+      }
+    },
+    props: {
+      friends: {
+        type: Object,
+        default: function () {
+          return {
+            username: "Username",
+            nickname: "Nickname",
+            circles: ["Circle1", "Circle2","Circle3","Circle4"]
+          }
+        }
       }
     },
     methods: {
@@ -77,5 +91,12 @@
   .section-title {
     text-decoration: underline;
     font-size: 15;
+  }
+
+  .friendLabel {
+    padding-top: 8;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 20;
   }
 </style>

@@ -100,14 +100,28 @@
                     }
                 })
             },
-            friendDetails(){
-                this.$showModal(FriendsDetails)
+            friendDetails(args){
+                    console.log("Open Friend")
+                    const view = args.view;
+                    const tappedItem = view.bindingContext;
+
+                    this.$showModal(FriendsDetails, {
+                        props: {
+                            friends: tappedItem,
+                            animated: true,
+                            transition: {
+                                name: "slide",
+                                duration: 200,
+                                curve: "ease"
+                            }
+                        }
+                    });
+                },
             },
             addFriendTap(){
                 console.log("add friend!");
                 this.$showModal(AddFriend)
             }
-        }
     }
 </script>
 

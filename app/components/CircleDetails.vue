@@ -10,9 +10,12 @@
             </GridLayout>
 
                     <StackLayout>
-                        <Label :text="circles.name" class="h2 bold"></Label>
-                        <template v-for="friends in circles.includedFriends">
-                            <check-box :checked="isChecked" :text="friends" :key="friends"/>
+                        <Label class="circleList" text="Circle name:"></Label>
+                        <Label :text="circle.name" class="infoText"></Label>
+                        <Label class="circleList" text="Who's in:"></Label>
+                        <template v-for="friends in circle.includedFriends">
+
+                            <Label :text="friends" class="infoText"/>
                         </template>
 
                     </StackLayout>
@@ -33,12 +36,12 @@
 
     export default {
         props: {
-            circles: {
+            circle: {
                 type: Object,
                 default: function () {
                     return {
                         name: "Name",
-                        includedFriends: ["Friend1", "Friend2"]
+                        includedFriends: ["Friend1", "Friend2","Friend3","Friend4"]
                     }
                 }
             }
@@ -68,5 +71,18 @@
         font-size: 24;
         font-weight: bold;
         vertical-align: center;
+    }
+
+    .circleList {
+        padding-top: 8;
+        text-decoration: underline;
+        font-weight: bold;
+        font-size: 18;
+    }
+
+    .infoText {
+        color: voilet;
+        font-size: 16;
+        padding-top: 4;
     }
 </style>

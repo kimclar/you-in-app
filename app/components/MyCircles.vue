@@ -48,12 +48,11 @@
             onItemTap(args) {
                 console.log("Open Circle")
                 const view = args.view;
-                const page = view.page;
                 const tappedItem = view.bindingContext;
 
                 this.$showModal(CircleDetails, {
                     props: {
-                        context: tappedItem,
+                        circle: tappedItem,
                         animated: true,
                         transition: {
                             name: "slide",
