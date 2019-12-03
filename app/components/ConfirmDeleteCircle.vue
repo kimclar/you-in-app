@@ -6,7 +6,7 @@
         </StackLayout>
         <GridLayout columns="*, *">
             <Button col="0" width="100" backgroundColor="#e60000" color="white"
-                    class="btn btn-outline" text="YES" @tap="confirmDelete(circle)"/>
+                    class="btn btn-outline" text="YES" @tap="confirmDelete(circle.name)"/>
             <Button col="1" width="100" backgroundColor="#009933" color="white"
                     class="btn btn-outline" text="NO" @tap="$modal.close()"/>
         </GridLayout>
@@ -15,20 +15,20 @@
 
 <script>
     export default {
-        /*   props: {
-               request: {
-                   type: Object,
-                   default: function () {
-                       return {
-                           fromUser: "fromUser",
-                           toUser: "toUser"
-                       }
-                   }
-               }
-           },*/
+        props: {
+            circle: {
+                type: Object,
+                default: function () {
+                    return {
+                        name: "name",
+                        includedFriends: "includedFriends"
+                    }
+                }
+            }
+        },
         methods: {
-            confirmDelete(circle){
-                //this.$store.commit('removeFriendRequest', request);
+            confirmDelete(circleName){
+                this.$store.commit('removeCircle', circleName);
                 this.$modal.close();
             }
         }

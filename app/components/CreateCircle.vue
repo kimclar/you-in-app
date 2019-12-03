@@ -11,7 +11,7 @@
       <StackLayout class="form">
         <StackLayout class="input-field">
           <Label class="inputLabel" text="Circle Name:" fontSize="15"></Label>
-          <TextField class="input"></TextField>
+          <TextField class="input" v-model="circleName"></TextField>
         </StackLayout>
 
         <StackLayout height="10"></StackLayout>
@@ -21,13 +21,13 @@
           <StackLayout>
             <ListView for="friend in friends" height="290">
               <v-template>
-                <check-box :checked="isChecked" :text="friend.nickname" textWrap="true"/>
+                <check-box :checked="isChecked" :text="friend.nickname" textWrap="true" @checkedChange="onCheckChange($event, friend.nickname)"/>
               </v-template>
             </ListView>
           </StackLayout>
         </StackLayout>
 
-        <Button text="SAVE" color="white" backgroundColor="green" class="action-label" @tap="myCircles"></Button>
+        <Button text="SAVE" color="white" backgroundColor="green" class="action-label" @tap="createCircle()"></Button>
       </StackLayout>
     </StackLayout>
   </Page>
@@ -37,7 +37,8 @@
   export default {
     data() {
       return {
-        isChecked: false,
+        circleName: "",
+        addedFriends: []
       }
     },
     computed: {
@@ -46,9 +47,31 @@
       }
     },
     methods: {
-      myCircles() {
+      createCircle() {
+        if (this.circleName.trim() === "") {
+          alert({
+                  title: "Circle Creation Error",
+                  message: "Please include text in your circle's name.",
+                  okButtonText: "OK"
+                }).then(() => {
+            console.log("Alert dialog closed");
+          });
+        } else {
+          this.$store.commit('addCircle', {name: this.circleName, includedFriends: this.addedFriends});
+          this.$modal.close();
+        }
+      },
+      onCheckChange(event, nickname) {
+        this.isChecked = event.value;
+        if (this.isChecked === true){
+          this.addedFriends.push(nickname);
+          console.log(this.addedFriends.length);
+        } else {
+          this.addedFriends.splice(this.addedFriends.indexOf(nickname), 1);
+        }
       }
     }
+
   }
 </script>
 

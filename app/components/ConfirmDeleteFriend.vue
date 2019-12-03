@@ -15,20 +15,21 @@
 
 <script>
     export default {
-        /*   props: {
-               request: {
-                   type: Object,
-                   default: function () {
-                       return {
-                           fromUser: "fromUser",
-                           toUser: "toUser"
-                       }
-                   }
-               }
-           },*/
+        props: {
+            friend: {
+                type: Object,
+                default: function () {
+                    return {
+                        username: "username",
+                        nickname: "nickname",
+                        circles: "circles"
+                    }
+                }
+            }
+        },
         methods: {
             confirmDelete(friend){
-                //this.$store.commit('removeFriendRequest', request);
+                this.$store.commit('removeFriend', friend.username);
                 this.$modal.close();
             }
         }
