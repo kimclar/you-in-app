@@ -5,6 +5,7 @@ import eventData from '../components/mockData/eventData.json';
 import friendRequestData from '../components/mockData/friendRequestData.json';
 import friendsData from '../components/mockData/friendsData.json';
 import userData from '../components/mockData/userData.json';
+import nonFriendsData from "../components/mockData/nonFriendsData.json";
 
 Vue.use(Vuex);
 
@@ -18,7 +19,8 @@ export default new Vuex.Store({
         friends: friendsData,
         friendRequests: friendRequestData,
         circles: circleData,
-        allUsers: userData
+        allUsers: userData,
+        nonFriends: nonFriendsData
     },
     mutations: {
         setCurrentUser(state, username) {
@@ -118,6 +120,15 @@ export default new Vuex.Store({
                 }
             }
         },
+        editNonFriend(state, updatedNonFriend) {
+            let i;
+            for (i = 0; i < state.nonFriends.length; i++) {
+                if (state.nonFriends[i].username === updatedNonFriend.username) {
+                    state.nonFriends[i] = updatedNonFriend;
+                    return;
+                }
+            }
+        }
     },
     actions: {
         setCurrentUser(context, username) {
@@ -156,6 +167,9 @@ export default new Vuex.Store({
         editCircle(context, updatedCircle) {
             context.commit('editCircle', updatedCircle);
         },
+        editNonFriend(context, updatedNonFriend) {
+            context.commit('editCircle', updatedNonFriend);
+        },
     },
     getters: {
         currentUser: state => state.currentUser,
@@ -165,7 +179,8 @@ export default new Vuex.Store({
         friends: state => state.friends,
         friendRequests: state => state.friendRequests,
         circles: state => state.circles,
-        allUsers: state => state.allUsers
+        allUsers: state => state.allUsers,
+        nonFriends: state => state.nonFriends
     }
 });
 
