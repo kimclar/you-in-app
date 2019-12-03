@@ -57,8 +57,7 @@
         etitle: "",
         elocation: "",
         edateTime: "",
-        ehost: [{name: "Ricky", circles: "OmegaChiChi"}],
-        eattendees:  [],
+        eattendees:  ["Ricky"],
         edetails: "",
         eisSharable: false
       }
@@ -69,19 +68,21 @@
       }
     },
     methods: {
-      createEvent() {if (this.etitle.trim() === "" || this.elocation.trim()=== "" || this.edateTime.trim() === "") {
-        alert({
-                title: "Event Creation Error",
-                message: "Please fill all required fields.",
-                okButtonText: "OK"
-              }).then(() => {
-          console.log("Alert dialog closed");
-        });
-      } else {
-        this.$store.commit('addEvent', this.etitle, this.elocation, this.edateTime, this.ehost, "Ricky", this.eattendees, this.edetails, this.eisSharable);
-        this.$modal.close();
-      }
-      },
+        createEvent() {
+            console.log("loaded");
+            if (this.etitle.trim() === "" || this.elocation.trim()=== "" || this.edateTime.trim() === "") {
+                alert({
+                          title: "Event Creation Error",
+                          message: "Please fill all required fields.",
+                          okButtonText: "OK"
+                      }).then(() => {
+                    console.log("Alert dialog closed");
+                });
+            } else {
+                this.$store.commit('addEvent', {title: this.etitle, location: this.elocation, dateTime: this.edateTime, host: {name: "Ricky", circles: "BFFs"}, attendees: this.eattendees, details: this.edetails, isSharable: this.eisSharable});
+                this.$modal.close();
+            }
+        },
       onCheckChange(event) {
         this.eisSharable = event.value;
       }
