@@ -120,6 +120,26 @@ export default new Vuex.Store({
                     return;
                 }
             }
+        },
+        joinEvent(state, eventName, joiner){
+            let i;
+            for (i = 0; i < state.events.length; i++) {
+                if (state.events[i].title === eventName) {
+                    state.events[i].attendees.push(joiner);
+                    i--;
+                    return;
+                }
+            }
+        },
+        leaveEvent(state, eventName, leaver){
+            let i;
+            for (i = 0; i < state.events.length; i++) {
+                if (state.events[i].title === eventName) {
+                    state.events[i].attendees.splice(state.events[i].attendees.indexOf(leaver), 1);
+                    i--;
+                    return;
+                }
+            }
         }
     },
     actions: {
@@ -162,6 +182,12 @@ export default new Vuex.Store({
         editNonFriend(context, updatedNonFriend) {
             context.commit('editCircle', updatedNonFriend);
         },
+        joinEvent(context, eventName, joiner) {
+            context.commit('joinEvent', eventName, joiner)
+        },
+        leaveEvent(context,eventName, leaver){
+            context.commit('leaveEvent', eventName, leaver)
+        }
     },
     getters: {
         currentUser: state => state.currentUser,

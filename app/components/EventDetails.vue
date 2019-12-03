@@ -29,9 +29,9 @@
             <Label col="0" text="Location" class="editLabel"></Label>
             <Label col="1" :text="event.location" class="h3 font-weight-bold"></Label>
           </GridLayout>
-          <GridLayout columns="3*,8*" height="40">
+          <GridLayout columns="3*,8*" height="50">
             <Label col="0" text="Details" class="editLabel"></Label>
-            <Label col="1" :text="event.details" class="h3 font-weight-bold"></Label>
+            <Label col="1" :text="event.details" textWrap="true" class="h3 font-weight-bold"></Label>
           </GridLayout>
           <Label class="guests" text="Who's in?"></Label>
           <Label :text="event.host.name + ' (host)'" fontSize="14"></Label>
@@ -40,12 +40,15 @@
       </StackLayout>
 
 
-    <Button width="200" class="h3" color="white"
-            backgroundColor="#30CE91" text="Count me In!" @tap="sendRequest"></Button>
+    <Button v-if="attending" width="200" class="h3" color="white"
+            backgroundColor="#cd5c5c" text="Count me Out!" @tap="tapLeave(event.title)"></Button>
+    <Button v-else width="200" class="h3" color="white"
+            backgroundColor="#30CE91" text="Count me In!" @tap="tapJoin(event.title)"></Button>
   </FlexboxLayout>
 </template>
 
 <script>
+
   export default {
     props: {
       event: {
@@ -61,6 +64,20 @@
             isSharable: false
           }
         }
+      }
+    },
+    data() {
+      return {
+        me: "Ricky",
+        attending: (this.event.attendees.indexOf(this.me) > -1)
+      }
+    },
+    methods: {
+      tapJoin(eventName){
+        this.$store.commit('joinEvent', eventName, this.me)
+      },
+      tapLeave(eventName){
+        this.$store.commit('leaveEvent', eventName, this.me)
       }
     }
   };
