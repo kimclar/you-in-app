@@ -1,5 +1,4 @@
 <template>
-
   <FlexboxLayout flexDirection="column" justifyContent="space-between">
 
     <StackLayout width="300" height="400" class="p-10">
@@ -14,20 +13,12 @@
         <TextField :hint="circle.name" class="infoText"></TextField>
 
         <Label class="circleList" text="Who's in:"></Label>
-        <template v-for="i in friends">
-          <template v-for="j in circle.includedFriends">
-            <template v-if="i.nickname == j">
-              <checkbox checked="true" :text="i.nickname" class="infoText"/>
-            </template>
-            <template v-else>
-              <checkbox :text="i.nickname" class="infoText"/>
-            </template>
-          </template>
-        </template>
-        <!--<template v-for="friends in circle.includedFriends">
-            <Label :text="friends" class="infoText"/>
-        </template>-->
-
+        <ListView for="friend in friends" width="300" height="250">
+          <v-template>
+            <checkbox :checked="friend.isInCircle" @tap="friend.isInCircle = !friend.isInCircle"
+                      :text="friend.nickname" class="infoText"/>
+          </v-template>
+        </ListView>
       </StackLayout>
     </StackLayout>
 
@@ -46,7 +37,13 @@
   export default {
     computed: {
       friends() {
-        return this.$store.getters.friends;
+        let friendData = this.$store.getters.friends;
+        let i;
+        for (i = 0; i < friendData.length; i++) {
+          let friend = friendData[i];
+          friend.isInCircle = this.circle.includedFriends.includes(friend.nickname);
+        }
+        return friendData;
       }
     },
     props: {
