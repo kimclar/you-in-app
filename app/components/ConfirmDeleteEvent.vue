@@ -15,20 +15,25 @@
 
 <script>
     export default {
-     /*   props: {
-            request: {
+        props: {
+            event: {
                 type: Object,
                 default: function () {
                     return {
-                        fromUser: "fromUser",
-                        toUser: "toUser"
+                        title: "title",
+                        location: "location",
+                        dateTime: "dateTime",
+                        host: "host",
+                        attendees:  "attendees",
+                        details: "details",
+                        isSharable: "isSharable"
                     }
                 }
             }
-        },*/
+        },
         methods: {
             confirmDelete(event){
-                //this.$store.commit('removeFriendRequest', request);
+                this.$store.commit('removeEvent', event.title);
                 this.$modal.close();
             }
         }

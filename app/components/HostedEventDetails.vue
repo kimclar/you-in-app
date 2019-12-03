@@ -44,7 +44,7 @@
 
       <GridLayout columns="5*,5*" height="40">
         <Button width="150" col="0" color="white" backgroundColor="green" text="Save" @tap="sendRequest" />
-        <Button width="150" col="1" color="white" backgroundColor="#e60000" text="Delete" @tap="deleteEvent" />
+        <Button width="150" col="1" color="white" backgroundColor="#e60000" text="Delete" @tap="deleteEvent(event)" />
       </GridLayout>
 
     </StackLayout>
@@ -73,8 +73,19 @@
       }
     },
     methods: {
-      deleteEvent(){
-        this.$showModal(ConfirmDeleteEvent)
+      deleteEvent(passEvent){
+        this.$showModal(ConfirmDeleteEvent, {
+          props: {
+            event: passEvent,
+            animated: true,
+            transition: {
+              name: "slide",
+              duration: 200,
+              curve: "ease"
+            }
+          }
+        })
+        this.$modal.close();
       }
     }
   };

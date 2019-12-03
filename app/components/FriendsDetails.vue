@@ -35,7 +35,7 @@
 
       <Button width="200" class="h3" color="white"
               backgroundColor="green" text="Save" @tap="sendRequest"></Button>
-      <Button width="200" class="h3" color="white" backgroundColor="red" text="Delete" @tap="deleteFriend"></Button>
+      <Button width="200" class="h3" color="white" backgroundColor="red" text="Delete" @tap="deleteFriend(friend)"></Button>
   </FlexboxLayout>
 
 </template>
