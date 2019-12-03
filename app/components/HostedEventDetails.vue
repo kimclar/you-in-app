@@ -81,7 +81,8 @@
         hostName: this.event.host.name,
         hostCircles: this.event.host.circles,
         edetails: this.event.details,
-        eisSharable: this.event.isSharable
+        eisSharable: this.event.isSharable,
+        eid: this.event.id
       }
     },
     methods: {
@@ -110,7 +111,7 @@
               }).then(() => {
           console.log("Alert dialog closed");
         });
-        this.$store.commit('editEvent', {title: this.etitle, location: this.elocation, dateTime: this.edateTime, host: {name: this.hostName, circles: this.hostCircles}, attendees: this.eattendees, details: this.edetails, isSharable: this.eisSharable});
+        this.$store.commit('editEvent', {id: this.eid , title: this.etitle, location: this.elocation, dateTime: this.edateTime, host: {name: this.hostName, circles: this.hostCircles}, attendees: this.eattendees, details: this.edetails, isSharable: this.eisSharable});
         this.$modal.close();
         this.$store.commit('addEvent', {title: "r3fr3sh3r", location: "", dateTime: "", host: {name: "", circles: ""}, attendees: [], details: "", isSharable: false});
         this.$store.commit('removeEvent', "r3fr3sh3r");
