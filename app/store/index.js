@@ -27,7 +27,10 @@ export default new Vuex.Store({
             state.currentUser = username;
         },
         addEvent(state, newEvent) {
+            newEvent.id=nextEventId;
+            nextEventId++;
             state.events.push(newEvent);
+
         },
         removeEvent(state, eventId) {
             let i;
