@@ -1,6 +1,6 @@
 <template>
-  <Page>
-    <StackLayout width="400" height="800" class="p-10">
+
+    <StackLayout width="350" height="800" class="p-10">
       <GridLayout columns="*,2*,*", width="700" height="40" backgroundColor=#3C5AFD>
         <Label text="New Event" col="1" verticalAlignment="center" class="modal-title"></Label>
         <Label col="2" class="center h2 action label icon fas" text.decode="&#xf057;" color="white" @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
@@ -47,7 +47,7 @@
 
       </StackLayout>
     </StackLayout>
-  </Page>
+
 </template>
 
 <script>

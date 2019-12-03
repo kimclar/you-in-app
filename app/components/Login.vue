@@ -68,12 +68,13 @@
   }
 
   .button-label {
-    font-size: 14;
+    font-size: 16;
     font-weight: bold;
+    text-align: center;
   }
 
   .inputLabel {
-    font-size: 14;
+    font-size: 15;
   }
 
 </style>

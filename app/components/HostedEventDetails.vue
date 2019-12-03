@@ -1,26 +1,55 @@
 <template>
-  <FlexboxLayout flexDirection="column" justifyContent="space-between">
-    <ScrollView>
-      <StackLayout width="700" height="400" class="p-10">
-        <GridLayout columns="5*,*", width="700" height="40" backgroundColor=#3C5AFD>
-          <Label :text="event.title" col="0" verticalAlignment="center" horizontalAlignment="center" class="modal-title"></Label>
-          <Label col="1" class="center h2 action label icon fas" text.decode="&#xf057;" color="white" @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
-        </GridLayout>
-        <StackLayout height="10"></StackLayout>
-        <StackLayout>
-          <Label :text="event.dateTime" class="h3 font-weight-bold"></Label>
-          <Label :text="event.location" class="h3 font-weight-bold"></Label>
-          <Label :text="event.details" class="h3 font-weight-bold"></Label>
-          <Label class="guests" text="Who's in?"></Label>
-          <Label text="You" class="h3 font-weight-bold"></Label>
-          <Label v-for="attendee in event.attendees" :text="attendee" :key="attendee" class="h3 font-weight-bold"></Label>
-        </StackLayout>
-      </StackLayout>
-    </ScrollView>
 
-    <Button width="200" class="h3" color="white" backgroundColor="#3C5AFD" text="Edit" @tap="sendRequest" />
-    <Button width="200" class="h3" color="white" backgroundColor="#e60000" text="Delete" @tap="deleteEvent" />
-  </FlexboxLayout>
+  <StackLayout width="350" height="450" class="p-10">
+    <GridLayout columns="*,2*,*", width="700" height="40" backgroundColor=#3C5AFD>
+      <Label :text="event.title" col="1" verticalAlignment="center" class="modal-title"></Label>
+      <Label col="2" class="center h2 action label icon fas" text.decode="&#xf057;" color="white" @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
+    </GridLayout>
+
+    <StackLayout height="10"></StackLayout>
+
+    <StackLayout class="form">
+      <StackLayout class="input-field">
+        <Label class="event-section" text="What?*"></Label>
+        <TextField :hint= "event.title" backgroundColor="white" class="input"></TextField>
+      </StackLayout>
+
+      <StackLayout class="input-field">
+        <Label class="event-section" text="When?*"></Label>
+        <TextField backgroundColor="white" class="input" :hint= "event.dateTime"></TextField>
+      </StackLayout>
+
+      <StackLayout class="input-field">
+        <Label class="event-section" text="Where?*"></Label>
+        <TextField backgroundColor="white" :hint= "event.location" class="input"></TextField>
+      </StackLayout>
+
+      <!--<StackLayout class="input-field">
+        <Label class="event-section" text="Who?*"></Label>
+        <ListView for="circleName in myCircles" height="225">
+          <v-template>
+            <check-box :checked="isChecked" :text="circleName.name" textWrap="true"/>
+          </v-template>
+        </ListView>
+      </StackLayout>-->
+
+      <StackLayout class="input-field">
+        <Label class="event-section" text="Details [Optional]"></Label>
+        <TextField backgroundColor="white" :hint= "event.details" class="input"></TextField>
+      </StackLayout>
+
+      <StackLayout class="input-field">
+        <check-box :checked="event.isSharable" text="Allow your circles to share this event?" textWrap="true"/>
+      </StackLayout>
+
+      <GridLayout columns="5*,5*" height="40">
+        <Button width="150" col="0" color="white" backgroundColor="green" text="Save" @tap="sendRequest" />
+        <Button width="150" col="1" color="white" backgroundColor="#e60000" text="Delete" @tap="deleteEvent" />
+      </GridLayout>
+
+    </StackLayout>
+  </StackLayout>
+
 </template>
 
 <script>
@@ -51,22 +80,28 @@
   };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   // Start custom common variables
   @import "~@nativescript/theme/scss/variables/blue";
   // End custom common variables
 
   // Custom styles
-  .guests {
-    text-decoration: underline;
-    font-size: 20;
-  }
   .modal-title {
     color: white;
     background-color: #3C5AFD;
     font-size: 24;
     font-weight: bold;
     vertical-align: center;
-    padding-left: 4;
+    text-align: left;
+  }
+  .event-section {
+    color: black;
+    background-color: transparent;
+    font-size: 18;
+    font-weight: bold;
+    vertical-align: left;
+  }
+  .input {
+    font-size: 16;
   }
 </style>

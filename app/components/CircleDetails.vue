@@ -10,18 +10,27 @@
 
                     <StackLayout>
                         <Label class="circleList" text="Circle name:"></Label>
-                        <Label :text="circle.name" class="infoText"></Label>
+                        <TextField :hint="circle.name" class="infoText"></TextField>
                         <Label class="circleList" text="Who's in:"></Label>
-                        <template v-for="friends in circle.includedFriends">
-
-                            <Label :text="friends" class="infoText"/>
+                        <template v-for="i in friends">
+                            <template v-for="j in circle.includedFriends">
+                                <template v-if="i.nickname == j">
+                                    <checkbox checked="true" :text="i.nickname" class="infoText"/>
+                                </template>
+                                <template v-else>
+                                    <checkbox :text="i.nickname" class="infoText"/>
+                                </template>
+                            </template>
                         </template>
+                        <!--<template v-for="friends in circle.includedFriends">
+                            <Label :text="friends" class="infoText"/>
+                        </template>-->
 
                     </StackLayout>
         </StackLayout>
 
             <Button width="200" class="h3" color="white"
-                    backgroundColor="blue" text="Edit" @tap="sendRequest"></Button>
+                    backgroundColor="green" text="Save" @tap="sendRequest"></Button>
             <Button width="200" class="h3" color="white"
                     backgroundColor="red" text="Delete" @tap="deleteCircle"></Button>
 
@@ -33,6 +42,11 @@
     import ConfirmDeleteCircle from "./ConfirmDeleteCircle";
 
     export default {
+        computed: {
+            friends() {
+                return this.$store.getters.friends;
+            }
+        },
         props: {
             circle: {
                 type: Object,

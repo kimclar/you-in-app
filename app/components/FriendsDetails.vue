@@ -11,34 +11,47 @@
 
       <StackLayout>
         <Label text="Username:" class="friendLabel"></Label>
-        <Label :text="friend.username" class="infoText"></Label>
+        <Textfield :hint="friend.username" class="infoText"></Textfield>
 
         <Label text="Nickname:" class="friendLabel"></Label>
-        <Label :text="friend.nickname" class="infoText"></Label>
+        <Textfield :hint="friend.nickname" class="infoText"></Textfield>
 
         <Label class="friendLabel" text="Circles they are in:"></Label>
-        <template v-for="i in friend.circles">
-          <Label :text="i" class="infoText"/>
+        <template v-for="i in circleD">
+         <template v-for="j in friend.circles">
+            <template v-if="i.name == j">
+              <checkbox checked="true" :text="j" class="infoText"/>
+            </template>
+             <template v-else>
+              <checkbox :text="i.name" class="infoText"/>
+            </template>
+         </template>
         </template>
+
+
       </StackLayout>
     </StackLayout>
 
 
       <Button width="200" class="h3" color="white"
-              backgroundColor="blue" text="Edit" @tap="sendRequest"></Button>
+              backgroundColor="green" text="Save" @tap="sendRequest"></Button>
       <Button width="200" class="h3" color="white"
-              backgroundColor="red" text="Delete" @tap="deleteCircle"></Button>
+              backgroundColor="red" text="Delete" @tap="deleteFriend"></Button>
   </FlexboxLayout>
 
 </template>
 
 <script>
   import ConfirmDeleteFriend from "./ConfirmDeleteFriend";
+  import CircleData from "./mockData/circleData.json"
 
   export default {
     computed: {
       friends() {
         return this.$store.getters.friends;
+      },
+      circleD() {
+        return this.$store.getters.circles;
       }
     },
     props: {
@@ -87,7 +100,6 @@
   }
 
   .infoText {
-    color: voilet;
     font-size: 16;
     padding-top: 4;
   }
