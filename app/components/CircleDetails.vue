@@ -23,7 +23,7 @@
             <Button width="200" class="h3" color="white"
                     backgroundColor="blue" text="Edit" @tap="sendRequest"></Button>
             <Button width="200" class="h3" color="white"
-                    backgroundColor="red" text="Delete" @tap="deleteCircle"></Button>
+                    backgroundColor="red" text="Delete" @tap="deleteCircle(circle)"></Button>
 
 
     </FlexboxLayout>
@@ -45,8 +45,19 @@
             }
         },
         methods: {
-            deleteCircle(){
-                this.$showModal(ConfirmDeleteCircle)
+            deleteCircle(passCircle){
+                this.$showModal(ConfirmDeleteCircle, {
+                    props: {
+                        circle: passCircle,
+                        animated: true,
+                        transition: {
+                            name: "slide",
+                            duration: 200,
+                            curve: "ease"
+                        }
+                    }
+                })
+                this.$modal.close();
             }
         }
     };
