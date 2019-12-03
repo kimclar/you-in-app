@@ -9,10 +9,10 @@
 
       <StackLayout>
         <Label text="Username:" class="friendLabel"></Label>
-        <Textfield :hint="friend.username" class="infoText"></Textfield>
+        <Label :text="friend.username" class="infoText"></Label>
 
         <Label text="Nickname:" class="friendLabel"></Label>
-        <Textfield :hint="friend.nickname" class="infoText"></Textfield>
+        <Textfield :text="friend.nickname" class="infoText"></Textfield>
 
         <Label class="friendLabel" text="Circles they are in:"></Label>
 
