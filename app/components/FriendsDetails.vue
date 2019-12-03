@@ -16,9 +16,10 @@
 
         <Label class="friendLabel" text="Circles they are in:"></Label>
 
-        <ListView for="circle in circleData" width="300" height="250">
+        <ListView for="circle in circles" width="300" height="250">
           <v-template>
-            <checkbox :checked="circle.includedFriends.includes(friend.nickname)" :text="circle.name" class="infoText"/>
+            <checkbox :checked="circle.isFriendIncluded" @tap="circle.isFriendIncluded = !circle.isFriendIncluded"
+                      :text="circle.name" class="infoText"/>
           </v-template>
         </ListView>
 
@@ -39,8 +40,14 @@
       friends() {
         return this.$store.getters.friends;
       },
-      circleData() {
-        return this.$store.getters.circles;
+      circles() {
+        let circleData = this.$store.getters.circles;
+        let i;
+        for (i = 0; i < circleData.length; i++) {
+          let circle = circleData[i];
+          circle.isFriendIncluded = circle.includedFriends.includes(this.friend.nickname);
+        }
+        return circleData;
       }
     },
     props: {
