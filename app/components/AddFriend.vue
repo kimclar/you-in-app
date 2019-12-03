@@ -8,11 +8,12 @@
 
       <StackLayout class="form">
         <SearchBar hint="Enter username here" @textChange="onTextChanged"/>
-        <ListView for="user in friends" height="900">
+        <ListView for="user in nonFriends" height="900">
           <v-template>
             <GridLayout columns="3*,3*">
               <Label col="0" :text="user.username" class="h3 font-weight-bold" verticalAlignment="center"></Label>
-              <Button col="1" class="h5 bg-primary pull-right" text="Send Request" @tap="sendRequest" height="40"></Button>
+              <Button v-if="!user.requested" col="1" class="h5 bg-primary pull-right" text="Send Request" @tap="sendRequest(user.username)" height="40"></Button>
+              <Button v-else col="1" class="h5 bg-primary pull-right" text="Request Sent" height="40" backgroundColor="#696969"></Button>
             </GridLayout>
           </v-template>
         </ListView>
@@ -25,6 +26,9 @@
 <script>
   export default {
     computed: {
+      nonFriends(){
+        return this.$store.getters.nonFriends;
+      },
       allUsers() {
         return this.$store.getters.allUsers;
       },
@@ -35,7 +39,9 @@
     methods: {
       onTextChanged() {
       },
-      sendRequest() {
+      sendRequest(user) {
+        this.$modal.close();
+        this.$store.commit('editNonFriend', {username: user, requested: true});
         let dialogs = require("tns-core-modules/ui/dialogs");
         dialogs.alert({
           title: "",

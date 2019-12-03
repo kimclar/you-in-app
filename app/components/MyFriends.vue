@@ -61,7 +61,12 @@
           }
         },
         methods: {
-            acceptRequestTap (args) {
+            addFriendTap() {
+                this.$showModal(AddFriend);
+                console.log("add friend!")
+            },
+
+            acceptRequestTap(args) {
                 const view = args.view;
                 const tappedItem = view.bindingContext;
 
@@ -77,14 +82,14 @@
                     }
                 })
 
-                this.$store.commit('addFriend',   {
+                this.$store.commit('addFriend', {
                     "username": tappedItem.fromUser,
                     "nickname": tappedItem.fromUser,
                     "circles": []
                 })
                 this.$store.commit('removeFriendRequest', tappedItem);
             },
-            rejectRequestTap(args){
+            rejectRequestTap(args) {
                 const view = args.view;
                 const tappedItem = view.bindingContext;
 
@@ -100,28 +105,24 @@
                     }
                 })
             },
-            friendDetails(args){
-                    console.log("Open Friend")
-                    const view = args.view;
-                    const tappedItem = view.bindingContext;
+            friendDetails(args) {
+                console.log("Open Friend")
+                const view = args.view;
+                const tappedItem = view.bindingContext;
 
-                    this.$showModal(FriendsDetails, {
-                        props: {
-                            friend: tappedItem,
-                            animated: true,
-                            transition: {
-                                name: "slide",
-                                duration: 200,
-                                curve: "ease"
-                            }
+                this.$showModal(FriendsDetails, {
+                    props: {
+                        friend: tappedItem,
+                        animated: true,
+                        transition: {
+                            name: "slide",
+                            duration: 200,
+                            curve: "ease"
                         }
-                    });
-                },
+                    }
+                });
             },
-            addFriendTap(){
-                console.log("add friend!");
-                this.$showModal(AddFriend)
-            }
+        }
     }
 </script>
 
