@@ -30,7 +30,7 @@
         </StackLayout>
 
             <Button width="200" class="h3" color="white"
-                    backgroundColor="green" text="Save" @tap="sendRequest"></Button>
+                    backgroundColor="green" text="Save" @tap="saveChanges"></Button>
             <Button width="200" class="h3" color="white"
                     backgroundColor="red" text="Delete" @tap="deleteCircle(circle)"></Button>
 
@@ -71,6 +71,14 @@
                         }
                     }
                 })
+                this.$modal.close();
+            },
+            saveChanges() {
+                alert({
+                          title: "",
+                          message: "Your changes have been saved!",
+                          okButtonText: "OK"
+                      })
                 this.$modal.close();
             }
         }

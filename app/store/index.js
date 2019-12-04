@@ -30,7 +30,6 @@ export default new Vuex.Store({
             newEvent.id=nextEventId;
             nextEventId++;
             state.events.push(newEvent);
-
         },
         removeEvent(state, eventId) {
             let i;
@@ -121,21 +120,21 @@ export default new Vuex.Store({
                 }
             }
         },
-        joinEvent(state, eventName, joiner){
+        joinEvent(state, eventName){
             let i;
             for (i = 0; i < state.events.length; i++) {
                 if (state.events[i].title === eventName) {
-                    state.events[i].attendees.push(joiner);
+                    state.events[i].attendees.push(state.currentUser);
                     i--;
                     return;
                 }
             }
         },
-        leaveEvent(state, eventName, leaver){
+        leaveEvent(state, eventName){
             let i;
             for (i = 0; i < state.events.length; i++) {
                 if (state.events[i].title === eventName) {
-                    state.events[i].attendees.splice(state.events[i].attendees.indexOf(leaver), 1);
+                    state.events[i].attendees.splice(state.events[i].attendees.indexOf(state.currentUser), 1);
                     i--;
                     return;
                 }
@@ -182,11 +181,11 @@ export default new Vuex.Store({
         editNonFriend(context, updatedNonFriend) {
             context.commit('editCircle', updatedNonFriend);
         },
-        joinEvent(context, eventName, joiner) {
-            context.commit('joinEvent', eventName, joiner)
+        joinEvent(context, eventName) {
+            context.commit('joinEvent', eventName)
         },
         leaveEvent(context,eventName, leaver){
-            context.commit('leaveEvent', eventName, leaver)
+            context.commit('leaveEvent', eventName)
         }
     },
     getters: {

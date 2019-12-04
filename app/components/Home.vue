@@ -10,13 +10,8 @@
     </ActionBar>
 
     <ListView for="event in othersEvents" @itemTap="onItemTap">
-      <v-template>
-      <!--
-        <StackLayout orientation="horizontal">
-          <Label class="listItems" :text="event.title" textWrap="true"></Label>
-        </StackLayout>
-        -->
-       <card-view class="cardStyle" margin="10" elevation="40" radius="5">
+      <v-template if="event.isAttending">
+       <card-view class="attendingCard" margin="10" elevation="40" radius="5">
          <StackLayout>
            <label class="listItems" :text="event.title"></label>
            <GridLayout columns="*,*" horizontalAlignment="right">
@@ -25,6 +20,17 @@
            </GridLayout>
          </StackLayout>
        </card-view>
+      </v-template>
+      <v-template>
+        <card-view margin="10" elevation="40" radius="5">
+          <StackLayout>
+            <label class="listItems" :text="event.title"></label>
+            <GridLayout columns="*,*" horizontalAlignment="right">
+              <Label col="0" class="secondaryListItems" :text="event.dateTime"></Label>
+              <Label col="1" class="secondaryListItems pull-right" :text="event.attendees[0]+' + '+ event.attendees.length+' others'"></Label>
+            </GridLayout>
+          </StackLayout>
+        </card-view>
       </v-template>
     </ListView>
   </Page>
@@ -37,10 +43,19 @@
   export default {
     computed: {
       othersEvents() {
-        return this.$store.getters.othersEvents
+        let otherEventsData = this.$store.getters.othersEvents;
+        let i;
+        for (i = 0; i < otherEventsData.length; i++) {
+          let event = otherEventsData[i];
+          event.isAttending = event.attendees.includes("Ricky");
+        }
+        return otherEventsData;
       }
     },
     methods: {
+      checkAttending(eventAttendees){
+        return (eventAttendees.indexOf("Ricky") > -1)
+      },
       onItemTap(args) {
         console.log("Open Event")
         const view = args.view;
@@ -92,6 +107,9 @@
   .secondaryListItems {
       font-size: 14;
     color: indigo;
+  }
+  .attendingCard {
+    background-color: #87cefa;
   }
 
 </style>
