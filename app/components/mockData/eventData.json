@@ -4,7 +4,7 @@
     "location": "Central Perk",
     "dateTime": "December 17 2019, 7:00pm",
     "host": {"name": "Phoebe", "circles": "Friends"},
-    "attendees":  ["Joey", "Rachel", "Ross", "Monica"],
+    "attendees":  ["Joey", "Ricky","Rachel", "Ross", "Monica"],
     "details": "Please be on time",
     "isSharable": false
   },
@@ -94,7 +94,7 @@
     "location": "THE NEW PAD THAI PLACE",
     "dateTime": "December 13 2019, 12:00pm",
     "host": {"name": "Tom", "circles": "BFFs"},
-    "attendees":  ["Dan", "Thomas"],
+    "attendees":  ["Dan", "Thomas", "Ricky"],
     "details": "",
     "isSharable": false
   },

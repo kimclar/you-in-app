@@ -26,8 +26,9 @@
       </StackLayout>
     </StackLayout>
 
-    <Button width="200" class="h3" color="white" backgroundColor="green" text="Save" @tap="updateFriend()"></Button>
-    <Button width="200" class="h3" color="white" backgroundColor="red" text="Delete" @tap="deleteFriend()"></Button>
+      <Button width="200" class="h3" color="white"
+              backgroundColor="green" text="Save" @tap="saveChanges"></Button>
+      <Button width="200" class="h3" color="white" backgroundColor="red" text="Delete" @tap="deleteFriend(friend)"></Button>
   </FlexboxLayout>
 </template>
 
@@ -61,25 +62,30 @@
         }
       }
     },
-    methods: {
-      deleteFriend() {
-        this.$showModal(ConfirmDeleteFriend, {
-          props: {
-            friend: this.friend,
-            animated: true,
-            transition: {
-              name: "slide",
-              duration: 200,
-              curve: "ease"
-            }
+      methods: {
+          deleteFriend(passFriend) {
+              this.$showModal(ConfirmDeleteFriend, {
+                  props: {
+                      friend: passFriend,
+                      animated: true,
+                      transition: {
+                          name: "slide",
+                          duration: 200,
+                          curve: "ease"
+                      }
+                  }
+              })
+              this.$modal.close();
+          },
+          saveChanges() {
+              alert({
+                        title: "",
+                        message: "Your changes have been saved!",
+                        okButtonText: "OK"
+                    })
+              this.$modal.close();
           }
-        });
-        this.$modal.close();
-      },
-      updateFriend() {
-        // TODO
       }
-    }
   };
 </script>
 

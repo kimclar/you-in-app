@@ -40,12 +40,16 @@
       </StackLayout>
 
 
-    <Button width="200" class="h3" color="white"
-            backgroundColor="#30CE91" text="Count me In!" @tap="sendRequest"></Button>
+    <Button v-if="isAttending" width="200" class="h3" color="white"
+            backgroundColor="#cd5c5c" text="Count me Out!" @tap="tapLeave(event.title)"></Button>
+    <Button v-else width="200" class="h3" color="white"
+            backgroundColor="#30CE91" text="Count me In!" @tap="tapJoin(event.title)"></Button>
   </FlexboxLayout>
 </template>
 
 <script>
+  import EventDetails from "./EventDetails";
+
   export default {
     props: {
       event: {
@@ -61,6 +65,30 @@
             isSharable: false
           }
         }
+      }
+    },
+    data() {
+      return {
+        me: "Ricky",
+      }
+    },
+    computed: {
+      isAttending() {
+        return this.event.attendees.includes(this.me);
+      }
+    },
+    methods: {
+      tapJoin(eventName){
+        this.$store.commit('joinEvent', eventName)
+        this.$store.commit('addEvent', {title: "r3fr3sh3r", location: "", dateTime: "", host: {name: "", circles: ""}, attendees: [], details: "", isSharable: false});
+        this.$store.commit('removeEvent', "r3fr3sh3r");
+        this.$modal.close();
+      },
+      tapLeave(eventName){
+        this.$store.commit('leaveEvent', eventName, this.me);
+        this.$modal.close()
+        this.$store.commit('addEvent', {title: "r3fr3sh3r", location: "", dateTime: "", host: {name: "", circles: ""}, attendees: [], details: "", isSharable: false});
+        this.$store.commit('removeEvent', "r3fr3sh3r");
       }
     }
   };

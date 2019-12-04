@@ -23,10 +23,9 @@
     </StackLayout>
 
     <Button width="200" class="h3" color="white"
-            backgroundColor="green" text="Save" @tap="sendRequest"></Button>
+            backgroundColor="green" text="Save" @tap="saveChanges"></Button>
     <Button width="200" class="h3" color="white"
             backgroundColor="red" text="Delete" @tap="deleteCircle(circle)"></Button>
-
 
   </FlexboxLayout>
 </template>
@@ -58,21 +57,29 @@
       }
     },
     methods: {
-      deleteCircle(passCircle) {
-        this.$showModal(ConfirmDeleteCircle, {
-          props: {
-            circle: passCircle,
-            animated: true,
-            transition: {
-              name: "slide",
-              duration: 200,
-              curve: "ease"
+            deleteCircle(passCircle){
+                this.$showModal(ConfirmDeleteCircle, {
+                    props: {
+                        circle: passCircle,
+                        animated: true,
+                        transition: {
+                            name: "slide",
+                            duration: 200,
+                            curve: "ease"
+                        }
+                    }
+                })
+                this.$modal.close();
+            },
+            saveChanges() {
+                alert({
+                          title: "",
+                          message: "Your changes have been saved!",
+                          okButtonText: "OK"
+                      })
+                this.$modal.close();
             }
-          }
-        })
-        this.$modal.close();
-      }
-    }
+        }
   };
 </script>
 
