@@ -2,11 +2,11 @@
   <BottomNavigation>
     <TabStrip>
       <TabStripItem class="navigation__item">
-        <Label text="Home"></Label>
+        <Label text="Explore"></Label>
         <Image src.decode="font://&#xf015;" class="fas t-36"></Image>
       </TabStripItem>
       <TabStripItem class="navigation__item">
-        <Label text="Hosted Events"></Label>
+        <Label text="Hosting"></Label>
         <Image src.decode="font://&#xf073;" class="far t-36"></Image>
       </TabStripItem>
       <TabStripItem class="navigation__item">
