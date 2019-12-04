@@ -2,7 +2,7 @@
   <Page>
     <ActionBar>
       <GridLayout columns="*,2*,*" horizontalAlignment="right">
-        <Label text="Home" col="1" class="action-label"></Label>
+        <Label text="Explore" col="1" class="action-label"></Label>
         <StackLayout col="2" @tap="signout">
           <Label text.decode="&#xf011;" col="2" class="icon-label icon fas"></Label>
         </StackLayout>

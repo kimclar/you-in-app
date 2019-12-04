@@ -3,7 +3,7 @@
     <ActionBar>
       <GridLayout columns="*,2*,*" horizontalAlignment="right">
 
-        <Label text="My Hosted Events" col="1" class="action-label"></Label>
+        <Label text="Hosting" col="1" class="action-label"></Label>
         <StackLayout col="2" @tap="addEventTap" verticalAlignment="center">
           <Image src="~/components/icons/addEvent.png" class="action-image"></Image>
 
