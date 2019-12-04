@@ -1,6 +1,6 @@
 <template>
 
-  <StackLayout width="350" height="450" class="p-10">
+  <StackLayout width="350" height="550" class="p-10">
     <GridLayout columns="*,2*,*", width="700" height="40" backgroundColor=#3C5AFD>
       <Label :text="event.title" col="1" verticalAlignment="center" class="modal-title"></Label>
       <Label col="2" class="center h2 action label icon fas" text.decode="&#xf057;" color="white" @tap="$modal.close()" verticalAlignment="center" horizontalAlignment="center"/>
@@ -24,15 +24,6 @@
         <TextField backgroundColor="white" v-model="elocation" :text= "event.location" class="input"></TextField>
       </StackLayout>
 
-      <!--<StackLayout class="input-field">
-        <Label class="event-section" text="Who?*"></Label>
-        <ListView for="circleName in myCircles" height="225">
-          <v-template>
-            <check-box :checked="isChecked" :text="circleName.name" textWrap="true"/>
-          </v-template>
-        </ListView>
-      </StackLayout>-->
-
       <StackLayout class="input-field">
         <Label class="event-section" text="Details [Optional]"></Label>
         <TextField backgroundColor="white" v-model="edetails" :text= "event.details" class="input"></TextField>
@@ -41,6 +32,11 @@
       <StackLayout class="input-field">
         <check-box :checked="event.isSharable" text="Allow your circles to share this event?" textWrap="true" @checkedChange="onCheckChange($event)"/>
       </StackLayout>
+
+      <Label class="guests" text="Who's in?"></Label>
+        <ListView for="attendee in event.attendees" height="70">
+      <Label :text="attendee" :key="attendee" class="input"></Label>
+        </ListView>
 
       <GridLayout columns="5*,5*" height="40">
         <Button width="150" col="0" color="white" backgroundColor="green" text="Save" @tap="saveRequest" />
@@ -127,6 +123,13 @@
   // End custom common variables
 
   // Custom styles
+  .guests {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 15;
+    padding-top: 5;
+    padding-bottom: 5;
+  }
   .modal-title {
     color: white;
     background-color: #3C5AFD;
@@ -138,11 +141,11 @@
   .event-section {
     color: black;
     background-color: transparent;
-    font-size: 18;
     font-weight: bold;
+    font-size: 15;
     vertical-align: left;
   }
   .input {
-    font-size: 16;
+    font-size: 15;
   }
 </style>

@@ -29,12 +29,12 @@
             <Label col="0" text="Location" class="editLabel"></Label>
             <Label col="1" :text="event.location" class="h3 font-weight-bold"></Label>
           </GridLayout>
-          <GridLayout columns="3*,8*" height="50">
+          <GridLayout columns="3*,8*" height="60">
             <Label col="0" text="Details" class="editLabel"></Label>
-            <Label col="1" :text="event.details" textWrap="true" class="h3 font-weight-bold"></Label>
+            <Label col="1" :text="event.details" class="h3 font-weight-bold" textWrap="true"></Label>
           </GridLayout>
           <Label class="guests" text="Who's in?"></Label>
-          <Label :text="event.host.name + ' (host)'" fontSize="14"></Label>
+          <Label :text="event.host.name + ' (host)'" class="host"></Label>
           <Label v-for="attendee in event.attendees" :text="attendee" :key="attendee" class="h3 font-weight-bold"></Label>
         </StackLayout>
       </StackLayout>
@@ -127,6 +127,12 @@
     color: darkblue;
     text-align: right;
     font-size: 14;
+    font-weight: bold;
+  }
+
+  .host {
+    font-size: 15;
+    color: darkblue;
     font-weight: bold;
   }
 </style>
