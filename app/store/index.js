@@ -83,7 +83,7 @@ export default new Vuex.Store({
                 let request = state.friendRequests[i];
                 if (request.fromUser === friendRequest.fromUser &&
                     request.toUser === friendRequest.toUser) {
-                    state.friendRequests.splice(i, i + 1);
+                    state.friendRequests.splice(i, 1);
                     i--;
                     return;
                 }
