@@ -26,14 +26,15 @@
                         host: "host",
                         attendees:  "attendees",
                         details: "details",
-                        isSharable: "isSharable"
+                        isSharable: "isSharable",
+                        id: "id"
                     }
                 }
             }
         },
         methods: {
             confirmDelete(event){
-                this.$store.commit('removeEvent', event.title);
+                this.$store.commit('removeEvent', event.id);
                 this.$modal.close();
             }
         }

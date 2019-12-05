@@ -80,15 +80,11 @@
     methods: {
       tapJoin(eventName){
         this.$store.commit('joinEvent', eventName)
-        this.$store.commit('addEvent', {title: "r3fr3sh3r", location: "", dateTime: "", host: {name: "", circles: ""}, attendees: [], details: "", isSharable: false});
-        this.$store.commit('removeEvent', "r3fr3sh3r");
         this.$modal.close();
       },
       tapLeave(eventName){
-        this.$store.commit('leaveEvent', eventName, this.me);
+        this.$store.commit('leaveEvent', eventName);
         this.$modal.close()
-        this.$store.commit('addEvent', {title: "r3fr3sh3r", location: "", dateTime: "", host: {name: "", circles: ""}, attendees: [], details: "", isSharable: false});
-        this.$store.commit('removeEvent', "r3fr3sh3r");
       }
     }
   };

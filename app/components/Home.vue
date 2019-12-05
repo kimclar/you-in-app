@@ -53,9 +53,6 @@
       }
     },
     methods: {
-      checkAttending(eventAttendees){
-        return (eventAttendees.indexOf("Ricky") > -1)
-      },
       onItemTap(args) {
         console.log("Open Event")
         const view = args.view;
