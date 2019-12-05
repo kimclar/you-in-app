@@ -35,7 +35,7 @@ export default new Vuex.Store({
             let i;
             for (i = 0; i < state.events.length; i++) {
                 if (state.events[i].id === eventId) {
-                    state.events.splice(i, i + 1);
+                    state.events.splice(i, 1);
                     i--;
                     return;
                 }
@@ -58,7 +58,7 @@ export default new Vuex.Store({
             let i;
             for (i = 0; i < state.friends.length; i++) {
                 if (state.friends[i].username === username) {
-                    state.friends.splice(i, i + 1);
+                    state.friends.splice(i, 1);
                     i--;
                     return;
                 }
@@ -96,7 +96,7 @@ export default new Vuex.Store({
             let i;
             for (i = 0; i < state.circles.length; i++) {
                 if (state.circles[i].name === circleName) {
-                    state.circles.splice(i, i + 1);
+                    state.circles.splice(i, 1);
                     i--;
                     return;
                 }
