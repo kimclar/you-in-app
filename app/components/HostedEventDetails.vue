@@ -107,8 +107,7 @@
               }).then(() => {
           console.log("Alert dialog closed");
         });
-        this.$store.commit('editEvent', {id: this.eid , title: this.etitle, location: this.elocation, dateTime: this.edateTime, host: {name: this.hostName, circles: this.hostCircles}, attendees: this.eattendees, details: this.edetails, isSharable: this.eisSharable});
-        console.log(this.originalTitle + "ORIGINAL TITLE");
+        this.$store.commit('editEvent', {id: this.eid , title: this.etitle, location: this.elocation, dateTime: this.edateTime, host: {name: this.hostName, circles: this.hostCircles}, attendees: this.eattendees, details: this.edetails, isSharable: this.eisSharable}, this.eid);
         this.$modal.close();
         this.$store.commit('addEvent', {title: "r3fr3sh3r", location: "", dateTime: "", host: {name: "", circles: ""}, attendees: [], details: "", isSharable: false});
         this.$store.commit('removeEvent', "r3fr3sh3r");

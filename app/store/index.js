@@ -34,7 +34,7 @@ export default new Vuex.Store({
         removeEvent(state, eventId) {
             let i;
             for (i = 0; i < state.events.length; i++) {
-                if (state.events[i].title === eventId) {
+                if (state.events[i].id === eventId) {
                     state.events.splice(i, i + 1);
                     i--;
                     return;
