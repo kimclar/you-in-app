@@ -6,7 +6,8 @@
     "host": {"name": "Phoebe", "circles": "Friends"},
     "attendees":  ["Joey", "Ricky","Rachel", "Ross", "Monica"],
     "details": "Please be on time",
-    "isSharable": false
+    "isSharable": false,
+    "id": 3876
   },
   {
     "title": "LiverPool vs Arsenal",
@@ -15,7 +16,8 @@
     "host": {"name": "Ricky", "circles": "OmegaChiChi"},
     "attendees":  ["Jaden", "Chad", "Moses", "Jacob"],
     "details": "Go Liverpool!!",
-    "isSharable": true
+    "isSharable": true,
+    "id": 3886
   },
   {
     "title": "Lord of the Rings Marathon",
@@ -24,7 +26,8 @@
     "host": {"name": "Ricky", "circles": "BFFs"},
     "attendees":  ["Michelle", "Josie"],
     "details": "Bring sustainance plz",
-    "isSharable": false
+    "isSharable": false,
+    "id": 3896
   },
   {
     "title": "Groceries/errands?",
@@ -33,9 +36,11 @@
     "host": {"name": "Ricky", "circles": "Roomies"},
     "attendees":  ["John"],
     "details": "I can drive us.",
-    "isSharable": false
+    "isSharable": false,
+    "id": 3906
   },
   {
+    "id": 3908,
     "title": "PING POOONG!!",
     "location": "YMCA",
     "dateTime": "December 15 2019, 6:00pm",
@@ -51,7 +56,8 @@
     "host": {"name": "Ricky", "circles": "21+"},
     "attendees":  ["Manny", "Hillary"],
     "details": "beer beer beer beer beer beer beer and chips",
-    "isSharable": true
+    "isSharable": true,
+    "id": 3910
   },
   {
     "title": "DANCE DANCE REVOLUTION",
@@ -60,7 +66,8 @@
     "host": {"name": "Ricky", "circles": "OmegaChiChi"},
     "attendees":  ["Cory", "Tyler"],
     "details": "",
-    "isSharable": false
+    "isSharable": false,
+    "id": 3912
   },
   {
     "title": "GET LIT 2020!",
@@ -69,7 +76,8 @@
     "host": {"name": "Ricky", "circles": "Lacrosse"},
     "attendees":  ["Martin", "Henry", "Ben", "Parker"],
     "details": "Starting the year off right.",
-    "isSharable": true
+    "isSharable": true,
+    "id": 3914
   },
   {
     "title": "Crying over Algorithms",
@@ -78,7 +86,8 @@
     "host": {"name": "Veronica", "circles": "Classmates"},
     "attendees":  ["Larry", "Benny"],
     "details": "Let's study algorithms together and cry.",
-    "isSharable": true
+    "isSharable": true,
+    "id": 3915
   },
   {
     "title": "Stargazing~",
@@ -87,7 +96,8 @@
     "host": {"name": "Hannah", "circles": "Besties"},
     "attendees":  ["Sarah"],
     "details": "I'll bring a heater, sleeping bags, and wine.",
-    "isSharable": false
+    "isSharable": false,
+    "id": 3916
   },
   {
     "title": "EAT LUNCH WIT ME",
@@ -96,7 +106,8 @@
     "host": {"name": "Tom", "circles": "BFFs"},
     "attendees":  ["Dan", "Thomas", "Ricky"],
     "details": "",
-    "isSharable": false
+    "isSharable": false,
+    "id": 3917
   },
   {
     "title": "Just chill and talk?",
@@ -105,7 +116,8 @@
     "host": {"name": "Kara", "circles": "Dorm Floor Peeps"},
     "attendees":  ["Melissa", "Malin", "Henry"],
     "details": "School's stressful. Anyone just wanna chill and talk for awhile?",
-    "isSharable": true
+    "isSharable": true,
+    "id": 3918
   },
   {
     "title": "NEW TRUMPET SHOPPING",
@@ -114,7 +126,8 @@
     "host": {"name": "Ryan", "circles": "Band Geeks"},
     "attendees":  ["Melanie"],
     "details": "Anyone wanna go with me to buy a new trumpet?",
-    "isSharable": false
+    "isSharable": false,
+    "id": 3919
   },
   {
     "title": "Christmas Potluck!",
@@ -123,6 +136,7 @@
     "host": {"name": "Vannessa", "circles": "Classmates"},
     "attendees":  ["Lisa", "Ryan", "John", "Ray", "Mike", "Ari"],
     "details": "",
-    "isSharable": false
+    "isSharable": false,
+    "id": 3920
   }
 ]
