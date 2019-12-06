@@ -107,8 +107,9 @@
               }).then(() => {
           console.log("Alert dialog closed");
         });
-        this.$store.commit('editEvent', {id: this.eid , title: this.etitle, location: this.elocation, dateTime: this.edateTime, host: {name: this.hostName, circles: this.hostCircles}, attendees: this.eattendees, details: this.edetails, isSharable: this.eisSharable}, this.eid);
+        this.$store.commit('editEvent', {id: this.eid , title: this.etitle, location: this.elocation, dateTime: this.edateTime, host: {name: this.hostName, circles: this.hostCircles}, attendees: this.eattendees, details: this.edetails, isSharable: this.eisSharable});
         this.$modal.close();
+        this.$store.commit('addDeleteDummy')
       }
     }
   };

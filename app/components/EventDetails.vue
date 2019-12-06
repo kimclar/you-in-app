@@ -35,20 +35,21 @@
           </GridLayout>
           <Label class="guests" text="Who's in?"></Label>
           <Label :text="event.host.name + ' (host)'" class="host"></Label>
-          <Label v-for="attendee in event.attendees" :text="attendee" :key="attendee" class="h3 font-weight-bold"></Label>
+          <Label v-for="attendee in event.attendees" :text="attendee" v-bind:key="attendee" class="h3 font-weight-bold"></Label>
         </StackLayout>
       </StackLayout>
 
 
     <Button v-if="isAttending" width="200" class="h3" color="white"
-            backgroundColor="#cd5c5c" text="Count me Out!" @tap="tapLeave(event.title)"></Button>
+            backgroundColor="#cd5c5c" text="Count me Out!" @tap="tapLeave()"></Button>
     <Button v-else width="200" class="h3" color="white"
-            backgroundColor="#30CE91" text="Count me In!" @tap="tapJoin(event.title)"></Button>
+            backgroundColor="#30CE91" text="Count me In!" @tap="tapJoin()"></Button>
   </FlexboxLayout>
 </template>
 
 <script>
   import EventDetails from "./EventDetails";
+  import Home from "./Home.vue";
 
   export default {
     props: {
@@ -70,6 +71,15 @@
     data() {
       return {
         me: "Ricky",
+        etitle: this.event.title,
+        elocation: this.event.location,
+        edateTime: this.event.dateTime,
+        eattendees:  this.event.attendees,
+        hostName: this.event.host.name,
+        hostCircles: this.event.host.circles,
+        edetails: this.event.details,
+        eisSharable: this.event.isSharable,
+        eid: this.event.id
       }
     },
     computed: {
@@ -78,13 +88,17 @@
       }
     },
     methods: {
-      tapJoin(eventName){
-        this.$store.commit('joinEvent', eventName)
+      tapJoin(){
+        this.$store.commit('joinEvent', this.eid);
         this.$modal.close();
+        this.$store.commit('addDeleteDummy')
+        this.$navigateTo(Home)
       },
-      tapLeave(eventName){
-        this.$store.commit('leaveEvent', eventName);
-        this.$modal.close()
+      tapLeave(){
+        this.$store.commit('leaveEvent', this.eid);
+        this.$modal.close();
+        this.$store.commit('addDeleteDummy');
+        this.$navigateTo(Home)
       }
     }
   };

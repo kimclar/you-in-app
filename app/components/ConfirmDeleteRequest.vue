@@ -1,8 +1,9 @@
 <template>
   <StackLayout width="300" height="200" backgroundColor="white" class="p-10">
-    <StackLayout height="100">
-      <StackLayout height="30"></StackLayout>
+    <StackLayout height="100" verticalAlignment="top">
+      <StackLayout height="15"></StackLayout>
       <Label fontSize="20" text="Are you sure you want to reject this request?" textWrap="true" textAlignment="center"/>
+      <Label fontSize="20" :text="request.fromUser" class="requestor-name" textWrap="true" textAlignment="center"/>
     </StackLayout>
     <GridLayout columns="*, *">
       <Button col="0" width="100" backgroundColor="#e60000" color="white"
@@ -41,4 +42,7 @@
   // End custom common variables
 
   // Custom styles
+  .requestor-name {
+    color: cadetblue;
+  }
 </style>

@@ -120,21 +120,38 @@ export default new Vuex.Store({
                 }
             }
         },
-        joinEvent(state, eventName){
+        joinEvent(state, eventID){
             let i;
             for (i = 0; i < state.events.length; i++) {
-                if (state.events[i].title === eventName) {
+                if (state.events[i].id === eventID) {
                     state.events[i].attendees.push(state.currentUser);
                     i--;
                     return;
                 }
             }
         },
-        leaveEvent(state, eventName){
+        leaveEvent(state, eventID){
             let i;
             for (i = 0; i < state.events.length; i++) {
-                if (state.events[i].title === eventName) {
+                if (state.events[i].id === eventID) {
                     state.events[i].attendees.splice(state.events[i].attendees.indexOf(state.currentUser), 1);
+                    i--;
+                    return;
+                }
+            }
+        },
+        addDeleteDummy(state){
+            state.events.push({title: "",
+                                  location: "",
+                                  dateTime: "",
+                                  host: [{name: "", circles: ""}],
+                                  attendees: ["", "", "", ""],
+                                  details: "",
+                                  isSharable: false, id: 99999999});
+            let i;
+            for (i = 0; i < state.events.length; i++) {
+                if (state.events[i].id === 99999999) {
+                    state.events.splice(i, 1);
                     i--;
                     return;
                 }
@@ -181,11 +198,14 @@ export default new Vuex.Store({
         editNonFriend(context, updatedNonFriend) {
             context.commit('editCircle', updatedNonFriend);
         },
-        joinEvent(context, eventName) {
-            context.commit('joinEvent', eventName)
+        joinEvent(context, eventID) {
+            context.commit('joinEvent', eventID)
         },
-        leaveEvent(context,eventName, leaver){
-            context.commit('leaveEvent', eventName)
+        leaveEvent(context,eventID){
+            context.commit('leaveEvent', eventID)
+        },
+        addDeleteDummy(context){
+            context.commit('addDeleteDummy')
         }
     },
     getters: {
