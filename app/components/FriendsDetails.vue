@@ -18,8 +18,7 @@
 
         <ListView for="circle in circles" width="300" height="250">
           <v-template>
-            <checkbox :checked="circle.isFriendIncluded" @tap="circle.isFriendIncluded = !circle.isFriendIncluded"
-                      :text="circle.name" class="infoText" @checkedChange="onCheckChange($event, circle.name)"/>
+            <checkbox :checked="circle.isFriendIncluded" :text="circle.name" class="infoText" @tap="circle.isFriendIncluded = !circle.isFriendIncluded"/>
           </v-template>
         </ListView>
 
@@ -65,7 +64,7 @@
         for (i = 0; i < circleData.length; i++) {
           let circle = circleData[i];
           circle.isFriendIncluded = circle.includedFriends.includes(this.friend.username);
-          if (circle.isFriendIncluded === true){
+          if (circle.isFriendIncluded === true && !this.fcircles.includes(circle.name)){
             this.fcircles.push(circle.name);
           }
         }
@@ -91,12 +90,13 @@
         this.$store.commit('editFriend', {username: this.fusername, nickname: this.fnickname});
         let i;
         for (i=0; i < this.circles.length; i++){
-          if (this.fcircles.includes(this.circles[i].name)){
-            this.$store.commit('addCircleFriend', this.circles[i].name, this.fusername);
-            console.log("ADDED" + this.circles[i].name);
-          } else {
-            this.$store.commit('removeCircleFriend', this.circles[i].name, this.fusername);
-            console.log("REMOVED" + this.circles[i].name);
+          console.log(this.circles[i].name + " IS " + this.circles[i].isFriendIncluded);
+          if (this.circles[i].isFriendIncluded && !this.circles[i].includedFriends.includes(this.fusername)){
+            console.log(this.circles[i].name + "ADDED")
+            this.$store.commit('addCircleFriend', {circleName: this.circles[i].name, friendUsername: this.friend.username});
+          } else if (!this.circles[i].isFriendIncluded && this.circles[i].includedFriends.includes(this.fusername)){
+            console.log(this.circles[i].name + "REMOVED")
+            this.$store.commit('removeCircleFriend', {circleName: this.circles[i].name, friendUsername: this.friend.username});
           }
         }
         this.$modal.close();
@@ -104,12 +104,8 @@
         this.$store.commit('removeFriend', "r3fr3sh3r");
         this.$showModal(ConfirmChangesSaved);
       },
-      onCheckChange(event, circleName) {
-        if (event.value == true){
-          this.fcircles.push(circleName);
-        } else if (event.value == false){
-          this.fcircles.splice(this.fcircles.indexOf(circleName), 1);
-        }
+      onCheckChange(circle) {
+        circle.isFriendIncluded = !circle.isFriendIncluded;
       },
     }
   };

@@ -102,10 +102,10 @@ export default new Vuex.Store({
                 }
             }
         },
-        editCircle(state, updatedCircle, originalName) {
+        editCircle(state, updatedCircle) {
             let i;
             for (i = 0; i < state.circles.length; i++) {
-                if (state.circles[i].name === originalName) {
+                if (state.circles[i].name === updatedCircle.originalName) {
                     state.circles[i] = updatedCircle;
                     console.log("SAVED" + state.circles[i].name);
                     return;
@@ -158,28 +158,27 @@ export default new Vuex.Store({
                 }
             }
         },
-        addCircleFriend(state, circleName, friendUsername){
+        addCircleFriend(state, changes){
             let i;
             for (i=0; i < state.circles.length; i++){
-                if (state.circles[i].name === circleName){
-                    state.circles[i].includedFriends.push(friendUsername);
-                    console.log("ADDED!!");
+                if (state.circles[i].name === changes.circleName && !state.circles[i].includedFriends.includes(changes.friendUsername)){
+                    state.circles[i].includedFriends.push(changes.friendUsername);
                     i--;
                     return
                 }
             }
         },
-        removeCircleFriend(state, circleName, friendUsername){
+        removeCircleFriend(state, changes){
             let i;
             for (i=0; i < state.circles.length; i++){
-                if (state.circles[i].name === circleName){
-                    state.circles[i].includedFriends.splice(state.circles[i].includedFriends.indexOf(friendUsername), 1);
-                    console.log("REMOVED!!");
+                if (state.circles[i].name === changes.circleName && state.circles[i].includedFriends.includes(changes.friendUsername)){
+                    state.circles[i].includedFriends.splice(state.circles[i].includedFriends.indexOf(changes.friendUsername), 1);
+                    console.log(state.circles[i].name + "HAS" + state.circles[i].includedFriends);
                     i--;
                     return
                 }
             }
-        }
+        },
     },
     actions: {
         setCurrentUser(context, username) {
@@ -215,8 +214,8 @@ export default new Vuex.Store({
         removeCircle(context, circleName) {
             context.commit('removeCircle', circleName);
         },
-        editCircle(context, updatedCircle, originalName) {
-            context.commit('editCircle', updatedCircle, originalName);
+        editCircle(context, updatedCircle) {
+            context.commit('editCircle', updatedCircle);
         },
         editNonFriend(context, updatedNonFriend) {
             context.commit('editCircle', updatedNonFriend);
@@ -230,11 +229,11 @@ export default new Vuex.Store({
         addDeleteDummy(context){
             context.commit('addDeleteDummy')
         },
-        addCircleFriend(context, circleName, friendUsername){
-            context.commit('addCircleFriend', circleName, friendUsername)
+        addCircleFriend(context, changes){
+            context.commit('addCircleFriend', changes)
         },
-        removeCircleFriend(context, circleName, friendUsername){
-            context.commit('removeCircleFriend', circleName, friendUsername)
+        removeCircleFriend(context, changes){
+            context.commit('removeCircleFriend', changes)
         }
     },
     getters: {
