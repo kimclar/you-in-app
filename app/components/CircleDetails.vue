@@ -81,9 +81,12 @@
         this.$modal.close();
       },
       saveChanges() {
-        this.$store.commit('editCircle', {name: this.cName, includedFriends: this.cIncludedFriends},this.originalName);
+        console.log("NAME IS NOW" + this.cName);
+        this.$store.commit('editCircle', {name: this.cName, includedFriends: this.cIncludedFriends, originalName: this.originalName});
         this.$modal.close();
         this.$showModal(ConfirmChangesSaved);
+        this.$store.commit('addCircle', {name: "r3fr3sh3r", includedFriends: []})
+        this.$store.commit('removeCircle', "r3fr3sh3r");
       },
       onCheckChange(event, friendUsername) {
         if (event.value == true){
