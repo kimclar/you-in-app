@@ -102,11 +102,12 @@ export default new Vuex.Store({
                 }
             }
         },
-        editCircle(state, updatedCircle) {
+        editCircle(state, updatedCircle, originalName) {
             let i;
             for (i = 0; i < state.circles.length; i++) {
-                if (state.circles[i].name === updatedCircle.name) {
+                if (state.circles[i].name === originalName) {
                     state.circles[i] = updatedCircle;
+                    console.log("SAVED" + state.circles[i].name);
                     return;
                 }
             }
@@ -120,23 +121,62 @@ export default new Vuex.Store({
                 }
             }
         },
-        joinEvent(state, eventName){
+        joinEvent(state, eventID){
             let i;
             for (i = 0; i < state.events.length; i++) {
-                if (state.events[i].title === eventName) {
+                if (state.events[i].id === eventID) {
                     state.events[i].attendees.push(state.currentUser);
                     i--;
                     return;
                 }
             }
         },
-        leaveEvent(state, eventName){
+        leaveEvent(state, eventID){
             let i;
             for (i = 0; i < state.events.length; i++) {
-                if (state.events[i].title === eventName) {
+                if (state.events[i].id === eventID) {
                     state.events[i].attendees.splice(state.events[i].attendees.indexOf(state.currentUser), 1);
                     i--;
                     return;
+                }
+            }
+        },
+        addDeleteDummy(state){
+            state.events.push({title: "",
+                                  location: "",
+                                  dateTime: "",
+                                  host: [{name: "", circles: ""}],
+                                  attendees: ["", "", "", ""],
+                                  details: "",
+                                  isSharable: false, id: 99999999});
+            let i;
+            for (i = 0; i < state.events.length; i++) {
+                if (state.events[i].id === 99999999) {
+                    state.events.splice(i, 1);
+                    i--;
+                    return;
+                }
+            }
+        },
+        addCircleFriend(state, circleName, friendUsername){
+            let i;
+            for (i=0; i < state.circles.length; i++){
+                if (state.circles[i].name === circleName){
+                    state.circles[i].includedFriends.push(friendUsername);
+                    console.log("ADDED!!");
+                    i--;
+                    return
+                }
+            }
+        },
+        removeCircleFriend(state, circleName, friendUsername){
+            let i;
+            for (i=0; i < state.circles.length; i++){
+                if (state.circles[i].name === circleName){
+                    state.circles[i].includedFriends.splice(state.circles[i].includedFriends.indexOf(friendUsername), 1);
+                    console.log("REMOVED!!");
+                    i--;
+                    return
                 }
             }
         }
@@ -175,17 +215,26 @@ export default new Vuex.Store({
         removeCircle(context, circleName) {
             context.commit('removeCircle', circleName);
         },
-        editCircle(context, updatedCircle) {
-            context.commit('editCircle', updatedCircle);
+        editCircle(context, updatedCircle, originalName) {
+            context.commit('editCircle', updatedCircle, originalName);
         },
         editNonFriend(context, updatedNonFriend) {
             context.commit('editCircle', updatedNonFriend);
         },
-        joinEvent(context, eventName) {
-            context.commit('joinEvent', eventName)
+        joinEvent(context, eventID) {
+            context.commit('joinEvent', eventID)
         },
-        leaveEvent(context,eventName, leaver){
-            context.commit('leaveEvent', eventName)
+        leaveEvent(context,eventID){
+            context.commit('leaveEvent', eventID)
+        },
+        addDeleteDummy(context){
+            context.commit('addDeleteDummy')
+        },
+        addCircleFriend(context, circleName, friendUsername){
+            context.commit('addCircleFriend', circleName, friendUsername)
+        },
+        removeCircleFriend(context, circleName, friendUsername){
+            context.commit('removeCircleFriend', circleName, friendUsername)
         }
     },
     getters: {
