@@ -102,11 +102,12 @@ export default new Vuex.Store({
                 }
             }
         },
-        editCircle(state, updatedCircle) {
+        editCircle(state, updatedCircle, originalName) {
             let i;
             for (i = 0; i < state.circles.length; i++) {
-                if (state.circles[i].name === updatedCircle.name) {
+                if (state.circles[i].name === originalName) {
                     state.circles[i] = updatedCircle;
+                    console.log("SAVED" + state.circles[i].name);
                     return;
                 }
             }
@@ -156,6 +157,28 @@ export default new Vuex.Store({
                     return;
                 }
             }
+        },
+        addCircleFriend(state, circleName, friendUsername){
+            let i;
+            for (i=0; i < state.circles.length; i++){
+                if (state.circles[i].name === circleName){
+                    state.circles[i].includedFriends.push(friendUsername);
+                    console.log("ADDED!!");
+                    i--;
+                    return
+                }
+            }
+        },
+        removeCircleFriend(state, circleName, friendUsername){
+            let i;
+            for (i=0; i < state.circles.length; i++){
+                if (state.circles[i].name === circleName){
+                    state.circles[i].includedFriends.splice(state.circles[i].includedFriends.indexOf(friendUsername), 1);
+                    console.log("REMOVED!!");
+                    i--;
+                    return
+                }
+            }
         }
     },
     actions: {
@@ -192,8 +215,8 @@ export default new Vuex.Store({
         removeCircle(context, circleName) {
             context.commit('removeCircle', circleName);
         },
-        editCircle(context, updatedCircle) {
-            context.commit('editCircle', updatedCircle);
+        editCircle(context, updatedCircle, originalName) {
+            context.commit('editCircle', updatedCircle, originalName);
         },
         editNonFriend(context, updatedNonFriend) {
             context.commit('editCircle', updatedNonFriend);
@@ -206,6 +229,12 @@ export default new Vuex.Store({
         },
         addDeleteDummy(context){
             context.commit('addDeleteDummy')
+        },
+        addCircleFriend(context, circleName, friendUsername){
+            context.commit('addCircleFriend', circleName, friendUsername)
+        },
+        removeCircleFriend(context, circleName, friendUsername){
+            context.commit('removeCircleFriend', circleName, friendUsername)
         }
     },
     getters: {

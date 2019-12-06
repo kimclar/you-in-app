@@ -1,30 +1,30 @@
 [
   {
     "name": "Friends",
-    "includedFriends":  ["Abby", "Benny Boyyy", "Carol", "Danny", "Evelyn", "George", "Hannah", "Leoooooooo"]
+    "includedFriends":  ["abs4days", "boruto_snoruto", "candycrunch", "dandapanda", "eagerbeaver", "curious_george", "ha_ha_happy", "lionKing365", "babyyoda"]
   },
   {
     "name": "BFFs",
-    "includedFriends":  ["Abby", "YodaBB"]
+    "includedFriends":  ["abs4days", "babyyoda"]
   },
   {
     "name": "Roomies",
-    "includedFriends":  ["Abby"]
+    "includedFriends":  ["abs4days"]
   },
   {
     "name": "Lacrosse",
-    "includedFriends":  ["Carol"]
+    "includedFriends":  ["candycrunch"]
   },
   {
     "name": "PingPong",
-    "includedFriends":  ["Danny", "George"]
+    "includedFriends":  ["dandapanda", "curious_george"]
   },
   {
     "name": "OmegaChiChi",
-    "includedFriends":  ["George"]
+    "includedFriends":  ["curious_george"]
   },
   {
     "name": "21+",
-    "includedFriends":  ["Evelyn"]
+    "includedFriends":  ["eagerbeaver"]
   }
 ]

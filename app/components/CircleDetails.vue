@@ -10,13 +10,13 @@
 
       <StackLayout>
         <Label class="circleList" text="Circle name:"></Label>
-        <TextField :hint="circle.name" class="infoText"></TextField>
+        <TextField v-model="cName" :text="circle.name" class="infoText"></TextField>
 
         <Label class="circleList" text="Who's in:"></Label>
         <ListView for="friend in friends" width="300" height="250">
           <v-template>
             <checkbox :checked="friend.isInCircle" @tap="friend.isInCircle = !friend.isInCircle"
-                      :text="friend.nickname" class="infoText"/>
+                      :text="friend.nickname" class="infoText" @checkedChange="onCheckChange($event, friend.username)"/>
           </v-template>
         </ListView>
       </StackLayout>
@@ -32,6 +32,8 @@
 
 <script>
   import ConfirmDeleteCircle from "./ConfirmDeleteCircle";
+  import ConfirmChangesSaved from "./ConfirmChangesSaved";
+  import MyCircles from "./MyCircles";
 
   export default {
     computed: {
@@ -40,7 +42,7 @@
         let i;
         for (i = 0; i < friendData.length; i++) {
           let friend = friendData[i];
-          friend.isInCircle = this.circle.includedFriends.includes(friend.nickname);
+          friend.isInCircle = this.circle.includedFriends.includes(friend.username);
         }
         return friendData;
       }
@@ -56,30 +58,41 @@
         }
       }
     },
+    data() {
+      return {
+        cName: this.circle.name,
+        cIncludedFriends: this.circle.includedFriends,
+        originalName: this.circle.name
+      }
+    },
     methods: {
-            deleteCircle(passCircle){
-                this.$showModal(ConfirmDeleteCircle, {
-                    props: {
-                        circle: passCircle,
-                        animated: true,
-                        transition: {
-                            name: "slide",
-                            duration: 200,
-                            curve: "ease"
-                        }
-                    }
-                })
-                this.$modal.close();
-            },
-            saveChanges() {
-                alert({
-                          title: "",
-                          message: "Your changes have been saved!",
-                          okButtonText: "OK"
-                      })
-                this.$modal.close();
+      deleteCircle(passCircle){
+        this.$showModal(ConfirmDeleteCircle, {
+          props: {
+            circle: passCircle,
+            animated: true,
+            transition: {
+              name: "slide",
+              duration: 200,
+              curve: "ease"
             }
+          }
+        })
+        this.$modal.close();
+      },
+      saveChanges() {
+        this.$store.commit('editCircle', {name: this.cName, includedFriends: this.cIncludedFriends},this.originalName);
+        this.$modal.close();
+        this.$showModal(ConfirmChangesSaved);
+      },
+      onCheckChange(event, friendUsername) {
+        if (event.value == true){
+          this.cIncludedFriends.push(friendUsername);
+        } else if (event.value == false){
+          this.cIncludedFriends.splice(this.cIncludedFriends.indexOf(friendUsername), 1);
         }
+      },
+    }
   };
 </script>
 
@@ -110,7 +123,7 @@
   }
 
   .infoText {
-    color: voilet;
+    color: violet;
     font-size: 16;
     padding-top: 4;
   }

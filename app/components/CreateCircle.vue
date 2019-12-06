@@ -21,7 +21,7 @@
           <StackLayout>
             <ListView for="friend in friends" height="290">
               <v-template>
-                <check-box :checked="isChecked" :text="friend.nickname" textWrap="true" @checkedChange="onCheckChange($event, friend.nickname)"/>
+                <check-box :checked="isChecked" :text="friend.nickname" textWrap="true" @checkedChange="onCheckChange($event, friend.username)"/>
               </v-template>
             </ListView>
           </StackLayout>
@@ -61,13 +61,13 @@
           this.$modal.close();
         }
       },
-      onCheckChange(event, nickname) {
+      onCheckChange(event, username) {
         this.isChecked = event.value;
         if (this.isChecked === true){
-          this.addedFriends.push(nickname);
+          this.addedFriends.push(username);
           console.log(this.addedFriends.length);
         } else {
-          this.addedFriends.splice(this.addedFriends.indexOf(nickname), 1);
+          this.addedFriends.splice(this.addedFriends.indexOf(username), 1);
         }
       }
     }

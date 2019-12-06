@@ -50,6 +50,7 @@
 
 <script>
   import ConfirmDeleteEvent from "./ConfirmDeleteEvent";
+  import ConfirmChangesSaved from "./ConfirmChangesSaved";
 
   export default {
     props: {
@@ -100,16 +101,10 @@
         this.eisSharable = event.value;
       },
       saveRequest(){
-        alert({
-                title: "",
-                message: "Your event has been saved!",
-                okButtonText: "OK"
-              }).then(() => {
-          console.log("Alert dialog closed");
-        });
         this.$store.commit('editEvent', {id: this.eid , title: this.etitle, location: this.elocation, dateTime: this.edateTime, host: {name: this.hostName, circles: this.hostCircles}, attendees: this.eattendees, details: this.edetails, isSharable: this.eisSharable});
         this.$modal.close();
         this.$store.commit('addDeleteDummy')
+        this.$showModal(ConfirmChangesSaved);
       }
     }
   };
