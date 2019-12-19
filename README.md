@@ -25,8 +25,9 @@ Basically, it works by:
 1. Users sharing their available free times (“events”) along with details they might want to do during that time (e.g., meals, drinks, study buddy). 
 2. Users seeing and joining their friend’s “events” if they’re available.
 
-![You In? Screenshot](https://github.com/kimclar/you-in-app/blob/master/You-In-Explore-Screenshot.jpg)
-####### Explore
+![You In? Screenshot](https://github.com/kimclar/you-in-app/blob/master/You-In-Explore-Screenshot.jpg | height=100)
+
+###### Explore
 - Lists events that the user's friends have posted.
 - The user can click on and join/leave events in this tab.
 - Events the user has joined are highlighted in blue.
